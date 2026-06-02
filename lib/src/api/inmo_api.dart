@@ -13,6 +13,7 @@ import 'auth_security/auth_security_client.dart';
 import 'country/country_client.dart';
 import 'currency/currency_client.dart';
 import 'document/document_client.dart';
+import 'favourites/favourites_client.dart';
 import 'favourite_search/favourite_search_client.dart';
 import 'identification/identification_client.dart';
 import 'inmo_category/inmo_category_client.dart';
@@ -52,6 +53,7 @@ class InmoApi {
   CountryClient? _country;
   CurrencyClient? _currency;
   DocumentClient? _document;
+  FavouritesClient? _favourites;
   FavouriteSearchClient? _favouriteSearch;
   IdentificationClient? _identification;
   InmoCategoryClient? _inmoCategory;
@@ -86,6 +88,8 @@ class InmoApi {
   CurrencyClient get currency => _currency ??= CurrencyClient(_dio, baseUrl: _baseUrl);
 
   DocumentClient get document => _document ??= DocumentClient(_dio, baseUrl: _baseUrl);
+
+  FavouritesClient get favourites => _favourites ??= FavouritesClient(_dio, baseUrl: _baseUrl);
 
   FavouriteSearchClient get favouriteSearch => _favouriteSearch ??= FavouriteSearchClient(_dio, baseUrl: _baseUrl);
 

@@ -11,6 +11,7 @@ export 'country_repo.dart';
 export 'currency_repo.dart';
 export 'document_repo.dart';
 export 'favourite_search_repo.dart';
+export 'favourites_repo.dart';
 export 'identification_repo.dart';
 export 'inmo_category_repo.dart';
 export 'inmo_type_repo.dart';
