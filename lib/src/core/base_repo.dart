@@ -123,11 +123,15 @@ abstract class BaseRepo {
       return Left([problem]);
     }
 
-    throw const ProblemError(
-      title: 'unknownServerError',
-      message: 'Unknown server error',
-      type: ErrorType.unknown,
-    );
+    return Left([
+      ProblemDetails(
+        type: ErrorType.unknown.name,
+        title: 'unknownServerError',
+        status: e.response?.statusCode,
+        detail: 'Unknown server error',
+        instance: null,
+      ),
+    ]);
   }
 
   Map<String, dynamic> _normalizeProblemJson(Map<String, dynamic> json) {

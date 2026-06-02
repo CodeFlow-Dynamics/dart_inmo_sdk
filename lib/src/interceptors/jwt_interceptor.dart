@@ -13,7 +13,7 @@ class JwtInterceptor extends Interceptor {
     RequestInterceptorHandler handler,
   ) async {
     // Refresh uses only the body refresh token; omit Bearer so an expired access token cannot break refresh.
-    if (options.path.contains('/Auth/refresh')) {
+    if (Uri.parse(options.path).path.endsWith('/Auth/refresh')) {
       handler.next(options);
       return;
     }
