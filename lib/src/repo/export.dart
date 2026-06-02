@@ -4,6 +4,7 @@
 export 'admin_repo.dart';
 export 'administrative_division_repo.dart';
 export 'administrative_level_repo.dart';
+export 'amenity_repo.dart';
 export 'auth_repo.dart';
 export 'auth_security_repo.dart';
 export 'country_repo.dart';

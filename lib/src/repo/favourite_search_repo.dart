@@ -10,6 +10,7 @@ abstract class FavouriteSearchRepo {
   Future<ResultApi<FavouriteSearchDto>> postSearchesFavourites({
     CreateFavouriteSearchDto? body,
   });
+  Future<ResultApi<List<FavouriteSearchDto>>> getSearchesFavourites();
   Future<ResultApi<FavouriteSearchDto>> getSearchesFavouritesId({
     required String id,
   });
@@ -41,6 +42,13 @@ class FavouriteSearchRepoImpl extends BaseRepo implements FavouriteSearchRepo {
       apiCall: () => _api.favouriteSearch.postApiV1SearchesFavourites(
         body: body,
       ),
+    );
+  }
+
+  @override
+  Future<ResultApi<List<FavouriteSearchDto>>> getSearchesFavourites() {
+    return executeApiCall<List<FavouriteSearchDto>>(
+      apiCall: () => _api.favouriteSearch.getApiV1SearchesFavourites(),
     );
   }
 

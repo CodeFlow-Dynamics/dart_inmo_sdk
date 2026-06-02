@@ -29,6 +29,9 @@ abstract class VerificationSubmissionRepo {
     File? photoObverse,
     File? photoReverse,
   });
+  Future<ResultApi<List<VerificationSubmissionHistoryDto>>> getVerificationSubmissionIdHistory({
+    required String id,
+  });
   Future<ResultApi<VerificationSubmissionDto>> getVerificationSubmissionId({
     required String id,
   });
@@ -101,6 +104,17 @@ class VerificationSubmissionRepoImpl extends BaseRepo implements VerificationSub
         userNotes: userNotes,
         photoObverse: photoObverse,
         photoReverse: photoReverse,
+      ),
+    );
+  }
+
+  @override
+  Future<ResultApi<List<VerificationSubmissionHistoryDto>>> getVerificationSubmissionIdHistory({
+    required String id,
+  }) {
+    return executeApiCall<List<VerificationSubmissionHistoryDto>>(
+      apiCall: () => _api.verificationSubmission.getApiV1VerificationSubmissionIdHistory(
+        id: id,
       ),
     );
   }
