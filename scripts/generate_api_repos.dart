@@ -1,7 +1,7 @@
 import 'dart:io';
 
 final _methodRegex = RegExp(
-  r'Future<HttpResponse<([^>]+)>>\s+([A-Za-z0-9_]+)\s*\(((?:\{[\s\S]*?\})?)\);',
+  r'Future<HttpResponse<(.+?)>>\s+([A-Za-z0-9_]+)\s*\(((?:\{[\s\S]*?\})?)\);',
   multiLine: true,
 );
 
