@@ -20,6 +20,15 @@ jobs:
         with:
           ref: main
 
+      - name: ✅ Validate payload
+        run: |
+          RUN_ID="${{ github.event.client_payload.run_id }}"
+          if ! [[ "$RUN_ID" =~ ^[0-9]+$ ]]; then
+            echo "::error::Invalid run_id '$RUN_ID' — must be a numeric GitHub Actions run ID"
+            exit 1
+          fi
+          echo "run_id=$RUN_ID" >> "$GITHUB_ENV"
+
       - name: 📦 Download OpenAPI spec artifact
         uses: actions/download-artifact@v4
         with:
@@ -27,7 +36,7 @@ jobs:
           path: ./lib/src/schema/
           github-token: ${{ secrets.CROSS_REPO_TOKEN }}
           repository: CodeFlow-Dynamics/InmoBackend
-          run-id: ${{ github.event.client_payload.run_id }}
+          run-id: ${{ env.run_id }}
 
       - name: 🔍 Verify spec downloaded
         run: |
