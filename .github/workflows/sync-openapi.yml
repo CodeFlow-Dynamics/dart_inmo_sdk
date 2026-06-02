@@ -1,0 +1,74 @@
+name: 📋 Sync OpenAPI Spec
+
+on:
+  repository_dispatch:
+    types: [openapi-spec-updated]
+
+permissions:
+  contents: write
+  pull-requests: write
+  actions: read
+
+jobs:
+  sync-openapi:
+    name: Download spec, generate Dart code, and open PR
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ⬇️ Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: 📦 Download OpenAPI spec artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: openapi-spec
+          path: ./lib/src/schema/
+          github-token: ${{ secrets.CROSS_REPO_TOKEN }}
+          repository: CodeFlow-Dynamics/InmoBackend
+          run-id: ${{ github.event.client_payload.run_id }}
+
+      - name: 🔍 Verify spec downloaded
+        run: |
+          SCHEMA_DIR="lib/src/schema"
+          LATEST=$(ls -t "$SCHEMA_DIR"/swagger-*.json 2>/dev/null | head -1)
+          if [ -z "$LATEST" ]; then
+            echo "::error::No swagger-*.json found in $SCHEMA_DIR — artifact download may have failed"
+            exit 1
+          fi
+          echo "Found $(basename "$LATEST")"
+          cp "$LATEST" "$SCHEMA_DIR/schema.json"
+          rm "$LATEST"
+          echo "Copied to schema.json (removed timestamped copy)"
+          jq '.info' "$SCHEMA_DIR/schema.json"
+
+      - name: ⚙️ Setup Flutter
+        uses: subosito/flutter-action@v2.16.0
+        with:
+          channel: main
+          flutter-version-file: pubspec.yaml
+          cache: true
+
+      - name: ⚙️ Install dependencies
+        run: flutter pub get
+
+      - name: 🔎 Debug nullable field types (for generator crash)
+        run: dart run scripts/ci/debug_nullable_fields.dart lib/src/schema/schema.json
+
+      - name: 🔄 Generate Dart code from OpenAPI spec
+        run: dart run swagger_parser -f swagger_parser.yaml
+
+      - name: 🩹 Patch DateTime query clients
+        run: dart run scripts/patch_datetime_clients.dart
+
+      - name: 🏗️ Build generated code
+        run: dart run build_runner build --delete-conflicting-outputs --force-jit --build-filter="lib/**"
+
+      - name: 🔄 Generate repos from API
+        run: dart run scripts/generate_api_repos.dart
+
+      - name: 📤 Commit, push, and create PR
+        env:
+          GH_TOKEN: ${{ secrets.CROSS_REPO_TOKEN }}
+        run: bash scripts/ci/sync_openapi_pr.sh
