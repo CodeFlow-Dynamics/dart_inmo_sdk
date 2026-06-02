@@ -1,0 +1,23 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'login_response_dto.dart';
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+LoginResponseDto _$LoginResponseDtoFromJson(Map<String, dynamic> json) =>
+    LoginResponseDto(
+      accessToken: json['accessToken'] as String,
+      refreshToken: json['refreshToken'] as String,
+      deviceId: json['deviceId'] as String,
+      passwordChangeRequired: json['passwordChangeRequired'] as bool?,
+    );
+
+Map<String, dynamic> _$LoginResponseDtoToJson(LoginResponseDto instance) =>
+    <String, dynamic>{
+      'accessToken': instance.accessToken,
+      'refreshToken': instance.refreshToken,
+      'deviceId': instance.deviceId,
+      'passwordChangeRequired': instance.passwordChangeRequired,
+    };
