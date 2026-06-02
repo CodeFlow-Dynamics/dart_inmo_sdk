@@ -14,6 +14,7 @@ export 'health_repo.dart';
 export 'identification_repo.dart';
 export 'inmo_category_repo.dart';
 export 'inmo_type_repo.dart';
+export 'inquiry_repo.dart';
 export 'listing_repo.dart';
 export 'listing_offer_repo.dart';
 export 'master_repo.dart';

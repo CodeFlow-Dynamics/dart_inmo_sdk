@@ -17,11 +17,11 @@ part 'search_client.g.dart';
 abstract class SearchClient {
   factory SearchClient(Dio dio, {String? baseUrl}) = _SearchClient;
 
-  @POST('/api/v1/search/listings/reindex')
-  Future<HttpResponse<ReindexResultDto>> postApiV1SearchListingsReindex();
+  @POST('/api/v1/searches/listings/reindex')
+  Future<HttpResponse<ReindexResultDto>> postApiV1SearchesListingsReindex();
 
-  @GET('/api/v1/search/listings')
-  Future<HttpResponse<SearchListingsResultDto>> getApiV1SearchListings({
+  @GET('/api/v1/searches/listings')
+  Future<HttpResponse<SearchListingsResultDto>> getApiV1SearchesListings({
     @Query('Q') String? q,
     @Query('OfferType') String? offerType,
     @Query('MinPrice') double? minPrice,
@@ -53,8 +53,8 @@ abstract class SearchClient {
     @Query('Cursor') String? cursor,
   });
 
-  @GET('/api/v1/search/listings/geo/rectangular')
-  Future<HttpResponse<GeoSearchResultDto>> getApiV1SearchListingsGeoRectangular({
+  @GET('/api/v1/searches/listings/geo/rectangular')
+  Future<HttpResponse<GeoSearchResultDto>> getApiV1SearchesListingsGeoRectangular({
     @Query('NeLat') double? neLat,
     @Query('NeLng') double? neLng,
     @Query('SwLat') double? swLat,
@@ -90,8 +90,8 @@ abstract class SearchClient {
     @Query('Cursor') String? cursor,
   });
 
-  @GET('/api/v1/search/listings/geo/radius')
-  Future<HttpResponse<GeoSearchResultDto>> getApiV1SearchListingsGeoRadius({
+  @GET('/api/v1/searches/listings/geo/radius')
+  Future<HttpResponse<GeoSearchResultDto>> getApiV1SearchesListingsGeoRadius({
     @Query('Lat') double? lat,
     @Query('Lng') double? lng,
     @Query('RadiusKm') double? radiusKm,
@@ -126,8 +126,8 @@ abstract class SearchClient {
     @Query('Cursor') String? cursor,
   });
 
-  @GET('/api/v1/search/listings/autocomplete')
-  Future<HttpResponse<AutocompleteResultDto>> getApiV1SearchListingsAutocomplete({
+  @GET('/api/v1/searches/listings/autocomplete')
+  Future<HttpResponse<AutocompleteResultDto>> getApiV1SearchesListingsAutocomplete({
     @Query('q') String? q,
   });
 }

@@ -20,7 +20,7 @@ class _FavouriteSearchClient implements FavouriteSearchClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<FavouriteSearchDto>> postApiV1FavouriteSearches({
+  Future<HttpResponse<FavouriteSearchDto>> postApiV1SearchesFavourites({
     CreateFavouriteSearchDto? body,
   }) async {
     final _extra = <String, dynamic>{};
@@ -37,7 +37,7 @@ class _FavouriteSearchClient implements FavouriteSearchClient {
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/api/v1/favourite-searches',
+            '/api/v1/searches/favourites',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -57,7 +57,7 @@ class _FavouriteSearchClient implements FavouriteSearchClient {
 
   @override
   Future<HttpResponse<List<FavouriteSearchDto>>>
-  getApiV1FavouriteSearches() async {
+  getApiV1SearchesFavourites() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -66,7 +66,7 @@ class _FavouriteSearchClient implements FavouriteSearchClient {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/api/v1/favourite-searches',
+            '/api/v1/searches/favourites',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -88,7 +88,7 @@ class _FavouriteSearchClient implements FavouriteSearchClient {
   }
 
   @override
-  Future<HttpResponse<FavouriteSearchDto>> getApiV1FavouriteSearchesId({
+  Future<HttpResponse<FavouriteSearchDto>> getApiV1SearchesFavouritesId({
     required String id,
   }) async {
     final _extra = <String, dynamic>{};
@@ -99,7 +99,7 @@ class _FavouriteSearchClient implements FavouriteSearchClient {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/api/v1/favourite-searches/${id}',
+            '/api/v1/searches/favourites/${id}',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -118,7 +118,7 @@ class _FavouriteSearchClient implements FavouriteSearchClient {
   }
 
   @override
-  Future<HttpResponse<FavouriteSearchDto>> putApiV1FavouriteSearchesId({
+  Future<HttpResponse<FavouriteSearchDto>> putApiV1SearchesFavouritesId({
     required String id,
     UpdateFavouriteSearchDto? body,
   }) async {
@@ -136,7 +136,7 @@ class _FavouriteSearchClient implements FavouriteSearchClient {
       Options(method: 'PUT', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/api/v1/favourite-searches/${id}',
+            '/api/v1/searches/favourites/${id}',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -155,7 +155,7 @@ class _FavouriteSearchClient implements FavouriteSearchClient {
   }
 
   @override
-  Future<HttpResponse<void>> deleteApiV1FavouriteSearchesId({
+  Future<HttpResponse<void>> deleteApiV1SearchesFavouritesId({
     required String id,
   }) async {
     final _extra = <String, dynamic>{};
@@ -166,7 +166,7 @@ class _FavouriteSearchClient implements FavouriteSearchClient {
       Options(method: 'DELETE', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/api/v1/favourite-searches/${id}',
+            '/api/v1/searches/favourites/${id}',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -178,7 +178,7 @@ class _FavouriteSearchClient implements FavouriteSearchClient {
   }
 
   @override
-  Future<HttpResponse<FavouriteSearchDto>> patchApiV1FavouriteSearchesIdPause({
+  Future<HttpResponse<FavouriteSearchDto>> patchApiV1SearchesFavouritesIdPause({
     required String id,
   }) async {
     final _extra = <String, dynamic>{};
@@ -189,7 +189,7 @@ class _FavouriteSearchClient implements FavouriteSearchClient {
       Options(method: 'PATCH', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/api/v1/favourite-searches/${id}/pause',
+            '/api/v1/searches/favourites/${id}/pause',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -208,9 +208,8 @@ class _FavouriteSearchClient implements FavouriteSearchClient {
   }
 
   @override
-  Future<HttpResponse<FavouriteSearchDto>> patchApiV1FavouriteSearchesIdResume({
-    required String id,
-  }) async {
+  Future<HttpResponse<FavouriteSearchDto>>
+  patchApiV1SearchesFavouritesIdResume({required String id}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -219,7 +218,7 @@ class _FavouriteSearchClient implements FavouriteSearchClient {
       Options(method: 'PATCH', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/api/v1/favourite-searches/${id}/resume',
+            '/api/v1/searches/favourites/${id}/resume',
             queryParameters: queryParameters,
             data: _data,
           )

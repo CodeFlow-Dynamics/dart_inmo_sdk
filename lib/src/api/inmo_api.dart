@@ -14,10 +14,10 @@ import 'country/country_client.dart';
 import 'currency/currency_client.dart';
 import 'document/document_client.dart';
 import 'favourite_search/favourite_search_client.dart';
-import 'health/health_client.dart';
 import 'identification/identification_client.dart';
 import 'inmo_category/inmo_category_client.dart';
 import 'inmo_type/inmo_type_client.dart';
+import 'inquiry/inquiry_client.dart';
 import 'listing/listing_client.dart';
 import 'listing_offer/listing_offer_client.dart';
 import 'master/master_client.dart';
@@ -53,10 +53,10 @@ class InmoApi {
   CurrencyClient? _currency;
   DocumentClient? _document;
   FavouriteSearchClient? _favouriteSearch;
-  HealthClient? _health;
   IdentificationClient? _identification;
   InmoCategoryClient? _inmoCategory;
   InmoTypeClient? _inmoType;
+  InquiryClient? _inquiry;
   ListingClient? _listing;
   ListingOfferClient? _listingOffer;
   MasterClient? _master;
@@ -89,13 +89,13 @@ class InmoApi {
 
   FavouriteSearchClient get favouriteSearch => _favouriteSearch ??= FavouriteSearchClient(_dio, baseUrl: _baseUrl);
 
-  HealthClient get health => _health ??= HealthClient(_dio, baseUrl: _baseUrl);
-
   IdentificationClient get identification => _identification ??= IdentificationClient(_dio, baseUrl: _baseUrl);
 
   InmoCategoryClient get inmoCategory => _inmoCategory ??= InmoCategoryClient(_dio, baseUrl: _baseUrl);
 
   InmoTypeClient get inmoType => _inmoType ??= InmoTypeClient(_dio, baseUrl: _baseUrl);
+
+  InquiryClient get inquiry => _inquiry ??= InquiryClient(_dio, baseUrl: _baseUrl);
 
   ListingClient get listing => _listing ??= ListingClient(_dio, baseUrl: _baseUrl);
 

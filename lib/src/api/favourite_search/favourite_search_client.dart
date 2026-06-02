@@ -16,37 +16,37 @@ part 'favourite_search_client.g.dart';
 abstract class FavouriteSearchClient {
   factory FavouriteSearchClient(Dio dio, {String? baseUrl}) = _FavouriteSearchClient;
 
-  @POST('/api/v1/favourite-searches')
-  Future<HttpResponse<FavouriteSearchDto>> postApiV1FavouriteSearches({
+  @POST('/api/v1/searches/favourites')
+  Future<HttpResponse<FavouriteSearchDto>> postApiV1SearchesFavourites({
     @Body() CreateFavouriteSearchDto? body,
   });
 
-  @GET('/api/v1/favourite-searches')
-  Future<HttpResponse<List<FavouriteSearchDto>>> getApiV1FavouriteSearches();
+  @GET('/api/v1/searches/favourites')
+  Future<HttpResponse<List<FavouriteSearchDto>>> getApiV1SearchesFavourites();
 
-  @GET('/api/v1/favourite-searches/{id}')
-  Future<HttpResponse<FavouriteSearchDto>> getApiV1FavouriteSearchesId({
+  @GET('/api/v1/searches/favourites/{id}')
+  Future<HttpResponse<FavouriteSearchDto>> getApiV1SearchesFavouritesId({
     @Path('id') required String id,
   });
 
-  @PUT('/api/v1/favourite-searches/{id}')
-  Future<HttpResponse<FavouriteSearchDto>> putApiV1FavouriteSearchesId({
+  @PUT('/api/v1/searches/favourites/{id}')
+  Future<HttpResponse<FavouriteSearchDto>> putApiV1SearchesFavouritesId({
     @Path('id') required String id,
     @Body() UpdateFavouriteSearchDto? body,
   });
 
-  @DELETE('/api/v1/favourite-searches/{id}')
-  Future<HttpResponse<void>> deleteApiV1FavouriteSearchesId({
+  @DELETE('/api/v1/searches/favourites/{id}')
+  Future<HttpResponse<void>> deleteApiV1SearchesFavouritesId({
     @Path('id') required String id,
   });
 
-  @PATCH('/api/v1/favourite-searches/{id}/pause')
-  Future<HttpResponse<FavouriteSearchDto>> patchApiV1FavouriteSearchesIdPause({
+  @PATCH('/api/v1/searches/favourites/{id}/pause')
+  Future<HttpResponse<FavouriteSearchDto>> patchApiV1SearchesFavouritesIdPause({
     @Path('id') required String id,
   });
 
-  @PATCH('/api/v1/favourite-searches/{id}/resume')
-  Future<HttpResponse<FavouriteSearchDto>> patchApiV1FavouriteSearchesIdResume({
+  @PATCH('/api/v1/searches/favourites/{id}/resume')
+  Future<HttpResponse<FavouriteSearchDto>> patchApiV1SearchesFavouritesIdResume({
     @Path('id') required String id,
   });
 }
