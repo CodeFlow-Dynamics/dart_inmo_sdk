@@ -1,0 +1,14 @@
+swagger_parser:
+  schema_path: lib/src/schema/schema.json
+  output_directory: lib/src/api
+  json_serializer: json_serializable
+  root_client: true
+  root_client_name: InmoApi
+  add_open_api_metadata: true
+  original_http_response: true
+  mark_files_as_generated: true
+  put_in_folder: true
+  use_flutter_compute: true
+  infer_required_from_nullable: true
+  skipped_parameters:
+    - X-API-Key
