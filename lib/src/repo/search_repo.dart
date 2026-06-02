@@ -6,8 +6,8 @@ import 'package:inmo_api_sdk/src/core/base_repo.dart';
 import 'package:inmo_api_sdk/src/core/result.dart';
 
 abstract class SearchRepo {
-  Future<ResultApi<ReindexResultDto>> postSearchListingsReindex();
-  Future<ResultApi<SearchListingsResultDto>> getSearchListings({
+  Future<ResultApi<ReindexResultDto>> postSearchesListingsReindex();
+  Future<ResultApi<SearchListingsResultDto>> getSearchesListings({
     String? q,
     String? offerType,
     double? minPrice,
@@ -38,7 +38,7 @@ abstract class SearchRepo {
     int? pageSize,
     String? cursor,
   });
-  Future<ResultApi<GeoSearchResultDto>> getSearchListingsGeoRectangular({
+  Future<ResultApi<GeoSearchResultDto>> getSearchesListingsGeoRectangular({
     double? neLat,
     double? neLng,
     double? swLat,
@@ -73,7 +73,7 @@ abstract class SearchRepo {
     int? pageSize,
     String? cursor,
   });
-  Future<ResultApi<GeoSearchResultDto>> getSearchListingsGeoRadius({
+  Future<ResultApi<GeoSearchResultDto>> getSearchesListingsGeoRadius({
     double? lat,
     double? lng,
     double? radiusKm,
@@ -107,7 +107,7 @@ abstract class SearchRepo {
     int? pageSize,
     String? cursor,
   });
-  Future<ResultApi<AutocompleteResultDto>> getSearchListingsAutocomplete({
+  Future<ResultApi<AutocompleteResultDto>> getSearchesListingsAutocomplete({
     String? q,
   });
 }
@@ -118,14 +118,14 @@ class SearchRepoImpl extends BaseRepo implements SearchRepo {
   final InmoApi _api;
 
   @override
-  Future<ResultApi<ReindexResultDto>> postSearchListingsReindex() {
+  Future<ResultApi<ReindexResultDto>> postSearchesListingsReindex() {
     return executeApiCall<ReindexResultDto>(
-      apiCall: () => _api.search.postApiV1SearchListingsReindex(),
+      apiCall: () => _api.search.postApiV1SearchesListingsReindex(),
     );
   }
 
   @override
-  Future<ResultApi<SearchListingsResultDto>> getSearchListings({
+  Future<ResultApi<SearchListingsResultDto>> getSearchesListings({
     String? q,
     String? offerType,
     double? minPrice,
@@ -157,7 +157,7 @@ class SearchRepoImpl extends BaseRepo implements SearchRepo {
     String? cursor,
   }) {
     return executeApiCall<SearchListingsResultDto>(
-      apiCall: () => _api.search.getApiV1SearchListings(
+      apiCall: () => _api.search.getApiV1SearchesListings(
         q: q,
         offerType: offerType,
         minPrice: minPrice,
@@ -192,7 +192,7 @@ class SearchRepoImpl extends BaseRepo implements SearchRepo {
   }
 
   @override
-  Future<ResultApi<GeoSearchResultDto>> getSearchListingsGeoRectangular({
+  Future<ResultApi<GeoSearchResultDto>> getSearchesListingsGeoRectangular({
     double? neLat,
     double? neLng,
     double? swLat,
@@ -228,7 +228,7 @@ class SearchRepoImpl extends BaseRepo implements SearchRepo {
     String? cursor,
   }) {
     return executeApiCall<GeoSearchResultDto>(
-      apiCall: () => _api.search.getApiV1SearchListingsGeoRectangular(
+      apiCall: () => _api.search.getApiV1SearchesListingsGeoRectangular(
         neLat: neLat,
         neLng: neLng,
         swLat: swLat,
@@ -267,7 +267,7 @@ class SearchRepoImpl extends BaseRepo implements SearchRepo {
   }
 
   @override
-  Future<ResultApi<GeoSearchResultDto>> getSearchListingsGeoRadius({
+  Future<ResultApi<GeoSearchResultDto>> getSearchesListingsGeoRadius({
     double? lat,
     double? lng,
     double? radiusKm,
@@ -302,7 +302,7 @@ class SearchRepoImpl extends BaseRepo implements SearchRepo {
     String? cursor,
   }) {
     return executeApiCall<GeoSearchResultDto>(
-      apiCall: () => _api.search.getApiV1SearchListingsGeoRadius(
+      apiCall: () => _api.search.getApiV1SearchesListingsGeoRadius(
         lat: lat,
         lng: lng,
         radiusKm: radiusKm,
@@ -340,11 +340,11 @@ class SearchRepoImpl extends BaseRepo implements SearchRepo {
   }
 
   @override
-  Future<ResultApi<AutocompleteResultDto>> getSearchListingsAutocomplete({
+  Future<ResultApi<AutocompleteResultDto>> getSearchesListingsAutocomplete({
     String? q,
   }) {
     return executeApiCall<AutocompleteResultDto>(
-      apiCall: () => _api.search.getApiV1SearchListingsAutocomplete(
+      apiCall: () => _api.search.getApiV1SearchesListingsAutocomplete(
         q: q,
       ),
     );

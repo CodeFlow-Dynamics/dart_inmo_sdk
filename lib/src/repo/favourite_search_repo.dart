@@ -7,23 +7,24 @@ import 'package:inmo_api_sdk/src/core/base_repo.dart';
 import 'package:inmo_api_sdk/src/core/result.dart';
 
 abstract class FavouriteSearchRepo {
-  Future<ResultApi<FavouriteSearchDto>> postFavouriteSearches({
+  Future<ResultApi<FavouriteSearchDto>> postSearchesFavourites({
     CreateFavouriteSearchDto? body,
   });
-  Future<ResultApi<FavouriteSearchDto>> getFavouriteSearchesId({
+  Future<ResultApi<List<FavouriteSearchDto>>> getSearchesFavourites();
+  Future<ResultApi<FavouriteSearchDto>> getSearchesFavouritesId({
     required String id,
   });
-  Future<ResultApi<FavouriteSearchDto>> putFavouriteSearchesId({
+  Future<ResultApi<FavouriteSearchDto>> putSearchesFavouritesId({
     required String id,
     UpdateFavouriteSearchDto? body,
   });
-  Future<ResultApi<Unit>> deleteFavouriteSearchesId({
+  Future<ResultApi<Unit>> deleteSearchesFavouritesId({
     required String id,
   });
-  Future<ResultApi<FavouriteSearchDto>> patchFavouriteSearchesIdPause({
+  Future<ResultApi<FavouriteSearchDto>> patchSearchesFavouritesIdPause({
     required String id,
   });
-  Future<ResultApi<FavouriteSearchDto>> patchFavouriteSearchesIdResume({
+  Future<ResultApi<FavouriteSearchDto>> patchSearchesFavouritesIdResume({
     required String id,
   });
 }
@@ -34,34 +35,41 @@ class FavouriteSearchRepoImpl extends BaseRepo implements FavouriteSearchRepo {
   final InmoApi _api;
 
   @override
-  Future<ResultApi<FavouriteSearchDto>> postFavouriteSearches({
+  Future<ResultApi<FavouriteSearchDto>> postSearchesFavourites({
     CreateFavouriteSearchDto? body,
   }) {
     return executeApiCall<FavouriteSearchDto>(
-      apiCall: () => _api.favouriteSearch.postApiV1FavouriteSearches(
+      apiCall: () => _api.favouriteSearch.postApiV1SearchesFavourites(
         body: body,
       ),
     );
   }
 
   @override
-  Future<ResultApi<FavouriteSearchDto>> getFavouriteSearchesId({
+  Future<ResultApi<List<FavouriteSearchDto>>> getSearchesFavourites() {
+    return executeApiCall<List<FavouriteSearchDto>>(
+      apiCall: () => _api.favouriteSearch.getApiV1SearchesFavourites(),
+    );
+  }
+
+  @override
+  Future<ResultApi<FavouriteSearchDto>> getSearchesFavouritesId({
     required String id,
   }) {
     return executeApiCall<FavouriteSearchDto>(
-      apiCall: () => _api.favouriteSearch.getApiV1FavouriteSearchesId(
+      apiCall: () => _api.favouriteSearch.getApiV1SearchesFavouritesId(
         id: id,
       ),
     );
   }
 
   @override
-  Future<ResultApi<FavouriteSearchDto>> putFavouriteSearchesId({
+  Future<ResultApi<FavouriteSearchDto>> putSearchesFavouritesId({
     required String id,
     UpdateFavouriteSearchDto? body,
   }) {
     return executeApiCall<FavouriteSearchDto>(
-      apiCall: () => _api.favouriteSearch.putApiV1FavouriteSearchesId(
+      apiCall: () => _api.favouriteSearch.putApiV1SearchesFavouritesId(
         id: id,
         body: body,
       ),
@@ -69,33 +77,33 @@ class FavouriteSearchRepoImpl extends BaseRepo implements FavouriteSearchRepo {
   }
 
   @override
-  Future<ResultApi<Unit>> deleteFavouriteSearchesId({
+  Future<ResultApi<Unit>> deleteSearchesFavouritesId({
     required String id,
   }) {
     return executeApiCall<Unit>(
-      apiCall: () => _api.favouriteSearch.deleteApiV1FavouriteSearchesId(
+      apiCall: () => _api.favouriteSearch.deleteApiV1SearchesFavouritesId(
         id: id,
       ),
     );
   }
 
   @override
-  Future<ResultApi<FavouriteSearchDto>> patchFavouriteSearchesIdPause({
+  Future<ResultApi<FavouriteSearchDto>> patchSearchesFavouritesIdPause({
     required String id,
   }) {
     return executeApiCall<FavouriteSearchDto>(
-      apiCall: () => _api.favouriteSearch.patchApiV1FavouriteSearchesIdPause(
+      apiCall: () => _api.favouriteSearch.patchApiV1SearchesFavouritesIdPause(
         id: id,
       ),
     );
   }
 
   @override
-  Future<ResultApi<FavouriteSearchDto>> patchFavouriteSearchesIdResume({
+  Future<ResultApi<FavouriteSearchDto>> patchSearchesFavouritesIdResume({
     required String id,
   }) {
     return executeApiCall<FavouriteSearchDto>(
-      apiCall: () => _api.favouriteSearch.patchApiV1FavouriteSearchesIdResume(
+      apiCall: () => _api.favouriteSearch.patchApiV1SearchesFavouritesIdResume(
         id: id,
       ),
     );

@@ -21,7 +21,7 @@ class _SearchClient implements SearchClient {
 
   @override
   Future<HttpResponse<ReindexResultDto>>
-  postApiV1SearchListingsReindex() async {
+  postApiV1SearchesListingsReindex() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -30,7 +30,7 @@ class _SearchClient implements SearchClient {
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/api/v1/search/listings/reindex',
+            '/api/v1/searches/listings/reindex',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -49,7 +49,7 @@ class _SearchClient implements SearchClient {
   }
 
   @override
-  Future<HttpResponse<SearchListingsResultDto>> getApiV1SearchListings({
+  Future<HttpResponse<SearchListingsResultDto>> getApiV1SearchesListings({
     String? q,
     String? offerType,
     double? minPrice,
@@ -119,7 +119,7 @@ class _SearchClient implements SearchClient {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/api/v1/search/listings',
+            '/api/v1/searches/listings',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -139,7 +139,7 @@ class _SearchClient implements SearchClient {
 
   @override
   Future<HttpResponse<GeoSearchResultDto>>
-  getApiV1SearchListingsGeoRectangular({
+  getApiV1SearchesListingsGeoRectangular({
     double? neLat,
     double? neLng,
     double? swLat,
@@ -217,7 +217,7 @@ class _SearchClient implements SearchClient {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/api/v1/search/listings/geo/rectangular',
+            '/api/v1/searches/listings/geo/rectangular',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -236,7 +236,7 @@ class _SearchClient implements SearchClient {
   }
 
   @override
-  Future<HttpResponse<GeoSearchResultDto>> getApiV1SearchListingsGeoRadius({
+  Future<HttpResponse<GeoSearchResultDto>> getApiV1SearchesListingsGeoRadius({
     double? lat,
     double? lng,
     double? radiusKm,
@@ -312,7 +312,7 @@ class _SearchClient implements SearchClient {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/api/v1/search/listings/geo/radius',
+            '/api/v1/searches/listings/geo/radius',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -332,7 +332,7 @@ class _SearchClient implements SearchClient {
 
   @override
   Future<HttpResponse<AutocompleteResultDto>>
-  getApiV1SearchListingsAutocomplete({String? q}) async {
+  getApiV1SearchesListingsAutocomplete({String? q}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'q': q};
     queryParameters.removeWhere((k, v) => v == null);
@@ -342,7 +342,7 @@ class _SearchClient implements SearchClient {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/api/v1/search/listings/autocomplete',
+            '/api/v1/searches/listings/autocomplete',
             queryParameters: queryParameters,
             data: _data,
           )

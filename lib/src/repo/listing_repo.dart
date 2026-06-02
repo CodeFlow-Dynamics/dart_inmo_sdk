@@ -42,6 +42,10 @@ abstract class ListingRepo {
   Future<ResultApi<Unit>> postListingsIdViews({
     required String id,
   });
+  Future<ResultApi<List<ListingAmenityDto>>> putListingsIdAmenities({
+    required String id,
+    SetListingAmenitiesDto? body,
+  });
   Future<ResultApi<ListingMediaDto>> postListingsIdMedia({
     required String id,
     AddListingMediaDto? body,
@@ -166,6 +170,19 @@ class ListingRepoImpl extends BaseRepo implements ListingRepo {
     return executeApiCall<Unit>(
       apiCall: () => _api.listing.postApiV1ListingsIdViews(
         id: id,
+      ),
+    );
+  }
+
+  @override
+  Future<ResultApi<List<ListingAmenityDto>>> putListingsIdAmenities({
+    required String id,
+    SetListingAmenitiesDto? body,
+  }) {
+    return executeApiCall<List<ListingAmenityDto>>(
+      apiCall: () => _api.listing.putApiV1ListingsIdAmenities(
+        id: id,
+        body: body,
       ),
     );
   }
