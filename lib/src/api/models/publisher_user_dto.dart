@@ -18,7 +18,7 @@ class PublisherUserDto {
     required this.publisherTypeName,
     required this.name,
     required this.description,
-    required this.isActive,
+    required this.status,
   });
   
   factory PublisherUserDto.fromJson(Map<String, Object?> json) => _$PublisherUserDtoFromJson(json);
@@ -30,7 +30,7 @@ class PublisherUserDto {
   final String publisherTypeName;
   final String name;
   final String? description;
-  final bool isActive;
+  final String status;
 
   Map<String, Object?> toJson() => _$PublisherUserDtoToJson(this);
 }

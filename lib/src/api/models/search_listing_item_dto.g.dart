@@ -14,7 +14,7 @@ SearchListingItemDto _$SearchListingItemDtoFromJson(
   slug: json['slug'] as String,
   highlights: Map<String, String>.from(json['highlights'] as Map),
   relevanceScore: (json['relevanceScore'] as num).toDouble(),
-  isFeatured: json['isFeatured'] as bool,
+  promotionTier: json['promotionTier'] as String,
   offers: (json['offers'] as List<dynamic>)
       .map((e) => SearchOfferDto.fromJson(e as Map<String, dynamic>))
       .toList(),
@@ -38,7 +38,7 @@ Map<String, dynamic> _$SearchListingItemDtoToJson(
   'slug': instance.slug,
   'highlights': instance.highlights,
   'relevanceScore': instance.relevanceScore,
-  'isFeatured': instance.isFeatured,
+  'promotionTier': instance.promotionTier,
   'offers': instance.offers,
   'attributes': instance.attributes,
   'categoryName': instance.categoryName,

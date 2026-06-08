@@ -9621,10 +9621,10 @@
             }
           },
           {
-            "name": "IsFeatured",
+            "name": "PromotionTier",
             "in": "query",
             "schema": {
-              "type": "boolean"
+              "type": "string"
             }
           },
           {
@@ -9973,10 +9973,10 @@
             }
           },
           {
-            "name": "IsFeatured",
+            "name": "PromotionTier",
             "in": "query",
             "schema": {
-              "type": "boolean"
+              "type": "string"
             }
           },
           {
@@ -10317,10 +10317,10 @@
             }
           },
           {
-            "name": "IsFeatured",
+            "name": "PromotionTier",
             "in": "query",
             "schema": {
-              "type": "boolean"
+              "type": "string"
             }
           },
           {
@@ -12489,9 +12489,13 @@
         "additionalProperties": false
       },
       "AddOfferDto": {
+        "required": [
+          "offerType"
+        ],
         "type": "object",
         "properties": {
           "offerType": {
+            "minLength": 1,
             "type": "string"
           },
           "price": {
@@ -12534,6 +12538,9 @@
         "additionalProperties": false
       },
       "AddPublisherMemberDto": {
+        "required": [
+          "role"
+        ],
         "type": "object",
         "properties": {
           "userId": {
@@ -12541,6 +12548,7 @@
             "format": "uuid"
           },
           "role": {
+            "minLength": 1,
             "type": "string"
           }
         },
@@ -12775,11 +12783,11 @@
           "userId": {
             "type": "string"
           },
-          "emailVerified": {
-            "type": "boolean"
+          "emailVerificationStatus": {
+            "type": "string"
           },
-          "passwordChangeRequired": {
-            "type": "boolean"
+          "passwordStatus": {
+            "type": "string"
           }
         },
         "additionalProperties": false
@@ -13243,8 +13251,8 @@
               "type": "string"
             }
           },
-          "isPaused": {
-            "type": "boolean"
+          "status": {
+            "type": "string"
           }
         },
         "additionalProperties": false
@@ -13405,10 +13413,10 @@
               "format": "uuid"
             }
           },
-          "isFeatured": {
+          "promotionTier": {
             "type": [
               "null",
-              "boolean"
+              "string"
             ]
           }
         },
@@ -13476,8 +13484,8 @@
             "type": "number",
             "format": "double"
           },
-          "isFeatured": {
-            "type": "boolean"
+          "promotionTier": {
+            "type": "string"
           },
           "offers": {
             "type": "array",
@@ -14153,8 +14161,8 @@
             ],
             "format": "double"
           },
-          "isFeatured": {
-            "type": "boolean"
+          "promotionTier": {
+            "type": "string"
           },
           "viewCount": {
             "type": "integer",
@@ -14239,8 +14247,8 @@
             "type": "integer",
             "format": "int32"
           },
-          "isPrimary": {
-            "type": "boolean"
+          "displayRole": {
+            "type": "string"
           }
         },
         "additionalProperties": false
@@ -14500,10 +14508,10 @@
           "deviceId": {
             "type": "string"
           },
-          "passwordChangeRequired": {
+          "passwordStatus": {
             "type": [
               "null",
-              "boolean"
+              "string"
             ]
           }
         },
@@ -14657,8 +14665,8 @@
               "string"
             ]
           },
-          "isActive": {
-            "type": "boolean"
+          "status": {
+            "type": "string"
           }
         },
         "additionalProperties": false
@@ -14786,6 +14794,10 @@
         "additionalProperties": false
       },
       "ReviewVerificationSubmissionDto": {
+        "required": [
+          "reviewerId",
+          "reviewerNotes"
+        ],
         "type": "object",
         "properties": {
           "statusCode": {
@@ -14793,9 +14805,12 @@
             "format": "int32"
           },
           "reviewerNotes": {
+            "maxLength": 1000,
+            "minLength": 1,
             "type": "string"
           },
           "reviewerId": {
+            "minLength": 1,
             "type": "string"
           }
         },
@@ -14945,8 +14960,8 @@
             "type": "number",
             "format": "double"
           },
-          "isFeatured": {
-            "type": "boolean"
+          "promotionTier": {
+            "type": "string"
           },
           "offers": {
             "type": "array",
@@ -15118,6 +15133,11 @@
         "additionalProperties": false
       },
       "SubmitInquiryDto": {
+        "required": [
+          "inquirerEmail",
+          "inquirerName",
+          "message"
+        ],
         "type": "object",
         "properties": {
           "listingId": {
@@ -15125,15 +15145,23 @@
             "format": "uuid"
           },
           "inquirerName": {
+            "maxLength": 100,
+            "minLength": 2,
             "type": "string"
           },
           "inquirerEmail": {
-            "type": "string"
+            "maxLength": 255,
+            "minLength": 1,
+            "type": "string",
+            "format": "email"
           },
           "message": {
+            "maxLength": 2000,
+            "minLength": 10,
             "type": "string"
           },
           "inquirerPhoneCountryCode": {
+            "pattern": "\\b[A-Z]{2}\\b",
             "type": [
               "null",
               "string"
@@ -15273,9 +15301,13 @@
         "additionalProperties": false
       },
       "UpdateInquiryStatusDto": {
+        "required": [
+          "status"
+        ],
         "type": "object",
         "properties": {
           "status": {
+            "minLength": 1,
             "type": "string"
           },
           "closeReason": {
@@ -15377,9 +15409,13 @@
         "additionalProperties": false
       },
       "UpdateOfferStatusDto": {
+        "required": [
+          "status"
+        ],
         "type": "object",
         "properties": {
           "status": {
+            "minLength": 1,
             "type": "string"
           }
         },

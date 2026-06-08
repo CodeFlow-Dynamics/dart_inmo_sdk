@@ -12,7 +12,7 @@ part 'update_inquiry_status_dto.g.dart';
 class UpdateInquiryStatusDto {
   const UpdateInquiryStatusDto({
     required this.status,
-    required this.closeReason,
+    this.closeReason,
   });
   
   factory UpdateInquiryStatusDto.fromJson(Map<String, Object?> json) => _$UpdateInquiryStatusDtoFromJson(json);

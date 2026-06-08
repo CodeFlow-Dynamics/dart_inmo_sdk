@@ -14,7 +14,7 @@ class LoginResponseDto {
     required this.accessToken,
     required this.refreshToken,
     required this.deviceId,
-    required this.passwordChangeRequired,
+    required this.passwordStatus,
   });
   
   factory LoginResponseDto.fromJson(Map<String, Object?> json) => _$LoginResponseDtoFromJson(json);
@@ -22,7 +22,7 @@ class LoginResponseDto {
   final String accessToken;
   final String refreshToken;
   final String deviceId;
-  final bool? passwordChangeRequired;
+  final String? passwordStatus;
 
   Map<String, Object?> toJson() => _$LoginResponseDtoToJson(this);
 }

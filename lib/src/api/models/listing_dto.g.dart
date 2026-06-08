@@ -22,7 +22,7 @@ ListingDto _$ListingDtoFromJson(Map<String, dynamic> json) => ListingDto(
   postalCode: json['postalCode'] as String?,
   latitude: (json['latitude'] as num?)?.toDouble(),
   longitude: (json['longitude'] as num?)?.toDouble(),
-  isFeatured: json['isFeatured'] as bool,
+  promotionTier: json['promotionTier'] as String,
   viewCount: (json['viewCount'] as num).toInt(),
   offers: (json['offers'] as List<dynamic>)
       .map((e) => ListingOfferDto.fromJson(e as Map<String, dynamic>))
@@ -61,7 +61,7 @@ Map<String, dynamic> _$ListingDtoToJson(ListingDto instance) =>
       'postalCode': instance.postalCode,
       'latitude': instance.latitude,
       'longitude': instance.longitude,
-      'isFeatured': instance.isFeatured,
+      'promotionTier': instance.promotionTier,
       'viewCount': instance.viewCount,
       'offers': instance.offers,
       'attributes': instance.attributes,

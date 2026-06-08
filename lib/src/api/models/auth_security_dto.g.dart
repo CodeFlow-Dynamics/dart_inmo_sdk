@@ -12,8 +12,8 @@ AuthSecurityDto _$AuthSecurityDtoFromJson(Map<String, dynamic> json) =>
       createdAt: json['createdAt'] as String,
       updatedAt: json['updatedAt'] as String,
       userId: json['userId'] as String,
-      emailVerified: json['emailVerified'] as bool,
-      passwordChangeRequired: json['passwordChangeRequired'] as bool,
+      emailVerificationStatus: json['emailVerificationStatus'] as String,
+      passwordStatus: json['passwordStatus'] as String,
     );
 
 Map<String, dynamic> _$AuthSecurityDtoToJson(AuthSecurityDto instance) =>
@@ -22,6 +22,6 @@ Map<String, dynamic> _$AuthSecurityDtoToJson(AuthSecurityDto instance) =>
       'createdAt': instance.createdAt,
       'updatedAt': instance.updatedAt,
       'userId': instance.userId,
-      'emailVerified': instance.emailVerified,
-      'passwordChangeRequired': instance.passwordChangeRequired,
+      'emailVerificationStatus': instance.emailVerificationStatus,
+      'passwordStatus': instance.passwordStatus,
     };

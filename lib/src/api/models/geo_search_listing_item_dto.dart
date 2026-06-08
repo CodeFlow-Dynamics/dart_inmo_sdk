@@ -19,7 +19,7 @@ class GeoSearchListingItemDto {
     required this.slug,
     required this.highlights,
     required this.relevanceScore,
-    required this.isFeatured,
+    required this.promotionTier,
     required this.offers,
     required this.attributes,
     required this.categoryName,
@@ -41,7 +41,7 @@ class GeoSearchListingItemDto {
   final String slug;
   final Map<String, String> highlights;
   final double relevanceScore;
-  final bool isFeatured;
+  final String promotionTier;
   final List<SearchOfferDto> offers;
   final SearchAttributesDto attributes;
   final String categoryName;

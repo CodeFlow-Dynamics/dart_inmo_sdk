@@ -22,7 +22,7 @@ FavouriteSearchDto _$FavouriteSearchDtoFromJson(Map<String, dynamic> json) =>
       notificationChannels: (json['notificationChannels'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
-      isPaused: json['isPaused'] as bool,
+      status: json['status'] as String,
     );
 
 Map<String, dynamic> _$FavouriteSearchDtoToJson(FavouriteSearchDto instance) =>
@@ -35,5 +35,5 @@ Map<String, dynamic> _$FavouriteSearchDtoToJson(FavouriteSearchDto instance) =>
       'filters': instance.filters,
       'geoBounds': instance.geoBounds,
       'notificationChannels': instance.notificationChannels,
-      'isPaused': instance.isPaused,
+      'status': instance.status,
     };

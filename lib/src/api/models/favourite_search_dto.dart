@@ -22,7 +22,7 @@ class FavouriteSearchDto {
     required this.filters,
     required this.geoBounds,
     required this.notificationChannels,
-    required this.isPaused,
+    required this.status,
   });
   
   factory FavouriteSearchDto.fromJson(Map<String, Object?> json) => _$FavouriteSearchDtoFromJson(json);
@@ -35,7 +35,7 @@ class FavouriteSearchDto {
   final FavouriteSearchFilters filters;
   final FavouriteSearchGeoBounds geoBounds;
   final List<String> notificationChannels;
-  final bool isPaused;
+  final String status;
 
   Map<String, Object?> toJson() => _$FavouriteSearchDtoToJson(this);
 }
