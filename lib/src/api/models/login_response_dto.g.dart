@@ -11,7 +11,7 @@ LoginResponseDto _$LoginResponseDtoFromJson(Map<String, dynamic> json) =>
       accessToken: json['accessToken'] as String,
       refreshToken: json['refreshToken'] as String,
       deviceId: json['deviceId'] as String,
-      passwordChangeRequired: json['passwordChangeRequired'] as bool?,
+      passwordStatus: json['passwordStatus'] as String?,
     );
 
 Map<String, dynamic> _$LoginResponseDtoToJson(LoginResponseDto instance) =>
@@ -19,5 +19,5 @@ Map<String, dynamic> _$LoginResponseDtoToJson(LoginResponseDto instance) =>
       'accessToken': instance.accessToken,
       'refreshToken': instance.refreshToken,
       'deviceId': instance.deviceId,
-      'passwordChangeRequired': instance.passwordChangeRequired,
+      'passwordStatus': instance.passwordStatus,
     };

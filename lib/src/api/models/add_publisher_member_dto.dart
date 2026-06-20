@@ -11,13 +11,13 @@ part 'add_publisher_member_dto.g.dart';
 @JsonSerializable()
 class AddPublisherMemberDto {
   const AddPublisherMemberDto({
-    required this.userId,
     required this.role,
+    this.userId,
   });
   
   factory AddPublisherMemberDto.fromJson(Map<String, Object?> json) => _$AddPublisherMemberDtoFromJson(json);
   
-  final String userId;
+  final String? userId;
   final String role;
 
   Map<String, Object?> toJson() => _$AddPublisherMemberDtoToJson(this);

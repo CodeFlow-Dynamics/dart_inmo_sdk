@@ -8,10 +8,10 @@ part of 'submit_inquiry_dto.dart';
 
 SubmitInquiryDto _$SubmitInquiryDtoFromJson(Map<String, dynamic> json) =>
     SubmitInquiryDto(
-      listingId: json['listingId'] as String,
       inquirerName: json['inquirerName'] as String,
       inquirerEmail: json['inquirerEmail'] as String,
       message: json['message'] as String,
+      listingId: json['listingId'] as String?,
       inquirerPhoneCountryCode: json['inquirerPhoneCountryCode'] as String?,
       inquirerPhone: json['inquirerPhone'] as String?,
       preferredContactChannel: json['preferredContactChannel'] as String?,

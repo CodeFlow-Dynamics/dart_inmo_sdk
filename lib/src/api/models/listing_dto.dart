@@ -32,7 +32,7 @@ class ListingDto {
     required this.postalCode,
     required this.latitude,
     required this.longitude,
-    required this.isFeatured,
+    required this.promotionTier,
     required this.viewCount,
     required this.offers,
     required this.attributes,
@@ -61,7 +61,7 @@ class ListingDto {
   final String? postalCode;
   final double? latitude;
   final double? longitude;
-  final bool isFeatured;
+  final String promotionTier;
   final int viewCount;
   final List<ListingOfferDto> offers;
   final List<ListingAttributeDto>? attributes;

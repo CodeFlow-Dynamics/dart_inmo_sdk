@@ -33,7 +33,7 @@ FavouriteSearchFilters _$FavouriteSearchFiltersFromJson(
   amenityIds: (json['amenityIds'] as List<dynamic>?)
       ?.map((e) => e as String)
       .toList(),
-  isFeatured: json['isFeatured'] as bool?,
+  promotionTier: json['promotionTier'] as String?,
 );
 
 Map<String, dynamic> _$FavouriteSearchFiltersToJson(
@@ -61,5 +61,5 @@ Map<String, dynamic> _$FavouriteSearchFiltersToJson(
   'hasRoadAccess': instance.hasRoadAccess,
   'hasUtilities': instance.hasUtilities,
   'amenityIds': instance.amenityIds,
-  'isFeatured': instance.isFeatured,
+  'promotionTier': instance.promotionTier,
 };

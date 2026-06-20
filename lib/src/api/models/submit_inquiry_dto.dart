@@ -11,19 +11,19 @@ part 'submit_inquiry_dto.g.dart';
 @JsonSerializable()
 class SubmitInquiryDto {
   const SubmitInquiryDto({
-    required this.listingId,
     required this.inquirerName,
     required this.inquirerEmail,
     required this.message,
-    required this.inquirerPhoneCountryCode,
-    required this.inquirerPhone,
-    required this.preferredContactChannel,
-    required this.honeypot,
+    this.listingId,
+    this.inquirerPhoneCountryCode,
+    this.inquirerPhone,
+    this.preferredContactChannel,
+    this.honeypot,
   });
   
   factory SubmitInquiryDto.fromJson(Map<String, Object?> json) => _$SubmitInquiryDtoFromJson(json);
   
-  final String listingId;
+  final String? listingId;
   final String inquirerName;
   final String inquirerEmail;
   final String message;

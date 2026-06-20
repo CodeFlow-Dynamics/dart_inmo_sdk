@@ -12,17 +12,17 @@ part 'add_offer_dto.g.dart';
 class AddOfferDto {
   const AddOfferDto({
     required this.offerType,
-    required this.price,
-    required this.currencyId,
-    required this.rentPeriod,
-    required this.expiresAt,
+    this.price,
+    this.currencyId,
+    this.rentPeriod,
+    this.expiresAt,
   });
   
   factory AddOfferDto.fromJson(Map<String, Object?> json) => _$AddOfferDtoFromJson(json);
   
   final String offerType;
-  final double price;
-  final String currencyId;
+  final double? price;
+  final String? currencyId;
   final String? rentPeriod;
   final DateTime? expiresAt;
 

@@ -15,7 +15,7 @@ PublisherUserDto _$PublisherUserDtoFromJson(Map<String, dynamic> json) =>
       publisherTypeName: json['publisherTypeName'] as String,
       name: json['name'] as String,
       description: json['description'] as String?,
-      isActive: json['isActive'] as bool,
+      status: json['status'] as String,
     );
 
 Map<String, dynamic> _$PublisherUserDtoToJson(PublisherUserDto instance) =>
@@ -27,5 +27,5 @@ Map<String, dynamic> _$PublisherUserDtoToJson(PublisherUserDto instance) =>
       'publisherTypeName': instance.publisherTypeName,
       'name': instance.name,
       'description': instance.description,
-      'isActive': instance.isActive,
+      'status': instance.status,
     };

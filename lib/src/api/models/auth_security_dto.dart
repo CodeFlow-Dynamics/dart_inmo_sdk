@@ -15,8 +15,8 @@ class AuthSecurityDto {
     required this.createdAt,
     required this.updatedAt,
     required this.userId,
-    required this.emailVerified,
-    required this.passwordChangeRequired,
+    required this.emailVerificationStatus,
+    required this.passwordStatus,
   });
   
   factory AuthSecurityDto.fromJson(Map<String, Object?> json) => _$AuthSecurityDtoFromJson(json);
@@ -25,8 +25,8 @@ class AuthSecurityDto {
   final String createdAt;
   final String updatedAt;
   final String userId;
-  final bool emailVerified;
-  final bool passwordChangeRequired;
+  final String emailVerificationStatus;
+  final String passwordStatus;
 
   Map<String, Object?> toJson() => _$AuthSecurityDtoToJson(this);
 }

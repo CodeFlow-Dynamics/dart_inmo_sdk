@@ -33,7 +33,7 @@ class FavouriteSearchFilters {
     required this.hasRoadAccess,
     required this.hasUtilities,
     required this.amenityIds,
-    required this.isFeatured,
+    required this.promotionTier,
   });
   
   factory FavouriteSearchFilters.fromJson(Map<String, Object?> json) => _$FavouriteSearchFiltersFromJson(json);
@@ -60,7 +60,7 @@ class FavouriteSearchFilters {
   final bool? hasRoadAccess;
   final bool? hasUtilities;
   final List<String>? amenityIds;
-  final bool? isFeatured;
+  final String? promotionTier;
 
   Map<String, Object?> toJson() => _$FavouriteSearchFiltersToJson(this);
 }

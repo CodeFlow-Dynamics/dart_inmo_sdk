@@ -13,7 +13,7 @@ ListingMediaDto _$ListingMediaDtoFromJson(Map<String, dynamic> json) =>
       mediaType: json['mediaType'] as String,
       caption: json['caption'] as String?,
       sortOrder: (json['sortOrder'] as num).toInt(),
-      isPrimary: json['isPrimary'] as bool,
+      displayRole: json['displayRole'] as String,
     );
 
 Map<String, dynamic> _$ListingMediaDtoToJson(ListingMediaDto instance) =>
@@ -23,5 +23,5 @@ Map<String, dynamic> _$ListingMediaDtoToJson(ListingMediaDto instance) =>
       'mediaType': instance.mediaType,
       'caption': instance.caption,
       'sortOrder': instance.sortOrder,
-      'isPrimary': instance.isPrimary,
+      'displayRole': instance.displayRole,
     };

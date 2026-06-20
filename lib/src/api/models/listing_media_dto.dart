@@ -16,7 +16,7 @@ class ListingMediaDto {
     required this.mediaType,
     required this.caption,
     required this.sortOrder,
-    required this.isPrimary,
+    required this.displayRole,
   });
   
   factory ListingMediaDto.fromJson(Map<String, Object?> json) => _$ListingMediaDtoFromJson(json);
@@ -26,7 +26,7 @@ class ListingMediaDto {
   final String mediaType;
   final String? caption;
   final int sortOrder;
-  final bool isPrimary;
+  final String displayRole;
 
   Map<String, Object?> toJson() => _$ListingMediaDtoToJson(this);
 }

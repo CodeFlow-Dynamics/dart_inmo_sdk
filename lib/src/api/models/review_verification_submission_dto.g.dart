@@ -9,9 +9,9 @@ part of 'review_verification_submission_dto.dart';
 ReviewVerificationSubmissionDto _$ReviewVerificationSubmissionDtoFromJson(
   Map<String, dynamic> json,
 ) => ReviewVerificationSubmissionDto(
-  statusCode: (json['statusCode'] as num).toInt(),
   reviewerNotes: json['reviewerNotes'] as String,
   reviewerId: json['reviewerId'] as String,
+  statusCode: (json['statusCode'] as num?)?.toInt(),
 );
 
 Map<String, dynamic> _$ReviewVerificationSubmissionDtoToJson(

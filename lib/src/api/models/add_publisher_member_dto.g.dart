@@ -9,8 +9,8 @@ part of 'add_publisher_member_dto.dart';
 AddPublisherMemberDto _$AddPublisherMemberDtoFromJson(
   Map<String, dynamic> json,
 ) => AddPublisherMemberDto(
-  userId: json['userId'] as String,
   role: json['role'] as String,
+  userId: json['userId'] as String?,
 );
 
 Map<String, dynamic> _$AddPublisherMemberDtoToJson(
