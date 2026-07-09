@@ -22,7 +22,7 @@ class _PublisherClient implements PublisherClient {
   @override
   Future<HttpResponse<PublisherUserDtoPaginatedResult>> getApiV1Publishers({
     String? publisherTypeId,
-    String? userId,
+    String? clientUserId,
     String? sortBy,
     String? sortDirection,
     int? pageNumber,
@@ -32,7 +32,7 @@ class _PublisherClient implements PublisherClient {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'PublisherTypeId': publisherTypeId,
-      r'UserId': userId,
+      r'ClientUserId': clientUserId,
       r'SortBy': sortBy,
       r'SortDirection': sortDirection,
       r'PageNumber': pageNumber,
@@ -179,9 +179,9 @@ class _PublisherClient implements PublisherClient {
   }
 
   @override
-  Future<HttpResponse<void>> deleteApiV1PublishersIdMembersUserId({
+  Future<HttpResponse<void>> deleteApiV1PublishersIdMembersClientUserId({
     required String id,
-    required String userId,
+    required String clientUserId,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -191,7 +191,7 @@ class _PublisherClient implements PublisherClient {
       Options(method: 'DELETE', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/api/v1/publishers/${id}/members/${userId}',
+            '/api/v1/publishers/${id}/members/${clientUserId}',
             queryParameters: queryParameters,
             data: _data,
           )

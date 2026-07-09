@@ -6,7 +6,7 @@ import 'dart:async';
 
 import 'package:json_annotation/json_annotation.dart';
 
-import 'bulk_add_document_dto.dart';
+import 'add_document_dto.dart';
 
 part 'bulk_add_documents_dto.g.dart';
 
@@ -18,7 +18,7 @@ class BulkAddDocumentsDto {
   
   factory BulkAddDocumentsDto.fromJson(Map<String, Object?> json) => _$BulkAddDocumentsDtoFromJson(json);
   
-  final List<BulkAddDocumentDto> documents;
+  final List<AddDocumentDto> documents;
 
   Map<String, Object?> toJson() => _$BulkAddDocumentsDtoToJson(this);
 }

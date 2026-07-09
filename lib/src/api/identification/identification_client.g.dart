@@ -20,67 +20,24 @@ class _IdentificationClient implements IdentificationClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<IdentificationDto>> postApiV1Identification({
-    String? userId,
-    String? documentId,
-    String? idNumber,
-    String? dateOfBirth,
-    String? expiryDate,
-    File? photoObverse,
-    File? photoReverse,
+  Future<HttpResponse<IdentificationDto>> postApiV1IdentityIdentifications({
+    AddIdentificationDto? body,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final _data = FormData();
-    if (userId != null) {
-      _data.fields.add(MapEntry('UserId', userId));
-    }
-    if (documentId != null) {
-      _data.fields.add(MapEntry('DocumentId', documentId));
-    }
-    if (idNumber != null) {
-      _data.fields.add(MapEntry('IdNumber', idNumber));
-    }
-    if (dateOfBirth != null) {
-      _data.fields.add(MapEntry('DateOfBirth', dateOfBirth));
-    }
-    if (expiryDate != null) {
-      _data.fields.add(MapEntry('ExpiryDate', expiryDate));
-    }
-    if (photoObverse != null) {
-      _data.files.add(
-        MapEntry(
-          'PhotoObverse',
-          MultipartFile.fromFileSync(
-            photoObverse.path,
-            filename: photoObverse.path.split(Platform.pathSeparator).last,
-          ),
-        ),
-      );
-    }
-    if (photoReverse != null) {
-      _data.files.add(
-        MapEntry(
-          'PhotoReverse',
-          MultipartFile.fromFileSync(
-            photoReverse.path,
-            filename: photoReverse.path.split(Platform.pathSeparator).last,
-          ),
-        ),
-      );
-    }
+    final _data = <String, dynamic>{};
+    _data.addAll(
+      body == null
+          ? <String, dynamic>{}
+          : await compute(serializeAddIdentificationDto, body),
+    );
     final _options = _setStreamType<HttpResponse<IdentificationDto>>(
-      Options(
-            method: 'POST',
-            headers: _headers,
-            extra: _extra,
-            contentType: 'multipart/form-data',
-          )
+      Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/api/v1/Identification',
+            '/api/v1/identity/identifications',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -100,8 +57,8 @@ class _IdentificationClient implements IdentificationClient {
 
   @override
   Future<HttpResponse<IdentificationDtoPaginatedResult>>
-  getApiV1Identification({
-    String? userId,
+  getApiV1IdentityIdentifications({
+    String? authId,
     String? documentId,
     String? sortBy,
     String? sortDirection,
@@ -111,7 +68,7 @@ class _IdentificationClient implements IdentificationClient {
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
-      r'UserId': userId,
+      r'AuthId': authId,
       r'DocumentId': documentId,
       r'SortBy': sortBy,
       r'SortDirection': sortDirection,
@@ -127,7 +84,7 @@ class _IdentificationClient implements IdentificationClient {
           Options(method: 'GET', headers: _headers, extra: _extra)
               .compose(
                 _dio.options,
-                '/api/v1/Identification',
+                '/api/v1/identity/identifications',
                 queryParameters: queryParameters,
                 data: _data,
               )
@@ -151,7 +108,7 @@ class _IdentificationClient implements IdentificationClient {
   }
 
   @override
-  Future<HttpResponse<IdentificationDto>> getApiV1IdentificationId({
+  Future<HttpResponse<IdentificationDto>> getApiV1IdentityIdentificationsId({
     required String id,
   }) async {
     final _extra = <String, dynamic>{};
@@ -162,7 +119,7 @@ class _IdentificationClient implements IdentificationClient {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/api/v1/Identification/${id}',
+            '/api/v1/identity/identifications/${id}',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -181,60 +138,25 @@ class _IdentificationClient implements IdentificationClient {
   }
 
   @override
-  Future<HttpResponse<IdentificationDto>> putApiV1IdentificationId({
+  Future<HttpResponse<IdentificationDto>> putApiV1IdentityIdentificationsId({
     required String id,
-    String? idNumber,
-    String? dateOfBirth,
-    String? expiryDate,
-    File? photoObverse,
-    File? photoReverse,
+    UpdateIdentificationDto? body,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final _data = FormData();
-    if (idNumber != null) {
-      _data.fields.add(MapEntry('IdNumber', idNumber));
-    }
-    if (dateOfBirth != null) {
-      _data.fields.add(MapEntry('DateOfBirth', dateOfBirth));
-    }
-    if (expiryDate != null) {
-      _data.fields.add(MapEntry('ExpiryDate', expiryDate));
-    }
-    if (photoObverse != null) {
-      _data.files.add(
-        MapEntry(
-          'PhotoObverse',
-          MultipartFile.fromFileSync(
-            photoObverse.path,
-            filename: photoObverse.path.split(Platform.pathSeparator).last,
-          ),
-        ),
-      );
-    }
-    if (photoReverse != null) {
-      _data.files.add(
-        MapEntry(
-          'PhotoReverse',
-          MultipartFile.fromFileSync(
-            photoReverse.path,
-            filename: photoReverse.path.split(Platform.pathSeparator).last,
-          ),
-        ),
-      );
-    }
+    final _data = <String, dynamic>{};
+    _data.addAll(
+      body == null
+          ? <String, dynamic>{}
+          : await compute(serializeUpdateIdentificationDto, body),
+    );
     final _options = _setStreamType<HttpResponse<IdentificationDto>>(
-      Options(
-            method: 'PUT',
-            headers: _headers,
-            extra: _extra,
-            contentType: 'multipart/form-data',
-          )
+      Options(method: 'PUT', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/api/v1/Identification/${id}',
+            '/api/v1/identity/identifications/${id}',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -253,7 +175,7 @@ class _IdentificationClient implements IdentificationClient {
   }
 
   @override
-  Future<HttpResponse<void>> deleteApiV1IdentificationId({
+  Future<HttpResponse<void>> deleteApiV1IdentityIdentificationsId({
     required String id,
   }) async {
     final _extra = <String, dynamic>{};
@@ -264,7 +186,7 @@ class _IdentificationClient implements IdentificationClient {
       Options(method: 'DELETE', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/api/v1/Identification/${id}',
+            '/api/v1/identity/identifications/${id}',
             queryParameters: queryParameters,
             data: _data,
           )

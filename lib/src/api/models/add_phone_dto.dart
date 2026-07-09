@@ -13,14 +13,14 @@ class AddPhoneDto {
   const AddPhoneDto({
     required this.countryCode,
     required this.number,
-    required this.userId,
+    required this.clientUserId,
   });
   
   factory AddPhoneDto.fromJson(Map<String, Object?> json) => _$AddPhoneDtoFromJson(json);
   
   final String countryCode;
   final String number;
-  final String userId;
+  final String clientUserId;
 
   Map<String, Object?> toJson() => _$AddPhoneDtoToJson(this);
 }

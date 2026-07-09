@@ -12,13 +12,13 @@ part 'add_verify_token_dto.g.dart';
 class AddVerifyTokenDto {
   const AddVerifyTokenDto({
     required this.email,
-    required this.tokenCode,
+    required this.verificationTokenCode,
   });
   
   factory AddVerifyTokenDto.fromJson(Map<String, Object?> json) => _$AddVerifyTokenDtoFromJson(json);
   
   final String email;
-  final String tokenCode;
+  final String verificationTokenCode;
 
   Map<String, Object?> toJson() => _$AddVerifyTokenDtoToJson(this);
 }

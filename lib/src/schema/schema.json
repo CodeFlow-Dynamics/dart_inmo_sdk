@@ -5,7 +5,7 @@
     "version": "1.0"
   },
   "paths": {
-    "/api/v1/Admin": {
+    "/api/v1/admins": {
       "post": {
         "tags": [
           "Admin"
@@ -95,7 +95,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UserDto"
+                  "$ref": "#/components/schemas/AdminDto"
                 }
               }
             }
@@ -103,7 +103,7 @@
         }
       }
     },
-    "/api/v1/Admin/{id}": {
+    "/api/v1/admins/{id}": {
       "put": {
         "tags": [
           "Admin"
@@ -204,7 +204,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UserDto"
+                  "$ref": "#/components/schemas/AdminDto"
                 }
               }
             }
@@ -302,7 +302,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UserDto"
+                  "$ref": "#/components/schemas/AdminDto"
                 }
               }
             }
@@ -324,6 +324,292 @@
             }
           }
         ],
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v1/admins/profile": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmployeeProfileDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Admin"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateEmployeeProfileDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmployeeProfileDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admins/auths/{id}/status": {
+      "put": {
+        "tags": [
+          "Admin"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateAuthStatusDto"
+              }
+            }
+          }
+        },
         "responses": {
           "400": {
             "description": "Bad Request",
@@ -944,7 +1230,7 @@
         }
       }
     },
-    "/api/v1/Auth/login/email": {
+    "/api/v1/auth/sessions/clients/email": {
       "post": {
         "tags": [
           "Auth"
@@ -953,7 +1239,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/LoginUserWithEmailAndPasswordDto"
+                "$ref": "#/components/schemas/LoginUserWithEmailDto"
               }
             }
           }
@@ -1042,28 +1328,20 @@
         }
       }
     },
-    "/api/v1/Auth/login/google/{idToken}": {
+    "/api/v1/auth/sessions/clients/google": {
       "post": {
         "tags": [
           "Auth"
         ],
-        "parameters": [
-          {
-            "name": "idToken",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "deviceName",
-            "in": "query",
-            "schema": {
-              "type": "string"
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginClientWithGoogleDto"
+              }
             }
           }
-        ],
+        },
         "responses": {
           "400": {
             "description": "Bad Request",
@@ -1148,7 +1426,105 @@
         }
       }
     },
-    "/api/v1/Auth/refresh": {
+    "/api/v1/auth/sessions/admins/email": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginUserWithEmailDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginResponseDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/sessions/refresh": {
       "post": {
         "tags": [
           "Auth"
@@ -1246,8 +1622,8 @@
         }
       }
     },
-    "/api/v1/Auth/logout": {
-      "post": {
+    "/api/v1/auth/sessions/devices": {
+      "delete": {
         "tags": [
           "Auth"
         ],
@@ -1326,10 +1702,97 @@
             "description": "No Content"
           }
         }
+      },
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListDevicesResponseDto"
+                }
+              }
+            }
+          }
+        }
       }
     },
-    "/api/v1/Auth/logout/{deviceId}": {
-      "post": {
+    "/api/v1/auth/sessions/devices/{deviceId}": {
+      "delete": {
         "tags": [
           "Auth"
         ],
@@ -1421,11 +1884,20 @@
         }
       }
     },
-    "/api/v1/Auth/logout/all": {
+    "/api/v1/consumer/sign-up": {
       "post": {
         "tags": [
-          "Auth"
+          "Consumer"
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignUpConsumerDto"
+              }
+            }
+          }
+        },
         "responses": {
           "400": {
             "description": "Bad Request",
@@ -1497,16 +1969,23 @@
               }
             }
           },
-          "204": {
-            "description": "No Content"
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SignUpUserWithEmailDto"
+                }
+              }
+            }
           }
         }
       }
     },
-    "/api/v1/Auth/devices": {
+    "/api/v1/consumer/profile": {
       "get": {
         "tags": [
-          "Auth"
+          "Consumer"
         ],
         "responses": {
           "400": {
@@ -1584,29 +2063,26 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ListDevicesResponseDto"
+                  "$ref": "#/components/schemas/ConsumerProfileDto"
                 }
               }
             }
           }
         }
-      }
-    },
-    "/api/v1/AuthSecurity/user/{userId}": {
-      "get": {
+      },
+      "put": {
         "tags": [
-          "AuthSecurity"
+          "Consumer"
         ],
-        "parameters": [
-          {
-            "name": "userId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateConsumerProfileDto"
+              }
             }
           }
-        ],
+        },
         "responses": {
           "400": {
             "description": "Bad Request",
@@ -1683,7 +2159,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AuthSecurityDto"
+                  "$ref": "#/components/schemas/ConsumerProfileDto"
                 }
               }
             }
@@ -2460,16 +2936,16 @@
         }
       }
     },
-    "/api/v1/Document": {
+    "/api/v1/auth/email-verifications": {
       "post": {
         "tags": [
-          "Document"
+          "EmailVerification"
         ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/AddDocumentDto"
+                "$ref": "#/components/schemas/EmailRequestDto"
               }
             }
           }
@@ -2550,188 +3026,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DocumentDto"
-                }
-              }
-            }
-          }
-        }
-      },
-      "get": {
-        "tags": [
-          "Document"
-        ],
-        "parameters": [
-          {
-            "name": "CountryId",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "DocumentTypeId",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "ValidationPattern",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "CreatedFrom",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          },
-          {
-            "name": "CreatedTo",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          },
-          {
-            "name": "UpdatedFrom",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          },
-          {
-            "name": "UpdatedTo",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          },
-          {
-            "name": "SortBy",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "SortDirection",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "PageNumber",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "PageSize",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "Cursor",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "Conflict",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Unprocessable Content",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/DocumentDtoPaginatedResult"
+                  "$ref": "#/components/schemas/TokenDto"
                 }
               }
             }
@@ -2739,222 +3034,16 @@
         }
       }
     },
-    "/api/v1/Document/bulk": {
+    "/api/v1/auth/email-verifications/confirm": {
       "post": {
         "tags": [
-          "Document"
+          "EmailVerification"
         ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/BulkAddDocumentsDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "Conflict",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Unprocessable Content",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "201": {
-            "description": "Created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BulkCreateDocumentsResponseDto"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v1/Document/{id}": {
-      "get": {
-        "tags": [
-          "Document"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "Conflict",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Unprocessable Content",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/DocumentDto"
-                }
-              }
-            }
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Document"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateDocumentDto"
+                "$ref": "#/components/schemas/AddVerifyTokenDto"
               }
             }
           }
@@ -3031,104 +3120,7 @@
             }
           },
           "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/DocumentDto"
-                }
-              }
-            }
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Document"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "Conflict",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Unprocessable Content",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "204": {
-            "description": "No Content"
+            "description": "OK"
           }
         }
       }
@@ -4131,117 +4123,16 @@
         }
       }
     },
-    "/api/v1/Identification": {
+    "/api/v1/identity/identifications": {
       "post": {
         "tags": [
           "Identification"
         ],
         "requestBody": {
           "content": {
-            "multipart/form-data": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "UserId": {
-                    "type": "string"
-                  },
-                  "DocumentId": {
-                    "type": "string"
-                  },
-                  "IdNumber": {
-                    "type": "string"
-                  },
-                  "DateOfBirth": {
-                    "type": "string"
-                  },
-                  "ExpiryDate": {
-                    "type": "string"
-                  },
-                  "PhotoObverse": {
-                    "type": "string",
-                    "format": "binary"
-                  },
-                  "PhotoReverse": {
-                    "type": "string",
-                    "format": "binary"
-                  }
-                }
-              },
-              "encoding": {
-                "UserId": {
-                  "style": "form"
-                },
-                "DocumentId": {
-                  "style": "form"
-                },
-                "IdNumber": {
-                  "style": "form"
-                },
-                "DateOfBirth": {
-                  "style": "form"
-                },
-                "ExpiryDate": {
-                  "style": "form"
-                },
-                "PhotoObverse": {
-                  "style": "form"
-                },
-                "PhotoReverse": {
-                  "style": "form"
-                }
-              }
-            },
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "UserId": {
-                    "type": "string"
-                  },
-                  "DocumentId": {
-                    "type": "string"
-                  },
-                  "IdNumber": {
-                    "type": "string"
-                  },
-                  "DateOfBirth": {
-                    "type": "string"
-                  },
-                  "ExpiryDate": {
-                    "type": "string"
-                  },
-                  "PhotoObverse": {
-                    "type": "string",
-                    "format": "binary"
-                  },
-                  "PhotoReverse": {
-                    "type": "string",
-                    "format": "binary"
-                  }
-                }
-              },
-              "encoding": {
-                "UserId": {
-                  "style": "form"
-                },
-                "DocumentId": {
-                  "style": "form"
-                },
-                "IdNumber": {
-                  "style": "form"
-                },
-                "DateOfBirth": {
-                  "style": "form"
-                },
-                "ExpiryDate": {
-                  "style": "form"
-                },
-                "PhotoObverse": {
-                  "style": "form"
-                },
-                "PhotoReverse": {
-                  "style": "form"
-                }
+                "$ref": "#/components/schemas/AddIdentificationDto"
               }
             }
           }
@@ -4335,7 +4226,7 @@
         ],
         "parameters": [
           {
-            "name": "UserId",
+            "name": "AuthId",
             "in": "query",
             "schema": {
               "type": "string",
@@ -4472,7 +4363,7 @@
         }
       }
     },
-    "/api/v1/Identification/{id}": {
+    "/api/v1/identity/identifications/{id}": {
       "get": {
         "tags": [
           "Identification"
@@ -4586,86 +4477,9 @@
         ],
         "requestBody": {
           "content": {
-            "multipart/form-data": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "IdNumber": {
-                    "type": "string"
-                  },
-                  "DateOfBirth": {
-                    "type": "string"
-                  },
-                  "ExpiryDate": {
-                    "type": "string"
-                  },
-                  "PhotoObverse": {
-                    "type": "string",
-                    "format": "binary"
-                  },
-                  "PhotoReverse": {
-                    "type": "string",
-                    "format": "binary"
-                  }
-                }
-              },
-              "encoding": {
-                "IdNumber": {
-                  "style": "form"
-                },
-                "DateOfBirth": {
-                  "style": "form"
-                },
-                "ExpiryDate": {
-                  "style": "form"
-                },
-                "PhotoObverse": {
-                  "style": "form"
-                },
-                "PhotoReverse": {
-                  "style": "form"
-                }
-              }
-            },
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "IdNumber": {
-                    "type": "string"
-                  },
-                  "DateOfBirth": {
-                    "type": "string"
-                  },
-                  "ExpiryDate": {
-                    "type": "string"
-                  },
-                  "PhotoObverse": {
-                    "type": "string",
-                    "format": "binary"
-                  },
-                  "PhotoReverse": {
-                    "type": "string",
-                    "format": "binary"
-                  }
-                }
-              },
-              "encoding": {
-                "IdNumber": {
-                  "style": "form"
-                },
-                "DateOfBirth": {
-                  "style": "form"
-                },
-                "ExpiryDate": {
-                  "style": "form"
-                },
-                "PhotoObverse": {
-                  "style": "form"
-                },
-                "PhotoReverse": {
-                  "style": "form"
-                }
+                "$ref": "#/components/schemas/UpdateIdentificationDto"
               }
             }
           }
@@ -4756,6 +4570,679 @@
       "delete": {
         "tags": [
           "Identification"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/api/v1/identity/document-rules": {
+      "post": {
+        "tags": [
+          "IdentityDocumentRule"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddDocumentDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DocumentDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "IdentityDocumentRule"
+        ],
+        "parameters": [
+          {
+            "name": "CountryId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "DocumentTypeId",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "ValidationPattern",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "CreatedFrom",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "CreatedTo",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "UpdatedFrom",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "UpdatedTo",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "SortBy",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "SortDirection",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "PageNumber",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Cursor",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DocumentDtoPaginatedResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/identity/document-rules/bulk": {
+      "post": {
+        "tags": [
+          "IdentityDocumentRule"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BulkAddDocumentsDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BulkCreateDocumentsResponseDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/identity/document-rules/{id}": {
+      "get": {
+        "tags": [
+          "IdentityDocumentRule"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DocumentDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "IdentityDocumentRule"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateDocumentDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DocumentDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "IdentityDocumentRule"
         ],
         "parameters": [
           {
@@ -6953,9 +7440,86 @@
         ],
         "requestBody": {
           "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "File": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "MediaType": {
+                    "type": "string"
+                  },
+                  "Caption": {
+                    "type": "string"
+                  },
+                  "SortOrder": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "DisplayRole": {
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "File": {
+                  "style": "form"
+                },
+                "MediaType": {
+                  "style": "form"
+                },
+                "Caption": {
+                  "style": "form"
+                },
+                "SortOrder": {
+                  "style": "form"
+                },
+                "DisplayRole": {
+                  "style": "form"
+                }
+              }
+            },
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/AddListingMediaDto"
+                "type": "object",
+                "properties": {
+                  "File": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "MediaType": {
+                    "type": "string"
+                  },
+                  "Caption": {
+                    "type": "string"
+                  },
+                  "SortOrder": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "DisplayRole": {
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "File": {
+                  "style": "form"
+                },
+                "MediaType": {
+                  "style": "form"
+                },
+                "Caption": {
+                  "style": "form"
+                },
+                "SortOrder": {
+                  "style": "form"
+                },
+                "DisplayRole": {
+                  "style": "form"
+                }
               }
             }
           }
@@ -7795,7 +8359,7 @@
         }
       }
     },
-    "/api/v1/Master": {
+    "/api/v1/auth/bootstrap/master": {
       "post": {
         "tags": [
           "Master"
@@ -7804,7 +8368,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/AddMasterUserDto"
+                "$ref": "#/components/schemas/SignUpAdminDto"
               }
             }
           }
@@ -7885,7 +8449,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SignUpUserWithEmailAndPasswordDto"
+                  "$ref": "#/components/schemas/SignUpUserWithEmailDto"
                 }
               }
             }
@@ -7893,14 +8457,175 @@
         }
       }
     },
-    "/api/v1/Password/forgot/{email}": {
+    "/api/v1/Media/upload": {
       "post": {
         "tags": [
-          "Password"
+          "Media"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "OwnerType": {
+                    "type": "string"
+                  },
+                  "OwnerId": {
+                    "type": "string"
+                  },
+                  "MediaType": {
+                    "type": "string"
+                  },
+                  "File": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "OwnerType": {
+                  "style": "form"
+                },
+                "OwnerId": {
+                  "style": "form"
+                },
+                "MediaType": {
+                  "style": "form"
+                },
+                "File": {
+                  "style": "form"
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "OwnerType": {
+                    "type": "string"
+                  },
+                  "OwnerId": {
+                    "type": "string"
+                  },
+                  "MediaType": {
+                    "type": "string"
+                  },
+                  "File": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "OwnerType": {
+                  "style": "form"
+                },
+                "OwnerId": {
+                  "style": "form"
+                },
+                "MediaType": {
+                  "style": "form"
+                },
+                "File": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MediaFileDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Media/{id}": {
+      "delete": {
+        "tags": [
+          "Media"
         ],
         "parameters": [
           {
-            "name": "email",
+            "name": "id",
             "in": "path",
             "required": true,
             "schema": {
@@ -7908,6 +8633,420 @@
             }
           }
         ],
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Media"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MediaFileDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Media/{id}/signed-url": {
+      "get": {
+        "tags": [
+          "Media"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SignedUrlDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/Media/{id}/events": {
+      "get": {
+        "tags": [
+          "Media"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/event-stream": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/event-stream": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "text/event-stream": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/event-stream": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/event-stream": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "text/event-stream": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Content",
+            "content": {
+              "text/event-stream": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/auth/passwords/forgot": {
+      "post": {
+        "tags": [
+          "Password"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmailRequestDto"
+              }
+            }
+          }
+        },
         "responses": {
           "400": {
             "description": "Bad Request",
@@ -7992,7 +9131,7 @@
         }
       }
     },
-    "/api/v1/Password/reset": {
+    "/api/v1/auth/passwords/reset": {
       "post": {
         "tags": [
           "Password"
@@ -8090,7 +9229,7 @@
         }
       }
     },
-    "/api/v1/Password/change": {
+    "/api/v1/auth/passwords/change": {
       "post": {
         "tags": [
           "Password"
@@ -8301,7 +9440,7 @@
             }
           },
           {
-            "name": "UserId",
+            "name": "ClientUserId",
             "in": "query",
             "schema": {
               "type": "string",
@@ -8731,7 +9870,7 @@
         }
       }
     },
-    "/api/v1/publishers/{id}/members/{userId}": {
+    "/api/v1/publishers/{id}/members/{clientUserId}": {
       "delete": {
         "tags": [
           "Publisher"
@@ -8746,7 +9885,7 @@
             }
           },
           {
-            "name": "userId",
+            "name": "clientUserId",
             "in": "path",
             "required": true,
             "schema": {
@@ -10549,851 +11688,14 @@
         }
       }
     },
-    "/api/v1/Token/generate": {
-      "post": {
-        "tags": [
-          "Token"
-        ],
-        "parameters": [
-          {
-            "name": "email",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "Conflict",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Unprocessable Content",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "201": {
-            "description": "Created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/TokenDto"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v1/Token/verify": {
-      "post": {
-        "tags": [
-          "Token"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AddVerifyTokenDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "Conflict",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Unprocessable Content",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/v1/User": {
-      "post": {
-        "tags": [
-          "User"
-        ],
-        "requestBody": {
-          "content": {
-            "multipart/form-data": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "Email": {
-                    "type": "string"
-                  },
-                  "Password": {
-                    "type": "string"
-                  },
-                  "RepeatPassword": {
-                    "type": "string"
-                  },
-                  "FirstName": {
-                    "type": "string"
-                  },
-                  "LastName": {
-                    "type": "string"
-                  },
-                  "CountryCode": {
-                    "type": "string"
-                  },
-                  "PhoneNumber": {
-                    "type": "string"
-                  },
-                  "PhotoFile": {
-                    "type": "string",
-                    "format": "binary"
-                  },
-                  "PreferredLanguage": {
-                    "type": "string"
-                  }
-                }
-              },
-              "encoding": {
-                "Email": {
-                  "style": "form"
-                },
-                "Password": {
-                  "style": "form"
-                },
-                "RepeatPassword": {
-                  "style": "form"
-                },
-                "FirstName": {
-                  "style": "form"
-                },
-                "LastName": {
-                  "style": "form"
-                },
-                "CountryCode": {
-                  "style": "form"
-                },
-                "PhoneNumber": {
-                  "style": "form"
-                },
-                "PhotoFile": {
-                  "style": "form"
-                },
-                "PreferredLanguage": {
-                  "style": "form"
-                }
-              }
-            },
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "Email": {
-                    "type": "string"
-                  },
-                  "Password": {
-                    "type": "string"
-                  },
-                  "RepeatPassword": {
-                    "type": "string"
-                  },
-                  "FirstName": {
-                    "type": "string"
-                  },
-                  "LastName": {
-                    "type": "string"
-                  },
-                  "CountryCode": {
-                    "type": "string"
-                  },
-                  "PhoneNumber": {
-                    "type": "string"
-                  },
-                  "PhotoFile": {
-                    "type": "string",
-                    "format": "binary"
-                  },
-                  "PreferredLanguage": {
-                    "type": "string"
-                  }
-                }
-              },
-              "encoding": {
-                "Email": {
-                  "style": "form"
-                },
-                "Password": {
-                  "style": "form"
-                },
-                "RepeatPassword": {
-                  "style": "form"
-                },
-                "FirstName": {
-                  "style": "form"
-                },
-                "LastName": {
-                  "style": "form"
-                },
-                "CountryCode": {
-                  "style": "form"
-                },
-                "PhoneNumber": {
-                  "style": "form"
-                },
-                "PhotoFile": {
-                  "style": "form"
-                },
-                "PreferredLanguage": {
-                  "style": "form"
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "Conflict",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Unprocessable Content",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "201": {
-            "description": "Created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SignUpUserWithEmailAndPasswordDto"
-                }
-              }
-            }
-          }
-        }
-      },
-      "get": {
-        "tags": [
-          "User"
-        ],
-        "parameters": [
-          {
-            "name": "UserTypeId",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "FirstName",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "LastName",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "PreferredLanguage",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "CreatedFrom",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          },
-          {
-            "name": "CreatedTo",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          },
-          {
-            "name": "UpdatedFrom",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          },
-          {
-            "name": "UpdatedTo",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          },
-          {
-            "name": "SortBy",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "SortDirection",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "PageNumber",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "PageSize",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "Cursor",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "Conflict",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Unprocessable Content",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UserDtoPaginatedResult"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v1/User/preferences/language": {
-      "put": {
-        "tags": [
-          "User"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateLanguagePreferenceDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "Conflict",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Unprocessable Content",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "204": {
-            "description": "No Content"
-          }
-        }
-      }
-    },
-    "/api/v1/UserMedia": {
-      "post": {
-        "tags": [
-          "UserMedia"
-        ],
-        "requestBody": {
-          "content": {
-            "multipart/form-data": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "PhotoFile": {
-                    "type": "string",
-                    "format": "binary"
-                  },
-                  "UserId": {
-                    "type": "string"
-                  },
-                  "MediaTypeId": {
-                    "type": "string"
-                  }
-                }
-              },
-              "encoding": {
-                "PhotoFile": {
-                  "style": "form"
-                },
-                "UserId": {
-                  "style": "form"
-                },
-                "MediaTypeId": {
-                  "style": "form"
-                }
-              }
-            },
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "PhotoFile": {
-                    "type": "string",
-                    "format": "binary"
-                  },
-                  "UserId": {
-                    "type": "string"
-                  },
-                  "MediaTypeId": {
-                    "type": "string"
-                  }
-                }
-              },
-              "encoding": {
-                "PhotoFile": {
-                  "style": "form"
-                },
-                "UserId": {
-                  "style": "form"
-                },
-                "MediaTypeId": {
-                  "style": "form"
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "409": {
-            "description": "Conflict",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Unprocessable Content",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "201": {
-            "description": "Created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UserMediaDto"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v1/VerificationSubmission": {
+    "/api/v1/identity/verification-submissions": {
       "get": {
         "tags": [
           "VerificationSubmission"
         ],
         "parameters": [
           {
-            "name": "UserId",
+            "name": "AuthId",
             "in": "query",
             "schema": {
               "type": "string",
@@ -11543,122 +11845,9 @@
         ],
         "requestBody": {
           "content": {
-            "multipart/form-data": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "UserId": {
-                    "type": "string"
-                  },
-                  "DocumentId": {
-                    "type": "string"
-                  },
-                  "IdNumber": {
-                    "type": "string"
-                  },
-                  "DateOfBirth": {
-                    "type": "string"
-                  },
-                  "ExpiryDate": {
-                    "type": "string"
-                  },
-                  "UserNotes": {
-                    "type": "string"
-                  },
-                  "PhotoObverse": {
-                    "type": "string",
-                    "format": "binary"
-                  },
-                  "PhotoReverse": {
-                    "type": "string",
-                    "format": "binary"
-                  }
-                }
-              },
-              "encoding": {
-                "UserId": {
-                  "style": "form"
-                },
-                "DocumentId": {
-                  "style": "form"
-                },
-                "IdNumber": {
-                  "style": "form"
-                },
-                "DateOfBirth": {
-                  "style": "form"
-                },
-                "ExpiryDate": {
-                  "style": "form"
-                },
-                "UserNotes": {
-                  "style": "form"
-                },
-                "PhotoObverse": {
-                  "style": "form"
-                },
-                "PhotoReverse": {
-                  "style": "form"
-                }
-              }
-            },
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "UserId": {
-                    "type": "string"
-                  },
-                  "DocumentId": {
-                    "type": "string"
-                  },
-                  "IdNumber": {
-                    "type": "string"
-                  },
-                  "DateOfBirth": {
-                    "type": "string"
-                  },
-                  "ExpiryDate": {
-                    "type": "string"
-                  },
-                  "UserNotes": {
-                    "type": "string"
-                  },
-                  "PhotoObverse": {
-                    "type": "string",
-                    "format": "binary"
-                  },
-                  "PhotoReverse": {
-                    "type": "string",
-                    "format": "binary"
-                  }
-                }
-              },
-              "encoding": {
-                "UserId": {
-                  "style": "form"
-                },
-                "DocumentId": {
-                  "style": "form"
-                },
-                "IdNumber": {
-                  "style": "form"
-                },
-                "DateOfBirth": {
-                  "style": "form"
-                },
-                "ExpiryDate": {
-                  "style": "form"
-                },
-                "UserNotes": {
-                  "style": "form"
-                },
-                "PhotoObverse": {
-                  "style": "form"
-                },
-                "PhotoReverse": {
-                  "style": "form"
-                }
+                "$ref": "#/components/schemas/AddVerificationSubmissionDto"
               }
             }
           }
@@ -11747,7 +11936,7 @@
         }
       }
     },
-    "/api/v1/VerificationSubmission/{id}/history": {
+    "/api/v1/identity/verification-submissions/{id}/history": {
       "get": {
         "tags": [
           "VerificationSubmission"
@@ -11849,7 +12038,7 @@
         }
       }
     },
-    "/api/v1/VerificationSubmission/{id}": {
+    "/api/v1/identity/verification-submissions/{id}": {
       "get": {
         "tags": [
           "VerificationSubmission"
@@ -12038,7 +12227,7 @@
         }
       }
     },
-    "/api/v1/VerificationSubmission/{id}/resubmit": {
+    "/api/v1/identity/verification-submissions/{id}/resubmit": {
       "put": {
         "tags": [
           "VerificationSubmission"
@@ -12055,98 +12244,9 @@
         ],
         "requestBody": {
           "content": {
-            "multipart/form-data": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "IdNumber": {
-                    "type": "string"
-                  },
-                  "DateOfBirth": {
-                    "type": "string"
-                  },
-                  "ExpiryDate": {
-                    "type": "string"
-                  },
-                  "UserNotes": {
-                    "type": "string"
-                  },
-                  "PhotoObverse": {
-                    "type": "string",
-                    "format": "binary"
-                  },
-                  "PhotoReverse": {
-                    "type": "string",
-                    "format": "binary"
-                  }
-                }
-              },
-              "encoding": {
-                "IdNumber": {
-                  "style": "form"
-                },
-                "DateOfBirth": {
-                  "style": "form"
-                },
-                "ExpiryDate": {
-                  "style": "form"
-                },
-                "UserNotes": {
-                  "style": "form"
-                },
-                "PhotoObverse": {
-                  "style": "form"
-                },
-                "PhotoReverse": {
-                  "style": "form"
-                }
-              }
-            },
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "IdNumber": {
-                    "type": "string"
-                  },
-                  "DateOfBirth": {
-                    "type": "string"
-                  },
-                  "ExpiryDate": {
-                    "type": "string"
-                  },
-                  "UserNotes": {
-                    "type": "string"
-                  },
-                  "PhotoObverse": {
-                    "type": "string",
-                    "format": "binary"
-                  },
-                  "PhotoReverse": {
-                    "type": "string",
-                    "format": "binary"
-                  }
-                }
-              },
-              "encoding": {
-                "IdNumber": {
-                  "style": "form"
-                },
-                "DateOfBirth": {
-                  "style": "form"
-                },
-                "ExpiryDate": {
-                  "style": "form"
-                },
-                "UserNotes": {
-                  "style": "form"
-                },
-                "PhotoObverse": {
-                  "style": "form"
-                },
-                "PhotoReverse": {
-                  "style": "form"
-                }
+                "$ref": "#/components/schemas/UpdateVerificationSubmissionDto"
               }
             }
           }
@@ -12235,7 +12335,7 @@
         }
       }
     },
-    "/api/v1/VerificationSubmission/{id}/review": {
+    "/api/v1/identity/verification-submissions/{id}/review": {
       "put": {
         "tags": [
           "VerificationSubmission"
@@ -12404,6 +12504,39 @@
         },
         "additionalProperties": false
       },
+      "AddIdentificationDto": {
+        "type": "object",
+        "properties": {
+          "authId": {
+            "type": "string"
+          },
+          "documentId": {
+            "type": "string"
+          },
+          "idNumber": {
+            "type": "string"
+          },
+          "validationPattern": {
+            "type": "string"
+          },
+          "dateOfBirth": {
+            "type": "string"
+          },
+          "expiryDate": {
+            "type": "string"
+          },
+          "obverseMediaFileId": {
+            "type": "string"
+          },
+          "reverseMediaFileId": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
       "AddInmoCategoryDto": {
         "type": "object",
         "properties": {
@@ -12433,57 +12566,6 @@
           },
           "i18nCode": {
             "type": "string"
-          }
-        },
-        "additionalProperties": false
-      },
-      "AddListingMediaDto": {
-        "type": "object",
-        "properties": {
-          "url": {
-            "type": "string"
-          },
-          "mediaType": {
-            "type": "string"
-          },
-          "caption": {
-            "type": [
-              "null",
-              "string"
-            ]
-          }
-        },
-        "additionalProperties": false
-      },
-      "AddMasterUserDto": {
-        "type": "object",
-        "properties": {
-          "email": {
-            "type": "string"
-          },
-          "password": {
-            "type": "string"
-          },
-          "repeatPassword": {
-            "type": "string"
-          },
-          "firstName": {
-            "type": "string"
-          },
-          "lastName": {
-            "type": "string"
-          },
-          "countryCode": {
-            "type": "string"
-          },
-          "phoneNumber": {
-            "type": "string"
-          },
-          "preferredLanguage": {
-            "type": [
-              "null",
-              "string"
-            ]
           }
         },
         "additionalProperties": false
@@ -12531,7 +12613,7 @@
           "number": {
             "type": "string"
           },
-          "userId": {
+          "clientUserId": {
             "type": "string"
           }
         },
@@ -12543,7 +12625,7 @@
         ],
         "type": "object",
         "properties": {
-          "userId": {
+          "clientUserId": {
             "type": "string",
             "format": "uuid"
           },
@@ -12554,13 +12636,67 @@
         },
         "additionalProperties": false
       },
+      "AddVerificationSubmissionDto": {
+        "type": "object",
+        "properties": {
+          "authId": {
+            "type": "string"
+          },
+          "identificationId": {
+            "type": "string"
+          },
+          "userNotes": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
       "AddVerifyTokenDto": {
         "type": "object",
         "properties": {
           "email": {
             "type": "string"
           },
-          "tokenCode": {
+          "verificationTokenCode": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AdminDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "adminId": {
+            "type": "string"
+          },
+          "authId": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "preferredLanguage": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          },
+          "status": {
             "type": "string"
           }
         },
@@ -12768,30 +12904,6 @@
         },
         "additionalProperties": false
       },
-      "AuthSecurityDto": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "createdAt": {
-            "type": "string"
-          },
-          "updatedAt": {
-            "type": "string"
-          },
-          "userId": {
-            "type": "string"
-          },
-          "emailVerificationStatus": {
-            "type": "string"
-          },
-          "passwordStatus": {
-            "type": "string"
-          }
-        },
-        "additionalProperties": false
-      },
       "AutocompleteResultDto": {
         "type": "object",
         "properties": {
@@ -12831,28 +12943,13 @@
         },
         "additionalProperties": false
       },
-      "BulkAddDocumentDto": {
-        "type": "object",
-        "properties": {
-          "documentTypeId": {
-            "type": "string"
-          },
-          "countryId": {
-            "type": "string"
-          },
-          "validationPattern": {
-            "type": "string"
-          }
-        },
-        "additionalProperties": false
-      },
       "BulkAddDocumentsDto": {
         "type": "object",
         "properties": {
           "documents": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/BulkAddDocumentDto"
+              "$ref": "#/components/schemas/AddDocumentDto"
             }
           }
         },
@@ -12889,6 +12986,55 @@
             "type": "string"
           },
           "newPassword": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ConsumerProfileDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "language": {
+            "type": "string"
+          },
+          "avatarUrl": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "type": {
+            "type": "string"
+          },
+          "phoneCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "identificationStatus": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "publisherMemberships": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PublisherMembershipSummaryDto"
+            }
+          },
+          "createdAt": {
             "type": "string"
           }
         },
@@ -13020,7 +13166,7 @@
           "deviceName": {
             "type": "string"
           },
-          "deviceFingerprint": {
+          "deviceFingerprintHash": {
             "type": "string"
           },
           "lastUsedAt": {
@@ -13117,6 +13263,48 @@
               "integer"
             ],
             "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "EmailRequestDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "EmployeeProfileDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "language": {
+            "type": "string"
+          },
+          "avatarUrl": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "role": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
           }
         },
         "additionalProperties": false
@@ -13600,7 +13788,7 @@
           "updatedAt": {
             "type": "string"
           },
-          "userId": {
+          "authId": {
             "type": "string"
           },
           "documentId": {
@@ -13609,23 +13797,29 @@
           "idNumber": {
             "type": "string"
           },
+          "validationPattern": {
+            "type": "string"
+          },
           "dateOfBirth": {
             "type": "string"
           },
           "expiryDate": {
             "type": "string"
           },
-          "photoObverseLink": {
+          "obverseMediaFileId": {
             "type": [
               "null",
               "string"
             ]
           },
-          "photoReverseLink": {
+          "reverseMediaFileId": {
             "type": [
               "null",
               "string"
             ]
+          },
+          "status": {
+            "type": "string"
           }
         },
         "additionalProperties": false
@@ -13750,7 +13944,7 @@
           "listingTitle": {
             "type": "string"
           },
-          "userId": {
+          "authId": {
             "type": [
               "null",
               "string"
@@ -14231,7 +14425,7 @@
           "id": {
             "type": "string"
           },
-          "url": {
+          "mediaFileId": {
             "type": "string"
           },
           "mediaType": {
@@ -14496,6 +14690,21 @@
         },
         "additionalProperties": false
       },
+      "LoginClientWithGoogleDto": {
+        "type": "object",
+        "properties": {
+          "idToken": {
+            "type": "string"
+          },
+          "deviceName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
       "LoginResponseDto": {
         "type": "object",
         "properties": {
@@ -14517,7 +14726,7 @@
         },
         "additionalProperties": false
       },
-      "LoginUserWithEmailAndPasswordDto": {
+      "LoginUserWithEmailDto": {
         "type": "object",
         "properties": {
           "email": {
@@ -14535,6 +14744,75 @@
         },
         "additionalProperties": false
       },
+      "MediaFileDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "publicUrl": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "ownerType": {
+            "type": "string"
+          },
+          "mediaType": {
+            "type": "string"
+          },
+          "uploadedAt": {
+            "type": "string"
+          },
+          "variants": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MediaVariantDto"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "MediaVariantDto": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "width": {
+            "type": [
+              "null",
+              "integer"
+            ],
+            "format": "int32"
+          },
+          "height": {
+            "type": [
+              "null",
+              "integer"
+            ],
+            "format": "int32"
+          },
+          "fileSizeBytes": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "additionalProperties": false
+      },
       "PhoneDto": {
         "type": "object",
         "properties": {
@@ -14547,7 +14825,7 @@
           "number": {
             "type": "string"
           },
-          "userId": {
+          "clientUserId": {
             "type": "string"
           }
         },
@@ -14623,7 +14901,7 @@
           "publisherId": {
             "type": "string"
           },
-          "userId": {
+          "clientUserId": {
             "type": "string"
           },
           "role": {
@@ -14633,6 +14911,18 @@
             "type": "string"
           },
           "userName": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PublisherMembershipSummaryDto": {
+        "type": "object",
+        "properties": {
+          "publisherId": {
+            "type": "string"
+          },
+          "role": {
             "type": "string"
           }
         },
@@ -14784,7 +15074,7 @@
           "email": {
             "type": "string"
           },
-          "tokenCode": {
+          "verificationTokenCode": {
             "type": "string"
           },
           "newPassword": {
@@ -14794,10 +15084,6 @@
         "additionalProperties": false
       },
       "ReviewVerificationSubmissionDto": {
-        "required": [
-          "reviewerId",
-          "reviewerNotes"
-        ],
         "type": "object",
         "properties": {
           "statusCode": {
@@ -14805,12 +15091,9 @@
             "format": "int32"
           },
           "reviewerNotes": {
-            "maxLength": 1000,
-            "minLength": 1,
             "type": "string"
           },
           "reviewerId": {
-            "minLength": 1,
             "type": "string"
           }
         },
@@ -15108,7 +15391,73 @@
         },
         "additionalProperties": false
       },
-      "SignUpUserWithEmailAndPasswordDto": {
+      "SignUpAdminDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "repeatPassword": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "countryCode": {
+            "type": "string"
+          },
+          "phoneNumber": {
+            "type": "string"
+          },
+          "preferredLanguage": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "SignUpConsumerDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "repeatPassword": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "countryCode": {
+            "type": "string"
+          },
+          "phoneNumber": {
+            "type": "string"
+          },
+          "preferredLanguage": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "SignUpUserWithEmailDto": {
         "type": "object",
         "properties": {
           "id": {
@@ -15128,6 +15477,19 @@
           },
           "email": {
             "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SignedUrlDto": {
+        "type": "object",
+        "properties": {
+          "signedUrl": {
+            "type": "string"
+          },
+          "expiresAt": {
+            "type": "string",
+            "format": "date-time"
           }
         },
         "additionalProperties": false
@@ -15215,7 +15577,7 @@
           "id": {
             "type": "string"
           },
-          "token": {
+          "verificationToken": {
             "type": "string"
           },
           "expiresAt": {
@@ -15235,6 +15597,34 @@
             "type": "string"
           },
           "preferredLanguage": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateAuthStatusDto": {
+        "type": "object",
+        "properties": {
+          "actionCode": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateConsumerProfileDto": {
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "avatarMediaId": {
             "type": [
               "null",
               "string"
@@ -15264,6 +15654,24 @@
         },
         "additionalProperties": false
       },
+      "UpdateEmployeeProfileDto": {
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "avatarMediaId": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        },
+        "additionalProperties": false
+      },
       "UpdateFavouriteSearchDto": {
         "type": "object",
         "properties": {
@@ -15287,6 +15695,33 @@
             "items": {
               "type": "string"
             }
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateIdentificationDto": {
+        "type": "object",
+        "properties": {
+          "idNumber": {
+            "type": "string"
+          },
+          "validationPattern": {
+            "type": "string"
+          },
+          "dateOfBirth": {
+            "type": "string"
+          },
+          "expiryDate": {
+            "type": "string"
+          },
+          "obverseMediaFileId": {
+            "type": "string"
+          },
+          "reverseMediaFileId": {
+            "type": [
+              "null",
+              "string"
+            ]
           }
         },
         "additionalProperties": false
@@ -15345,15 +15780,6 @@
               "null",
               "string"
             ]
-          }
-        },
-        "additionalProperties": false
-      },
-      "UpdateLanguagePreferenceDto": {
-        "type": "object",
-        "properties": {
-          "languageCode": {
-            "type": "string"
           }
         },
         "additionalProperties": false
@@ -15437,113 +15863,14 @@
         },
         "additionalProperties": false
       },
-      "UserDto": {
+      "UpdateVerificationSubmissionDto": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "string"
-          },
-          "createdAt": {
-            "type": "string"
-          },
-          "updatedAt": {
-            "type": "string"
-          },
-          "firstName": {
-            "type": "string"
-          },
-          "lastName": {
-            "type": "string"
-          },
-          "preferredLanguage": {
-            "type": "string"
-          }
-        },
-        "additionalProperties": false
-      },
-      "UserDtoPaginatedResult": {
-        "type": "object",
-        "properties": {
-          "items": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/UserDto"
-            }
-          },
-          "pageSize": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "totalCount": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "currentPage": {
-            "type": [
-              "null",
-              "integer"
-            ],
-            "format": "int32"
-          },
-          "hasNextPage": {
-            "type": "boolean"
-          },
-          "hasPreviousPage": {
-            "type": "boolean"
-          },
-          "nextCursor": {
+          "userNotes": {
             "type": [
               "null",
               "string"
             ]
-          },
-          "previousCursor": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "nextPage": {
-            "type": [
-              "null",
-              "integer"
-            ],
-            "format": "int32"
-          },
-          "previousPage": {
-            "type": [
-              "null",
-              "integer"
-            ],
-            "format": "int32"
-          }
-        },
-        "additionalProperties": false
-      },
-      "UserMediaDto": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "createdAt": {
-            "type": "string"
-          },
-          "updatedAt": {
-            "type": "string"
-          },
-          "link": {
-            "type": "string"
-          },
-          "userId": {
-            "type": "string"
-          },
-          "mediaTypeId": {
-            "type": "string"
           }
         },
         "additionalProperties": false
@@ -15560,32 +15887,11 @@
           "updatedAt": {
             "type": "string"
           },
-          "userId": {
+          "authId": {
             "type": "string"
           },
-          "documentId": {
+          "identificationId": {
             "type": "string"
-          },
-          "idNumber": {
-            "type": "string"
-          },
-          "dateOfBirth": {
-            "type": "string"
-          },
-          "expiryDate": {
-            "type": "string"
-          },
-          "photoObverseLink": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "photoReverseLink": {
-            "type": [
-              "null",
-              "string"
-            ]
           },
           "status": {
             "type": "string"
@@ -15603,12 +15909,6 @@
             ]
           },
           "reviewedAt": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "identificationId": {
             "type": [
               "null",
               "string"
@@ -15737,7 +16037,7 @@
       "name": "Auth"
     },
     {
-      "name": "AuthSecurity"
+      "name": "Consumer"
     },
     {
       "name": "Country"
@@ -15746,7 +16046,7 @@
       "name": "Currency"
     },
     {
-      "name": "Document"
+      "name": "EmailVerification"
     },
     {
       "name": "Favourites"
@@ -15756,6 +16056,9 @@
     },
     {
       "name": "Identification"
+    },
+    {
+      "name": "IdentityDocumentRule"
     },
     {
       "name": "InmoCategory"
@@ -15776,6 +16079,9 @@
       "name": "Master"
     },
     {
+      "name": "Media"
+    },
+    {
       "name": "Password"
     },
     {
@@ -15786,15 +16092,6 @@
     },
     {
       "name": "Search"
-    },
-    {
-      "name": "Token"
-    },
-    {
-      "name": "User"
-    },
-    {
-      "name": "UserMedia"
     },
     {
       "name": "VerificationSubmission"

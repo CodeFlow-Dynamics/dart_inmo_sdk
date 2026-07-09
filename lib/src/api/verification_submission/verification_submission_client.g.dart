@@ -21,8 +21,8 @@ class _VerificationSubmissionClient implements VerificationSubmissionClient {
 
   @override
   Future<HttpResponse<VerificationSubmissionDtoPaginatedResult>>
-  getApiV1VerificationSubmission({
-    String? userId,
+  getApiV1IdentityVerificationSubmissions({
+    String? authId,
     int? status,
     String? reviewerId,
     String? sortBy,
@@ -33,7 +33,7 @@ class _VerificationSubmissionClient implements VerificationSubmissionClient {
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
-      r'UserId': userId,
+      r'AuthId': authId,
       r'Status': status,
       r'ReviewerId': reviewerId,
       r'SortBy': sortBy,
@@ -50,7 +50,7 @@ class _VerificationSubmissionClient implements VerificationSubmissionClient {
           Options(method: 'GET', headers: _headers, extra: _extra)
               .compose(
                 _dio.options,
-                '/api/v1/VerificationSubmission',
+                '/api/v1/identity/verification-submissions',
                 queryParameters: queryParameters,
                 data: _data,
               )
@@ -75,71 +75,24 @@ class _VerificationSubmissionClient implements VerificationSubmissionClient {
 
   @override
   Future<HttpResponse<VerificationSubmissionDto>>
-  postApiV1VerificationSubmission({
-    String? userId,
-    String? documentId,
-    String? idNumber,
-    String? dateOfBirth,
-    String? expiryDate,
-    String? userNotes,
-    File? photoObverse,
-    File? photoReverse,
+  postApiV1IdentityVerificationSubmissions({
+    AddVerificationSubmissionDto? body,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final _data = FormData();
-    if (userId != null) {
-      _data.fields.add(MapEntry('UserId', userId));
-    }
-    if (documentId != null) {
-      _data.fields.add(MapEntry('DocumentId', documentId));
-    }
-    if (idNumber != null) {
-      _data.fields.add(MapEntry('IdNumber', idNumber));
-    }
-    if (dateOfBirth != null) {
-      _data.fields.add(MapEntry('DateOfBirth', dateOfBirth));
-    }
-    if (expiryDate != null) {
-      _data.fields.add(MapEntry('ExpiryDate', expiryDate));
-    }
-    if (userNotes != null) {
-      _data.fields.add(MapEntry('UserNotes', userNotes));
-    }
-    if (photoObverse != null) {
-      _data.files.add(
-        MapEntry(
-          'PhotoObverse',
-          MultipartFile.fromFileSync(
-            photoObverse.path,
-            filename: photoObverse.path.split(Platform.pathSeparator).last,
-          ),
-        ),
-      );
-    }
-    if (photoReverse != null) {
-      _data.files.add(
-        MapEntry(
-          'PhotoReverse',
-          MultipartFile.fromFileSync(
-            photoReverse.path,
-            filename: photoReverse.path.split(Platform.pathSeparator).last,
-          ),
-        ),
-      );
-    }
+    final _data = <String, dynamic>{};
+    _data.addAll(
+      body == null
+          ? <String, dynamic>{}
+          : await compute(serializeAddVerificationSubmissionDto, body),
+    );
     final _options = _setStreamType<HttpResponse<VerificationSubmissionDto>>(
-      Options(
-            method: 'POST',
-            headers: _headers,
-            extra: _extra,
-            contentType: 'multipart/form-data',
-          )
+      Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/api/v1/VerificationSubmission',
+            '/api/v1/identity/verification-submissions',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -162,7 +115,7 @@ class _VerificationSubmissionClient implements VerificationSubmissionClient {
 
   @override
   Future<HttpResponse<List<VerificationSubmissionHistoryDto>>>
-  getApiV1VerificationSubmissionIdHistory({required String id}) async {
+  getApiV1IdentityVerificationSubmissionsIdHistory({required String id}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -172,7 +125,7 @@ class _VerificationSubmissionClient implements VerificationSubmissionClient {
           Options(method: 'GET', headers: _headers, extra: _extra)
               .compose(
                 _dio.options,
-                '/api/v1/VerificationSubmission/${id}/history',
+                '/api/v1/identity/verification-submissions/${id}/history',
                 queryParameters: queryParameters,
                 data: _data,
               )
@@ -197,7 +150,7 @@ class _VerificationSubmissionClient implements VerificationSubmissionClient {
 
   @override
   Future<HttpResponse<VerificationSubmissionDto>>
-  getApiV1VerificationSubmissionId({required String id}) async {
+  getApiV1IdentityVerificationSubmissionsId({required String id}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -206,7 +159,7 @@ class _VerificationSubmissionClient implements VerificationSubmissionClient {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/api/v1/VerificationSubmission/${id}',
+            '/api/v1/identity/verification-submissions/${id}',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -228,7 +181,7 @@ class _VerificationSubmissionClient implements VerificationSubmissionClient {
   }
 
   @override
-  Future<HttpResponse<void>> deleteApiV1VerificationSubmissionId({
+  Future<HttpResponse<void>> deleteApiV1IdentityVerificationSubmissionsId({
     required String id,
   }) async {
     final _extra = <String, dynamic>{};
@@ -239,7 +192,7 @@ class _VerificationSubmissionClient implements VerificationSubmissionClient {
       Options(method: 'DELETE', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/api/v1/VerificationSubmission/${id}',
+            '/api/v1/identity/verification-submissions/${id}',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -252,64 +205,25 @@ class _VerificationSubmissionClient implements VerificationSubmissionClient {
 
   @override
   Future<HttpResponse<VerificationSubmissionDto>>
-  putApiV1VerificationSubmissionIdResubmit({
+  putApiV1IdentityVerificationSubmissionsIdResubmit({
     required String id,
-    String? idNumber,
-    String? dateOfBirth,
-    String? expiryDate,
-    String? userNotes,
-    File? photoObverse,
-    File? photoReverse,
+    UpdateVerificationSubmissionDto? body,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final _data = FormData();
-    if (idNumber != null) {
-      _data.fields.add(MapEntry('IdNumber', idNumber));
-    }
-    if (dateOfBirth != null) {
-      _data.fields.add(MapEntry('DateOfBirth', dateOfBirth));
-    }
-    if (expiryDate != null) {
-      _data.fields.add(MapEntry('ExpiryDate', expiryDate));
-    }
-    if (userNotes != null) {
-      _data.fields.add(MapEntry('UserNotes', userNotes));
-    }
-    if (photoObverse != null) {
-      _data.files.add(
-        MapEntry(
-          'PhotoObverse',
-          MultipartFile.fromFileSync(
-            photoObverse.path,
-            filename: photoObverse.path.split(Platform.pathSeparator).last,
-          ),
-        ),
-      );
-    }
-    if (photoReverse != null) {
-      _data.files.add(
-        MapEntry(
-          'PhotoReverse',
-          MultipartFile.fromFileSync(
-            photoReverse.path,
-            filename: photoReverse.path.split(Platform.pathSeparator).last,
-          ),
-        ),
-      );
-    }
+    final _data = <String, dynamic>{};
+    _data.addAll(
+      body == null
+          ? <String, dynamic>{}
+          : await compute(serializeUpdateVerificationSubmissionDto, body),
+    );
     final _options = _setStreamType<HttpResponse<VerificationSubmissionDto>>(
-      Options(
-            method: 'PUT',
-            headers: _headers,
-            extra: _extra,
-            contentType: 'multipart/form-data',
-          )
+      Options(method: 'PUT', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/api/v1/VerificationSubmission/${id}/resubmit',
+            '/api/v1/identity/verification-submissions/${id}/resubmit',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -332,7 +246,7 @@ class _VerificationSubmissionClient implements VerificationSubmissionClient {
 
   @override
   Future<HttpResponse<VerificationSubmissionDto>>
-  putApiV1VerificationSubmissionIdReview({
+  putApiV1IdentityVerificationSubmissionsIdReview({
     required String id,
     ReviewVerificationSubmissionDto? body,
   }) async {
@@ -350,7 +264,7 @@ class _VerificationSubmissionClient implements VerificationSubmissionClient {
       Options(method: 'PUT', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/api/v1/VerificationSubmission/${id}/review',
+            '/api/v1/identity/verification-submissions/${id}/review',
             queryParameters: queryParameters,
             data: _data,
           )

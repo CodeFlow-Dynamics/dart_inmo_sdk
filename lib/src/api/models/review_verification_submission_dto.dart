@@ -11,14 +11,14 @@ part 'review_verification_submission_dto.g.dart';
 @JsonSerializable()
 class ReviewVerificationSubmissionDto {
   const ReviewVerificationSubmissionDto({
+    required this.statusCode,
     required this.reviewerNotes,
     required this.reviewerId,
-    this.statusCode,
   });
   
   factory ReviewVerificationSubmissionDto.fromJson(Map<String, Object?> json) => _$ReviewVerificationSubmissionDtoFromJson(json);
   
-  final int? statusCode;
+  final int statusCode;
   final String reviewerNotes;
   final String reviewerId;
 

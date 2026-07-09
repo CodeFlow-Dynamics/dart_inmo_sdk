@@ -6,13 +6,13 @@ import 'package:inmo_api_sdk/src/core/base_repo.dart';
 import 'package:inmo_api_sdk/src/core/result.dart';
 
 abstract class PasswordRepo {
-  Future<ResultApi<TokenDto>> postPasswordForgotEmail({
-    required String email,
+  Future<ResultApi<TokenDto>> postAuthPasswordsForgot({
+    EmailRequestDto? body,
   });
-  Future<ResultApi<String>> postPasswordReset({
+  Future<ResultApi<String>> postAuthPasswordsReset({
     ResetPasswordDto? body,
   });
-  Future<ResultApi<String>> postPasswordChange({
+  Future<ResultApi<String>> postAuthPasswordsChange({
     ChangePasswordDto? body,
   });
 }
@@ -23,33 +23,33 @@ class PasswordRepoImpl extends BaseRepo implements PasswordRepo {
   final InmoApi _api;
 
   @override
-  Future<ResultApi<TokenDto>> postPasswordForgotEmail({
-    required String email,
+  Future<ResultApi<TokenDto>> postAuthPasswordsForgot({
+    EmailRequestDto? body,
   }) {
     return executeApiCall<TokenDto>(
-      apiCall: () => _api.password.postApiV1PasswordForgotEmail(
-        email: email,
-      ),
-    );
-  }
-
-  @override
-  Future<ResultApi<String>> postPasswordReset({
-    ResetPasswordDto? body,
-  }) {
-    return executeApiCall<String>(
-      apiCall: () => _api.password.postApiV1PasswordReset(
+      apiCall: () => _api.password.postApiV1AuthPasswordsForgot(
         body: body,
       ),
     );
   }
 
   @override
-  Future<ResultApi<String>> postPasswordChange({
+  Future<ResultApi<String>> postAuthPasswordsReset({
+    ResetPasswordDto? body,
+  }) {
+    return executeApiCall<String>(
+      apiCall: () => _api.password.postApiV1AuthPasswordsReset(
+        body: body,
+      ),
+    );
+  }
+
+  @override
+  Future<ResultApi<String>> postAuthPasswordsChange({
     ChangePasswordDto? body,
   }) {
     return executeApiCall<String>(
-      apiCall: () => _api.password.postApiV1PasswordChange(
+      apiCall: () => _api.password.postApiV1AuthPasswordsChange(
         body: body,
       ),
     );

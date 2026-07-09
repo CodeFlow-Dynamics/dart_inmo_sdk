@@ -12,14 +12,14 @@ part 'reset_password_dto.g.dart';
 class ResetPasswordDto {
   const ResetPasswordDto({
     required this.email,
-    required this.tokenCode,
+    required this.verificationTokenCode,
     required this.newPassword,
   });
   
   factory ResetPasswordDto.fromJson(Map<String, Object?> json) => _$ResetPasswordDtoFromJson(json);
   
   final String email;
-  final String tokenCode;
+  final String verificationTokenCode;
   final String newPassword;
 
   Map<String, Object?> toJson() => _$ResetPasswordDtoToJson(this);

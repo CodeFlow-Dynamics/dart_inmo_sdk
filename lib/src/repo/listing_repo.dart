@@ -1,6 +1,8 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // Run: dart run scripts/generate_api_repos.dart
 
+import 'dart:io' show File;
+
 import 'package:inmo_api_sdk/src/api/export.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:inmo_api_sdk/src/core/base_repo.dart';
@@ -48,7 +50,11 @@ abstract class ListingRepo {
   });
   Future<ResultApi<ListingMediaDto>> postListingsIdMedia({
     required String id,
-    AddListingMediaDto? body,
+    File? file,
+    String? mediaType,
+    String? caption,
+    int? sortOrder,
+    String? displayRole,
   });
   Future<ResultApi<Unit>> deleteListingsIdMediaMediaId({
     required String id,
@@ -190,12 +196,20 @@ class ListingRepoImpl extends BaseRepo implements ListingRepo {
   @override
   Future<ResultApi<ListingMediaDto>> postListingsIdMedia({
     required String id,
-    AddListingMediaDto? body,
+    File? file,
+    String? mediaType,
+    String? caption,
+    int? sortOrder,
+    String? displayRole,
   }) {
     return executeApiCall<ListingMediaDto>(
       apiCall: () => _api.listing.postApiV1ListingsIdMedia(
         id: id,
-        body: body,
+        file: file,
+        mediaType: mediaType,
+        caption: caption,
+        sortOrder: sortOrder,
+        displayRole: displayRole,
       ),
     );
   }

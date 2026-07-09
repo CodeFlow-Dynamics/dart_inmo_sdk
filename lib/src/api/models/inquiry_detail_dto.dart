@@ -16,7 +16,7 @@ class InquiryDetailDto {
     required this.updatedAt,
     required this.listingId,
     required this.listingTitle,
-    required this.userId,
+    required this.authId,
     required this.inquirerName,
     required this.inquirerEmail,
     required this.inquirerPhone,
@@ -34,7 +34,7 @@ class InquiryDetailDto {
   final String updatedAt;
   final String listingId;
   final String listingTitle;
-  final String? userId;
+  final String? authId;
   final String inquirerName;
   final String inquirerEmail;
   final String? inquirerPhone;

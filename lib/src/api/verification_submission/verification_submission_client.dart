@@ -2,14 +2,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, unused_import, invalid_annotation_target, unnecessary_import
 
-import 'dart:convert';
-import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart' show compute;
 import 'package:retrofit/retrofit.dart';
 
+import '../models/add_verification_submission_dto.dart';
 import '../models/review_verification_submission_dto.dart';
+import '../models/update_verification_submission_dto.dart';
 import '../models/verification_submission_dto.dart';
 import '../models/verification_submission_dto_paginated_result.dart';
 import '../models/verification_submission_history_dto.dart';
@@ -20,9 +19,9 @@ part 'verification_submission_client.g.dart';
 abstract class VerificationSubmissionClient {
   factory VerificationSubmissionClient(Dio dio, {String? baseUrl}) = _VerificationSubmissionClient;
 
-  @GET('/api/v1/VerificationSubmission')
-  Future<HttpResponse<VerificationSubmissionDtoPaginatedResult>> getApiV1VerificationSubmission({
-    @Query('UserId') String? userId,
+  @GET('/api/v1/identity/verification-submissions')
+  Future<HttpResponse<VerificationSubmissionDtoPaginatedResult>> getApiV1IdentityVerificationSubmissions({
+    @Query('AuthId') String? authId,
     @Query('Status') int? status,
     @Query('ReviewerId') String? reviewerId,
     @Query('SortBy') String? sortBy,
@@ -32,48 +31,34 @@ abstract class VerificationSubmissionClient {
     @Query('Cursor') String? cursor,
   });
 
-  @MultiPart()
-  @POST('/api/v1/VerificationSubmission')
-  Future<HttpResponse<VerificationSubmissionDto>> postApiV1VerificationSubmission({
-    @Part(name: 'UserId') String? userId,
-    @Part(name: 'DocumentId') String? documentId,
-    @Part(name: 'IdNumber') String? idNumber,
-    @Part(name: 'DateOfBirth') String? dateOfBirth,
-    @Part(name: 'ExpiryDate') String? expiryDate,
-    @Part(name: 'UserNotes') String? userNotes,
-    @Part(name: 'PhotoObverse') File? photoObverse,
-    @Part(name: 'PhotoReverse') File? photoReverse,
+  @POST('/api/v1/identity/verification-submissions')
+  Future<HttpResponse<VerificationSubmissionDto>> postApiV1IdentityVerificationSubmissions({
+    @Body() AddVerificationSubmissionDto? body,
   });
 
-  @GET('/api/v1/VerificationSubmission/{id}/history')
-  Future<HttpResponse<List<VerificationSubmissionHistoryDto>>> getApiV1VerificationSubmissionIdHistory({
+  @GET('/api/v1/identity/verification-submissions/{id}/history')
+  Future<HttpResponse<List<VerificationSubmissionHistoryDto>>> getApiV1IdentityVerificationSubmissionsIdHistory({
     @Path('id') required String id,
   });
 
-  @GET('/api/v1/VerificationSubmission/{id}')
-  Future<HttpResponse<VerificationSubmissionDto>> getApiV1VerificationSubmissionId({
+  @GET('/api/v1/identity/verification-submissions/{id}')
+  Future<HttpResponse<VerificationSubmissionDto>> getApiV1IdentityVerificationSubmissionsId({
     @Path('id') required String id,
   });
 
-  @DELETE('/api/v1/VerificationSubmission/{id}')
-  Future<HttpResponse<void>> deleteApiV1VerificationSubmissionId({
+  @DELETE('/api/v1/identity/verification-submissions/{id}')
+  Future<HttpResponse<void>> deleteApiV1IdentityVerificationSubmissionsId({
     @Path('id') required String id,
   });
 
-  @MultiPart()
-  @PUT('/api/v1/VerificationSubmission/{id}/resubmit')
-  Future<HttpResponse<VerificationSubmissionDto>> putApiV1VerificationSubmissionIdResubmit({
+  @PUT('/api/v1/identity/verification-submissions/{id}/resubmit')
+  Future<HttpResponse<VerificationSubmissionDto>> putApiV1IdentityVerificationSubmissionsIdResubmit({
     @Path('id') required String id,
-    @Part(name: 'IdNumber') String? idNumber,
-    @Part(name: 'DateOfBirth') String? dateOfBirth,
-    @Part(name: 'ExpiryDate') String? expiryDate,
-    @Part(name: 'UserNotes') String? userNotes,
-    @Part(name: 'PhotoObverse') File? photoObverse,
-    @Part(name: 'PhotoReverse') File? photoReverse,
+    @Body() UpdateVerificationSubmissionDto? body,
   });
 
-  @PUT('/api/v1/VerificationSubmission/{id}/review')
-  Future<HttpResponse<VerificationSubmissionDto>> putApiV1VerificationSubmissionIdReview({
+  @PUT('/api/v1/identity/verification-submissions/{id}/review')
+  Future<HttpResponse<VerificationSubmissionDto>> putApiV1IdentityVerificationSubmissionsIdReview({
     @Path('id') required String id,
     @Body() ReviewVerificationSubmissionDto? body,
   });

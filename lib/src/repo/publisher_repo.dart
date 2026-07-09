@@ -9,7 +9,7 @@ import 'package:inmo_api_sdk/src/core/result.dart';
 abstract class PublisherRepo {
   Future<ResultApi<PublisherUserDtoPaginatedResult>> getPublishers({
     String? publisherTypeId,
-    String? userId,
+    String? clientUserId,
     String? sortBy,
     String? sortDirection,
     int? pageNumber,
@@ -26,9 +26,9 @@ abstract class PublisherRepo {
   Future<ResultApi<ListPublisherMembersResponseDto>> getPublishersIdMembers({
     required String id,
   });
-  Future<ResultApi<Unit>> deletePublishersIdMembersUserId({
+  Future<ResultApi<Unit>> deletePublishersIdMembersClientUserId({
     required String id,
-    required String userId,
+    required String clientUserId,
   });
   Future<ResultApi<PublisherUserDto>> putPublishersId({
     required String id,
@@ -67,7 +67,7 @@ class PublisherRepoImpl extends BaseRepo implements PublisherRepo {
   @override
   Future<ResultApi<PublisherUserDtoPaginatedResult>> getPublishers({
     String? publisherTypeId,
-    String? userId,
+    String? clientUserId,
     String? sortBy,
     String? sortDirection,
     int? pageNumber,
@@ -77,7 +77,7 @@ class PublisherRepoImpl extends BaseRepo implements PublisherRepo {
     return executeApiCall<PublisherUserDtoPaginatedResult>(
       apiCall: () => _api.publisher.getApiV1Publishers(
         publisherTypeId: publisherTypeId,
-        userId: userId,
+        clientUserId: clientUserId,
         sortBy: sortBy,
         sortDirection: sortDirection,
         pageNumber: pageNumber,
@@ -123,14 +123,14 @@ class PublisherRepoImpl extends BaseRepo implements PublisherRepo {
   }
 
   @override
-  Future<ResultApi<Unit>> deletePublishersIdMembersUserId({
+  Future<ResultApi<Unit>> deletePublishersIdMembersClientUserId({
     required String id,
-    required String userId,
+    required String clientUserId,
   }) {
     return executeApiCall<Unit>(
-      apiCall: () => _api.publisher.deleteApiV1PublishersIdMembersUserId(
+      apiCall: () => _api.publisher.deleteApiV1PublishersIdMembersClientUserId(
         id: id,
-        userId: userId,
+        clientUserId: clientUserId,
       ),
     );
   }

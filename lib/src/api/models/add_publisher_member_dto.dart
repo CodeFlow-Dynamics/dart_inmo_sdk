@@ -12,12 +12,12 @@ part 'add_publisher_member_dto.g.dart';
 class AddPublisherMemberDto {
   const AddPublisherMemberDto({
     required this.role,
-    this.userId,
+    this.clientUserId,
   });
   
   factory AddPublisherMemberDto.fromJson(Map<String, Object?> json) => _$AddPublisherMemberDtoFromJson(json);
   
-  final String? userId;
+  final String? clientUserId;
   final String role;
 
   Map<String, Object?> toJson() => _$AddPublisherMemberDtoToJson(this);

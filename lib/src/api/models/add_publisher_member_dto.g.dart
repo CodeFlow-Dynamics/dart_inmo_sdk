@@ -10,9 +10,12 @@ AddPublisherMemberDto _$AddPublisherMemberDtoFromJson(
   Map<String, dynamic> json,
 ) => AddPublisherMemberDto(
   role: json['role'] as String,
-  userId: json['userId'] as String?,
+  clientUserId: json['clientUserId'] as String?,
 );
 
 Map<String, dynamic> _$AddPublisherMemberDtoToJson(
   AddPublisherMemberDto instance,
-) => <String, dynamic>{'userId': instance.userId, 'role': instance.role};
+) => <String, dynamic>{
+  'clientUserId': instance.clientUserId,
+  'role': instance.role,
+};

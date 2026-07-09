@@ -9,7 +9,7 @@ part of 'bulk_add_documents_dto.dart';
 BulkAddDocumentsDto _$BulkAddDocumentsDtoFromJson(Map<String, dynamic> json) =>
     BulkAddDocumentsDto(
       documents: (json['documents'] as List<dynamic>)
-          .map((e) => BulkAddDocumentDto.fromJson(e as Map<String, dynamic>))
+          .map((e) => AddDocumentDto.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 

@@ -25,7 +25,7 @@ abstract class PublisherClient {
   @GET('/api/v1/publishers')
   Future<HttpResponse<PublisherUserDtoPaginatedResult>> getApiV1Publishers({
     @Query('PublisherTypeId') String? publisherTypeId,
-    @Query('UserId') String? userId,
+    @Query('ClientUserId') String? clientUserId,
     @Query('SortBy') String? sortBy,
     @Query('SortDirection') String? sortDirection,
     @Query('PageNumber') int? pageNumber,
@@ -49,10 +49,10 @@ abstract class PublisherClient {
     @Path('id') required String id,
   });
 
-  @DELETE('/api/v1/publishers/{id}/members/{userId}')
-  Future<HttpResponse<void>> deleteApiV1PublishersIdMembersUserId({
+  @DELETE('/api/v1/publishers/{id}/members/{clientUserId}')
+  Future<HttpResponse<void>> deleteApiV1PublishersIdMembersClientUserId({
     @Path('id') required String id,
-    @Path('userId') required String userId,
+    @Path('clientUserId') required String clientUserId,
   });
 
   @PUT('/api/v1/publishers/{id}')

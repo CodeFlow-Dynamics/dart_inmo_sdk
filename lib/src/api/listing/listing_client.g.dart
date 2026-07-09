@@ -309,20 +309,47 @@ class _ListingClient implements ListingClient {
   @override
   Future<HttpResponse<ListingMediaDto>> postApiV1ListingsIdMedia({
     required String id,
-    AddListingMediaDto? body,
+    File? file,
+    String? mediaType,
+    String? caption,
+    int? sortOrder,
+    String? displayRole,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(
-      body == null
-          ? <String, dynamic>{}
-          : await compute(serializeAddListingMediaDto, body),
-    );
+    final _data = FormData();
+    if (file != null) {
+      _data.files.add(
+        MapEntry(
+          'File',
+          MultipartFile.fromFileSync(
+            file.path,
+            filename: file.path.split(Platform.pathSeparator).last,
+          ),
+        ),
+      );
+    }
+    if (mediaType != null) {
+      _data.fields.add(MapEntry('MediaType', mediaType));
+    }
+    if (caption != null) {
+      _data.fields.add(MapEntry('Caption', caption));
+    }
+    if (sortOrder != null) {
+      _data.fields.add(MapEntry('SortOrder', sortOrder.toString()));
+    }
+    if (displayRole != null) {
+      _data.fields.add(MapEntry('DisplayRole', displayRole));
+    }
     final _options = _setStreamType<HttpResponse<ListingMediaDto>>(
-      Options(method: 'POST', headers: _headers, extra: _extra)
+      Options(
+            method: 'POST',
+            headers: _headers,
+            extra: _extra,
+            contentType: 'multipart/form-data',
+          )
           .compose(
             _dio.options,
             '/api/v1/listings/${id}/media',

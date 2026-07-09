@@ -2,11 +2,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, unused_import, invalid_annotation_target, unnecessary_import
 
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart' show compute;
 import 'package:retrofit/retrofit.dart';
 
-import '../models/add_listing_media_dto.dart';
 import '../models/create_listing_dto.dart';
 import '../models/listing_amenity_dto.dart';
 import '../models/listing_dto.dart';
@@ -78,10 +80,15 @@ abstract class ListingClient {
     @Body() SetListingAmenitiesDto? body,
   });
 
+  @MultiPart()
   @POST('/api/v1/listings/{id}/media')
   Future<HttpResponse<ListingMediaDto>> postApiV1ListingsIdMedia({
     @Path('id') required String id,
-    @Body() AddListingMediaDto? body,
+    @Part(name: 'File') File? file,
+    @Part(name: 'MediaType') String? mediaType,
+    @Part(name: 'Caption') String? caption,
+    @Part(name: 'SortOrder') int? sortOrder,
+    @Part(name: 'DisplayRole') String? displayRole,
   });
 
   @DELETE('/api/v1/listings/{id}/media/{mediaId}')

@@ -20,8 +20,8 @@ class _MasterClient implements MasterClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<SignUpUserWithEmailAndPasswordDto>> postApiV1Master({
-    AddMasterUserDto? body,
+  Future<HttpResponse<SignUpUserWithEmailDto>> postApiV1AuthBootstrapMaster({
+    SignUpAdminDto? body,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -31,28 +31,22 @@ class _MasterClient implements MasterClient {
     _data.addAll(
       body == null
           ? <String, dynamic>{}
-          : await compute(serializeAddMasterUserDto, body),
+          : await compute(serializeSignUpAdminDto, body),
     );
-    final _options =
-        _setStreamType<HttpResponse<SignUpUserWithEmailAndPasswordDto>>(
-          Options(method: 'POST', headers: _headers, extra: _extra)
-              .compose(
-                _dio.options,
-                '/api/v1/Master',
-                queryParameters: queryParameters,
-                data: _data,
-              )
-              .copyWith(
-                baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl),
-              ),
-        );
+    final _options = _setStreamType<HttpResponse<SignUpUserWithEmailDto>>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/api/v1/auth/bootstrap/master',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
     final _result = await _dio.fetch<Map<String, Object?>>(_options);
-    late SignUpUserWithEmailAndPasswordDto _value;
+    late SignUpUserWithEmailDto _value;
     try {
-      _value = await compute(
-        deserializeSignUpUserWithEmailAndPasswordDto,
-        _result.data!,
-      );
+      _value = await compute(deserializeSignUpUserWithEmailDto, _result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;

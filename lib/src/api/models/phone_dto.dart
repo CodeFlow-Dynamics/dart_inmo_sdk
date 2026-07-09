@@ -14,7 +14,7 @@ class PhoneDto {
     required this.id,
     required this.countryCode,
     required this.number,
-    required this.userId,
+    required this.clientUserId,
   });
   
   factory PhoneDto.fromJson(Map<String, Object?> json) => _$PhoneDtoFromJson(json);
@@ -22,7 +22,7 @@ class PhoneDto {
   final String id;
   final String countryCode;
   final String number;
-  final String userId;
+  final String clientUserId;
 
   Map<String, Object?> toJson() => _$PhoneDtoToJson(this);
 }
