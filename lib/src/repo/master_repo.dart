@@ -6,8 +6,8 @@ import 'package:inmo_api_sdk/src/core/base_repo.dart';
 import 'package:inmo_api_sdk/src/core/result.dart';
 
 abstract class MasterRepo {
-  Future<ResultApi<SignUpUserWithEmailAndPasswordDto>> postMaster({
-    AddMasterUserDto? body,
+  Future<ResultApi<SignUpUserWithEmailDto>> postAuthBootstrapMaster({
+    SignUpAdminDto? body,
   });
 }
 
@@ -17,11 +17,11 @@ class MasterRepoImpl extends BaseRepo implements MasterRepo {
   final InmoApi _api;
 
   @override
-  Future<ResultApi<SignUpUserWithEmailAndPasswordDto>> postMaster({
-    AddMasterUserDto? body,
+  Future<ResultApi<SignUpUserWithEmailDto>> postAuthBootstrapMaster({
+    SignUpAdminDto? body,
   }) {
-    return executeApiCall<SignUpUserWithEmailAndPasswordDto>(
-      apiCall: () => _api.master.postApiV1Master(
+    return executeApiCall<SignUpUserWithEmailDto>(
+      apiCall: () => _api.master.postApiV1AuthBootstrapMaster(
         body: body,
       ),
     );

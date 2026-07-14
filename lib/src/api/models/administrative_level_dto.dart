@@ -14,7 +14,7 @@ class AdministrativeLevelDto {
     required this.id,
     required this.createdAt,
     required this.updatedAt,
-    required this.countryId,
+    required this.country,
     required this.name,
     required this.code,
     required this.sortOrder,
@@ -25,7 +25,7 @@ class AdministrativeLevelDto {
   final String id;
   final String createdAt;
   final String updatedAt;
-  final String countryId;
+  final String country;
   final String name;
   final String? code;
   final int? sortOrder;

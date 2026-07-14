@@ -14,8 +14,7 @@ class PublisherUserDto {
     required this.id,
     required this.createdAt,
     required this.updatedAt,
-    required this.publisherTypeId,
-    required this.publisherTypeName,
+    required this.type,
     required this.name,
     required this.description,
     required this.status,
@@ -26,8 +25,7 @@ class PublisherUserDto {
   final String id;
   final String createdAt;
   final String updatedAt;
-  final String publisherTypeId;
-  final String publisherTypeName;
+  final String type;
   final String name;
   final String? description;
   final String status;

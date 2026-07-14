@@ -13,7 +13,7 @@ class ListingOfferSummaryDto {
   const ListingOfferSummaryDto({
     required this.offerType,
     required this.price,
-    required this.currencyId,
+    required this.currency,
     required this.rentPeriod,
     required this.status,
   });
@@ -22,7 +22,7 @@ class ListingOfferSummaryDto {
   
   final String offerType;
   final double price;
-  final String currencyId;
+  final String currency;
   final String? rentPeriod;
   final String status;
 

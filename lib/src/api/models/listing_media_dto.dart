@@ -12,7 +12,7 @@ part 'listing_media_dto.g.dart';
 class ListingMediaDto {
   const ListingMediaDto({
     required this.id,
-    required this.url,
+    required this.mediaFileId,
     required this.mediaType,
     required this.caption,
     required this.sortOrder,
@@ -22,7 +22,7 @@ class ListingMediaDto {
   factory ListingMediaDto.fromJson(Map<String, Object?> json) => _$ListingMediaDtoFromJson(json);
   
   final String id;
-  final String url;
+  final String mediaFileId;
   final String mediaType;
   final String? caption;
   final int sortOrder;

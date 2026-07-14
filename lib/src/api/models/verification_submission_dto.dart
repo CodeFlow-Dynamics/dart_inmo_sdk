@@ -14,19 +14,13 @@ class VerificationSubmissionDto {
     required this.id,
     required this.createdAt,
     required this.updatedAt,
-    required this.userId,
-    required this.documentId,
-    required this.idNumber,
-    required this.dateOfBirth,
-    required this.expiryDate,
-    required this.photoObverseLink,
-    required this.photoReverseLink,
+    required this.clientUserId,
+    required this.identificationId,
     required this.status,
     required this.userNotes,
     required this.reviewerNotes,
     required this.reviewerId,
     required this.reviewedAt,
-    required this.identificationId,
   });
   
   factory VerificationSubmissionDto.fromJson(Map<String, Object?> json) => _$VerificationSubmissionDtoFromJson(json);
@@ -34,19 +28,13 @@ class VerificationSubmissionDto {
   final String id;
   final String createdAt;
   final String updatedAt;
-  final String userId;
-  final String documentId;
-  final String idNumber;
-  final String dateOfBirth;
-  final String expiryDate;
-  final String? photoObverseLink;
-  final String? photoReverseLink;
+  final String clientUserId;
+  final String identificationId;
   final String status;
   final String userNotes;
   final String reviewerNotes;
   final String? reviewerId;
   final String? reviewedAt;
-  final String? identificationId;
 
   Map<String, Object?> toJson() => _$VerificationSubmissionDtoToJson(this);
 }

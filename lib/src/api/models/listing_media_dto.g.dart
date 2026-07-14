@@ -9,7 +9,7 @@ part of 'listing_media_dto.dart';
 ListingMediaDto _$ListingMediaDtoFromJson(Map<String, dynamic> json) =>
     ListingMediaDto(
       id: json['id'] as String,
-      url: json['url'] as String,
+      mediaFileId: json['mediaFileId'] as String,
       mediaType: json['mediaType'] as String,
       caption: json['caption'] as String?,
       sortOrder: (json['sortOrder'] as num).toInt(),
@@ -19,7 +19,7 @@ ListingMediaDto _$ListingMediaDtoFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$ListingMediaDtoToJson(ListingMediaDto instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'url': instance.url,
+      'mediaFileId': instance.mediaFileId,
       'mediaType': instance.mediaType,
       'caption': instance.caption,
       'sortOrder': instance.sortOrder,

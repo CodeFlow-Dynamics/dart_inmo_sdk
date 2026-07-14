@@ -18,7 +18,7 @@ abstract class AdministrativeDivisionClient {
 
   @GET('/api/v1/administrative-divisions')
   Future<HttpResponse<AdministrativeDivisionDtoPaginatedResult>> getApiV1AdministrativeDivisions({
-    @Query('CountryId') String? countryId,
+    @Query('Country') String? country,
     @Query('ParentId') String? parentId,
     @Query('LevelId') String? levelId,
     @Query('SortBy') String? sortBy,
@@ -30,7 +30,7 @@ abstract class AdministrativeDivisionClient {
 
   @GET('/api/v1/administrative-divisions/search')
   Future<HttpResponse<SearchAdministrativeDivisionsByNameResultDto>> getApiV1AdministrativeDivisionsSearch({
-    @Query('countryId') String? countryId,
+    @Query('country') String? country,
     @Query('name') String? name,
   });
 

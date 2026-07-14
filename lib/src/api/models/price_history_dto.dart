@@ -13,7 +13,7 @@ class PriceHistoryDto {
   const PriceHistoryDto({
     required this.id,
     required this.price,
-    required this.currencyId,
+    required this.currency,
     required this.createdAt,
   });
   
@@ -21,7 +21,7 @@ class PriceHistoryDto {
   
   final String id;
   final double price;
-  final String currencyId;
+  final String currency;
   final String createdAt;
 
   Map<String, Object?> toJson() => _$PriceHistoryDtoToJson(this);

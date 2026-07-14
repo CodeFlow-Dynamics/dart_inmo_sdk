@@ -1,6 +1,8 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // Run: dart run scripts/generate_api_repos.dart
 
+import 'dart:io' show File;
+
 import 'package:inmo_api_sdk/src/api/export.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:inmo_api_sdk/src/core/base_repo.dart';
@@ -9,13 +11,13 @@ import 'package:inmo_api_sdk/src/core/result.dart';
 abstract class ListingRepo {
   Future<ResultApi<ListingSummaryDtoPaginatedResult>> getListings({
     String? publisherId,
-    String? inmoCategoryId,
-    String? inmoTypeId,
+    String? propertyCategory,
+    String? propertyType,
     String? administrativeDivisionId,
     String? offerType,
     double? minPrice,
     double? maxPrice,
-    String? currencyId,
+    String? currency,
     String? sortBy,
     String? sortDirection,
     int? pageNumber,
@@ -35,20 +37,16 @@ abstract class ListingRepo {
   Future<ResultApi<ListingDto>> getListingsId({
     required String id,
   });
-  Future<ResultApi<ListingDto>> putListingsIdLocation({
-    required String id,
-    SetListingLocationDto? body,
-  });
   Future<ResultApi<Unit>> postListingsIdViews({
     required String id,
   });
-  Future<ResultApi<List<ListingAmenityDto>>> putListingsIdAmenities({
-    required String id,
-    SetListingAmenitiesDto? body,
-  });
   Future<ResultApi<ListingMediaDto>> postListingsIdMedia({
     required String id,
-    AddListingMediaDto? body,
+    File? file,
+    String? mediaType,
+    String? caption,
+    int? sortOrder,
+    String? displayRole,
   });
   Future<ResultApi<Unit>> deleteListingsIdMediaMediaId({
     required String id,
@@ -72,13 +70,13 @@ class ListingRepoImpl extends BaseRepo implements ListingRepo {
   @override
   Future<ResultApi<ListingSummaryDtoPaginatedResult>> getListings({
     String? publisherId,
-    String? inmoCategoryId,
-    String? inmoTypeId,
+    String? propertyCategory,
+    String? propertyType,
     String? administrativeDivisionId,
     String? offerType,
     double? minPrice,
     double? maxPrice,
-    String? currencyId,
+    String? currency,
     String? sortBy,
     String? sortDirection,
     int? pageNumber,
@@ -88,13 +86,13 @@ class ListingRepoImpl extends BaseRepo implements ListingRepo {
     return executeApiCall<ListingSummaryDtoPaginatedResult>(
       apiCall: () => _api.listing.getApiV1Listings(
         publisherId: publisherId,
-        inmoCategoryId: inmoCategoryId,
-        inmoTypeId: inmoTypeId,
+        propertyCategory: propertyCategory,
+        propertyType: propertyType,
         administrativeDivisionId: administrativeDivisionId,
         offerType: offerType,
         minPrice: minPrice,
         maxPrice: maxPrice,
-        currencyId: currencyId,
+        currency: currency,
         sortBy: sortBy,
         sortDirection: sortDirection,
         pageNumber: pageNumber,
@@ -151,19 +149,6 @@ class ListingRepoImpl extends BaseRepo implements ListingRepo {
   }
 
   @override
-  Future<ResultApi<ListingDto>> putListingsIdLocation({
-    required String id,
-    SetListingLocationDto? body,
-  }) {
-    return executeApiCall<ListingDto>(
-      apiCall: () => _api.listing.putApiV1ListingsIdLocation(
-        id: id,
-        body: body,
-      ),
-    );
-  }
-
-  @override
   Future<ResultApi<Unit>> postListingsIdViews({
     required String id,
   }) {
@@ -175,27 +160,22 @@ class ListingRepoImpl extends BaseRepo implements ListingRepo {
   }
 
   @override
-  Future<ResultApi<List<ListingAmenityDto>>> putListingsIdAmenities({
-    required String id,
-    SetListingAmenitiesDto? body,
-  }) {
-    return executeApiCall<List<ListingAmenityDto>>(
-      apiCall: () => _api.listing.putApiV1ListingsIdAmenities(
-        id: id,
-        body: body,
-      ),
-    );
-  }
-
-  @override
   Future<ResultApi<ListingMediaDto>> postListingsIdMedia({
     required String id,
-    AddListingMediaDto? body,
+    File? file,
+    String? mediaType,
+    String? caption,
+    int? sortOrder,
+    String? displayRole,
   }) {
     return executeApiCall<ListingMediaDto>(
       apiCall: () => _api.listing.postApiV1ListingsIdMedia(
         id: id,
-        body: body,
+        file: file,
+        mediaType: mediaType,
+        caption: caption,
+        sortOrder: sortOrder,
+        displayRole: displayRole,
       ),
     );
   }

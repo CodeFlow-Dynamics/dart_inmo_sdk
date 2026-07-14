@@ -11,16 +11,16 @@ part 'update_offer_dto.g.dart';
 @JsonSerializable()
 class UpdateOfferDto {
   const UpdateOfferDto({
-    required this.price,
-    required this.currencyId,
-    required this.rentPeriod,
-    required this.expiresAt,
+    required this.currency,
+    this.price,
+    this.rentPeriod,
+    this.expiresAt,
   });
   
   factory UpdateOfferDto.fromJson(Map<String, Object?> json) => _$UpdateOfferDtoFromJson(json);
   
-  final double price;
-  final String currencyId;
+  final double? price;
+  final String currency;
   final String? rentPeriod;
   final DateTime? expiresAt;
 

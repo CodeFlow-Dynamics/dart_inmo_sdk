@@ -2,19 +2,18 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, unused_import, invalid_annotation_target, unnecessary_import
 
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart' show compute;
 import 'package:retrofit/retrofit.dart';
 
-import '../models/add_listing_media_dto.dart';
 import '../models/create_listing_dto.dart';
-import '../models/listing_amenity_dto.dart';
 import '../models/listing_dto.dart';
 import '../models/listing_media_dto.dart';
 import '../models/listing_summary_dto_paginated_result.dart';
 import '../models/reorder_listing_media_dto.dart';
-import '../models/set_listing_amenities_dto.dart';
-import '../models/set_listing_location_dto.dart';
 import '../models/update_listing_dto.dart';
 
 part 'listing_client.g.dart';
@@ -26,13 +25,13 @@ abstract class ListingClient {
   @GET('/api/v1/listings')
   Future<HttpResponse<ListingSummaryDtoPaginatedResult>> getApiV1Listings({
     @Query('PublisherId') String? publisherId,
-    @Query('InmoCategoryId') String? inmoCategoryId,
-    @Query('InmoTypeId') String? inmoTypeId,
+    @Query('PropertyCategory') String? propertyCategory,
+    @Query('PropertyType') String? propertyType,
     @Query('AdministrativeDivisionId') String? administrativeDivisionId,
     @Query('OfferType') String? offerType,
     @Query('MinPrice') double? minPrice,
     @Query('MaxPrice') double? maxPrice,
-    @Query('CurrencyId') String? currencyId,
+    @Query('Currency') String? currency,
     @Query('SortBy') String? sortBy,
     @Query('SortDirection') String? sortDirection,
     @Query('PageNumber') int? pageNumber,
@@ -61,27 +60,20 @@ abstract class ListingClient {
     @Path('id') required String id,
   });
 
-  @PUT('/api/v1/listings/{id}/location')
-  Future<HttpResponse<ListingDto>> putApiV1ListingsIdLocation({
-    @Path('id') required String id,
-    @Body() SetListingLocationDto? body,
-  });
-
   @POST('/api/v1/listings/{id}/views')
   Future<HttpResponse<void>> postApiV1ListingsIdViews({
     @Path('id') required String id,
   });
 
-  @PUT('/api/v1/listings/{id}/amenities')
-  Future<HttpResponse<List<ListingAmenityDto>>> putApiV1ListingsIdAmenities({
-    @Path('id') required String id,
-    @Body() SetListingAmenitiesDto? body,
-  });
-
+  @MultiPart()
   @POST('/api/v1/listings/{id}/media')
   Future<HttpResponse<ListingMediaDto>> postApiV1ListingsIdMedia({
     @Path('id') required String id,
-    @Body() AddListingMediaDto? body,
+    @Part(name: 'File') File? file,
+    @Part(name: 'MediaType') String? mediaType,
+    @Part(name: 'Caption') String? caption,
+    @Part(name: 'SortOrder') int? sortOrder,
+    @Part(name: 'DisplayRole') String? displayRole,
   });
 
   @DELETE('/api/v1/listings/{id}/media/{mediaId}')

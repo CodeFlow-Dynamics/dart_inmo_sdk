@@ -11,16 +11,12 @@ part 'update_listing_dto.g.dart';
 @JsonSerializable()
 class UpdateListingDto {
   const UpdateListingDto({
-    required this.inmoCategoryId,
-    required this.inmoTypeId,
     required this.title,
     required this.description,
   });
   
   factory UpdateListingDto.fromJson(Map<String, Object?> json) => _$UpdateListingDtoFromJson(json);
   
-  final String inmoCategoryId;
-  final String inmoTypeId;
   final String title;
   final String? description;
 

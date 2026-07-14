@@ -9,8 +9,7 @@ part of 'create_listing_dto.dart';
 CreateListingDto _$CreateListingDtoFromJson(Map<String, dynamic> json) =>
     CreateListingDto(
       publisherId: json['publisherId'] as String,
-      inmoCategoryId: json['inmoCategoryId'] as String,
-      inmoTypeId: json['inmoTypeId'] as String,
+      propertyId: json['propertyId'] as String,
       title: json['title'] as String,
       description: json['description'] as String?,
     );
@@ -18,8 +17,7 @@ CreateListingDto _$CreateListingDtoFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$CreateListingDtoToJson(CreateListingDto instance) =>
     <String, dynamic>{
       'publisherId': instance.publisherId,
-      'inmoCategoryId': instance.inmoCategoryId,
-      'inmoTypeId': instance.inmoTypeId,
+      'propertyId': instance.propertyId,
       'title': instance.title,
       'description': instance.description,
     };

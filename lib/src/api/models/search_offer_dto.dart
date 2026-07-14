@@ -13,7 +13,7 @@ class SearchOfferDto {
   const SearchOfferDto({
     required this.type,
     required this.price,
-    required this.currencyId,
+    required this.currency,
     required this.status,
   });
   
@@ -21,7 +21,7 @@ class SearchOfferDto {
   
   final String type;
   final double price;
-  final String currencyId;
+  final String currency;
   final String status;
 
   Map<String, Object?> toJson() => _$SearchOfferDtoToJson(this);

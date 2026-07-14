@@ -14,11 +14,12 @@ class AdministrativeDivisionDto {
     required this.id,
     required this.createdAt,
     required this.updatedAt,
-    required this.countryId,
+    required this.country,
     required this.parentId,
     required this.levelId,
     required this.name,
     required this.code,
+    required this.postalCode,
   });
   
   factory AdministrativeDivisionDto.fromJson(Map<String, Object?> json) => _$AdministrativeDivisionDtoFromJson(json);
@@ -26,11 +27,12 @@ class AdministrativeDivisionDto {
   final String id;
   final String createdAt;
   final String updatedAt;
-  final String countryId;
+  final String country;
   final String? parentId;
   final String? levelId;
   final String name;
   final String? code;
+  final String? postalCode;
 
   Map<String, Object?> toJson() => _$AdministrativeDivisionDtoToJson(this);
 }

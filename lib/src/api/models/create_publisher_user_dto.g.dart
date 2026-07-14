@@ -9,7 +9,7 @@ part of 'create_publisher_user_dto.dart';
 CreatePublisherUserDto _$CreatePublisherUserDtoFromJson(
   Map<String, dynamic> json,
 ) => CreatePublisherUserDto(
-  publisherTypeId: json['publisherTypeId'] as String,
+  type: json['type'] as String,
   name: json['name'] as String,
   description: json['description'] as String?,
 );
@@ -17,7 +17,7 @@ CreatePublisherUserDto _$CreatePublisherUserDtoFromJson(
 Map<String, dynamic> _$CreatePublisherUserDtoToJson(
   CreatePublisherUserDto instance,
 ) => <String, dynamic>{
-  'publisherTypeId': instance.publisherTypeId,
+  'type': instance.type,
   'name': instance.name,
   'description': instance.description,
 };

@@ -16,6 +16,6 @@ abstract class AdministrativeLevelClient {
 
   @GET('/api/v1/administrative-levels')
   Future<HttpResponse<ListAdministrativeLevelsResponseDto>> getApiV1AdministrativeLevels({
-    @Query('countryId') String? countryId,
+    @Query('country') String? country,
   });
 }

@@ -14,8 +14,8 @@ class DocumentDto {
     required this.id,
     required this.createdAt,
     required this.updatedAt,
-    required this.documentTypeId,
-    required this.countryId,
+    required this.documentType,
+    required this.country,
     required this.validationPattern,
   });
   
@@ -24,8 +24,8 @@ class DocumentDto {
   final String id;
   final String createdAt;
   final String updatedAt;
-  final String documentTypeId;
-  final String countryId;
+  final String documentType;
+  final String country;
   final String validationPattern;
 
   Map<String, Object?> toJson() => _$DocumentDtoToJson(this);

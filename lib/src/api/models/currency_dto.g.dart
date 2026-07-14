@@ -7,7 +7,6 @@ part of 'currency_dto.dart';
 // **************************************************************************
 
 CurrencyDto _$CurrencyDtoFromJson(Map<String, dynamic> json) => CurrencyDto(
-  id: json['id'] as String,
   code: json['code'] as String,
   symbol: json['symbol'] as String,
   decimalPlaces: (json['decimalPlaces'] as num).toInt(),
@@ -16,7 +15,6 @@ CurrencyDto _$CurrencyDtoFromJson(Map<String, dynamic> json) => CurrencyDto(
 
 Map<String, dynamic> _$CurrencyDtoToJson(CurrencyDto instance) =>
     <String, dynamic>{
-      'id': instance.id,
       'code': instance.code,
       'symbol': instance.symbol,
       'decimalPlaces': instance.decimalPlaces,

@@ -24,8 +24,8 @@ abstract class PublisherClient {
 
   @GET('/api/v1/publishers')
   Future<HttpResponse<PublisherUserDtoPaginatedResult>> getApiV1Publishers({
-    @Query('PublisherTypeId') String? publisherTypeId,
-    @Query('UserId') String? userId,
+    @Query('Type') String? type,
+    @Query('ClientUserId') String? clientUserId,
     @Query('SortBy') String? sortBy,
     @Query('SortDirection') String? sortDirection,
     @Query('PageNumber') int? pageNumber,
@@ -49,10 +49,10 @@ abstract class PublisherClient {
     @Path('id') required String id,
   });
 
-  @DELETE('/api/v1/publishers/{id}/members/{userId}')
-  Future<HttpResponse<void>> deleteApiV1PublishersIdMembersUserId({
+  @DELETE('/api/v1/publishers/{id}/members/{clientUserId}')
+  Future<HttpResponse<void>> deleteApiV1PublishersIdMembersClientUserId({
     @Path('id') required String id,
-    @Path('userId') required String userId,
+    @Path('clientUserId') required String clientUserId,
   });
 
   @PUT('/api/v1/publishers/{id}')
@@ -75,14 +75,14 @@ abstract class PublisherClient {
   @GET('/api/v1/publishers/{id}/listings')
   Future<HttpResponse<ListingSummaryDtoPaginatedResult>> getApiV1PublishersIdListings({
     @Path('id') required String id,
-    @Query('InmoCategoryId') String? inmoCategoryId,
-    @Query('InmoTypeId') String? inmoTypeId,
+    @Query('PropertyCategory') String? propertyCategory,
+    @Query('PropertyType') String? propertyType,
     @Query('AdministrativeDivisionId') String? administrativeDivisionId,
     @Query('OfferType') String? offerType,
     @Query('OfferStatus') String? offerStatus,
     @Query('MinPrice') double? minPrice,
     @Query('MaxPrice') double? maxPrice,
-    @Query('CurrencyId') String? currencyId,
+    @Query('Currency') String? currency,
     @Query('SortBy') String? sortBy,
     @Query('SortDirection') String? sortDirection,
     @Query('PageNumber') int? pageNumber,

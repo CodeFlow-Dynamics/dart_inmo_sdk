@@ -14,9 +14,9 @@ class FavouriteSearchFilters {
     required this.offerType,
     required this.minPrice,
     required this.maxPrice,
-    required this.currencyId,
-    required this.inmoCategoryId,
-    required this.inmoTypeId,
+    required this.currency,
+    required this.propertyCategory,
+    required this.propertyType,
     required this.administrativeDivisionId,
     required this.minBedrooms,
     required this.maxBedrooms,
@@ -41,9 +41,9 @@ class FavouriteSearchFilters {
   final String? offerType;
   final double? minPrice;
   final double? maxPrice;
-  final String? currencyId;
-  final String? inmoCategoryId;
-  final String? inmoTypeId;
+  final String? currency;
+  final String? propertyCategory;
+  final String? propertyType;
   final String? administrativeDivisionId;
   final int? minBedrooms;
   final int? maxBedrooms;

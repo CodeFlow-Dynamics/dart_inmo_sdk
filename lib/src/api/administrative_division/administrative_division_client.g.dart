@@ -22,7 +22,7 @@ class _AdministrativeDivisionClient implements AdministrativeDivisionClient {
   @override
   Future<HttpResponse<AdministrativeDivisionDtoPaginatedResult>>
   getApiV1AdministrativeDivisions({
-    String? countryId,
+    String? country,
     String? parentId,
     String? levelId,
     String? sortBy,
@@ -33,7 +33,7 @@ class _AdministrativeDivisionClient implements AdministrativeDivisionClient {
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
-      r'CountryId': countryId,
+      r'Country': country,
       r'ParentId': parentId,
       r'LevelId': levelId,
       r'SortBy': sortBy,
@@ -75,13 +75,10 @@ class _AdministrativeDivisionClient implements AdministrativeDivisionClient {
 
   @override
   Future<HttpResponse<SearchAdministrativeDivisionsByNameResultDto>>
-  getApiV1AdministrativeDivisionsSearch({
-    String? countryId,
-    String? name,
-  }) async {
+  getApiV1AdministrativeDivisionsSearch({String? country, String? name}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
-      r'countryId': countryId,
+      r'country': country,
       r'name': name,
     };
     queryParameters.removeWhere((k, v) => v == null);

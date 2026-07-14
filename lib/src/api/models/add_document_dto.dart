@@ -11,15 +11,15 @@ part 'add_document_dto.g.dart';
 @JsonSerializable()
 class AddDocumentDto {
   const AddDocumentDto({
-    required this.documentTypeId,
-    required this.countryId,
+    required this.documentType,
+    required this.country,
     required this.validationPattern,
   });
   
   factory AddDocumentDto.fromJson(Map<String, Object?> json) => _$AddDocumentDtoFromJson(json);
   
-  final String documentTypeId;
-  final String countryId;
+  final String documentType;
+  final String country;
   final String validationPattern;
 
   Map<String, Object?> toJson() => _$AddDocumentDtoToJson(this);

@@ -9,7 +9,7 @@ part of 'device_dto.dart';
 DeviceDto _$DeviceDtoFromJson(Map<String, dynamic> json) => DeviceDto(
   deviceId: json['deviceId'] as String,
   deviceName: json['deviceName'] as String,
-  deviceFingerprint: json['deviceFingerprint'] as String,
+  deviceFingerprintHash: json['deviceFingerprintHash'] as String,
   lastUsedAt: DateTime.parse(json['lastUsedAt'] as String),
   createdAt: DateTime.parse(json['createdAt'] as String),
 );
@@ -17,7 +17,7 @@ DeviceDto _$DeviceDtoFromJson(Map<String, dynamic> json) => DeviceDto(
 Map<String, dynamic> _$DeviceDtoToJson(DeviceDto instance) => <String, dynamic>{
   'deviceId': instance.deviceId,
   'deviceName': instance.deviceName,
-  'deviceFingerprint': instance.deviceFingerprint,
+  'deviceFingerprintHash': instance.deviceFingerprintHash,
   'lastUsedAt': instance.lastUsedAt.toIso8601String(),
   'createdAt': instance.createdAt.toIso8601String(),
 };

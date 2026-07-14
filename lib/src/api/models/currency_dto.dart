@@ -11,7 +11,6 @@ part 'currency_dto.g.dart';
 @JsonSerializable()
 class CurrencyDto {
   const CurrencyDto({
-    required this.id,
     required this.code,
     required this.symbol,
     required this.decimalPlaces,
@@ -20,7 +19,6 @@ class CurrencyDto {
   
   factory CurrencyDto.fromJson(Map<String, Object?> json) => _$CurrencyDtoFromJson(json);
   
-  final String id;
   final String code;
   final String symbol;
   final int decimalPlaces;

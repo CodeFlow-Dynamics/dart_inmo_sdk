@@ -10,8 +10,8 @@ DocumentDto _$DocumentDtoFromJson(Map<String, dynamic> json) => DocumentDto(
   id: json['id'] as String,
   createdAt: json['createdAt'] as String,
   updatedAt: json['updatedAt'] as String,
-  documentTypeId: json['documentTypeId'] as String,
-  countryId: json['countryId'] as String,
+  documentType: json['documentType'] as String,
+  country: json['country'] as String,
   validationPattern: json['validationPattern'] as String,
 );
 
@@ -20,7 +20,7 @@ Map<String, dynamic> _$DocumentDtoToJson(DocumentDto instance) =>
       'id': instance.id,
       'createdAt': instance.createdAt,
       'updatedAt': instance.updatedAt,
-      'documentTypeId': instance.documentTypeId,
-      'countryId': instance.countryId,
+      'documentType': instance.documentType,
+      'country': instance.country,
       'validationPattern': instance.validationPattern,
     };

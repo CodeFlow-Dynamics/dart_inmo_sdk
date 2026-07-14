@@ -8,8 +8,8 @@ part of 'update_offer_dto.dart';
 
 UpdateOfferDto _$UpdateOfferDtoFromJson(Map<String, dynamic> json) =>
     UpdateOfferDto(
-      price: (json['price'] as num).toDouble(),
-      currencyId: json['currencyId'] as String,
+      currency: json['currency'] as String,
+      price: (json['price'] as num?)?.toDouble(),
       rentPeriod: json['rentPeriod'] as String?,
       expiresAt: json['expiresAt'] == null
           ? null
@@ -19,7 +19,7 @@ UpdateOfferDto _$UpdateOfferDtoFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$UpdateOfferDtoToJson(UpdateOfferDto instance) =>
     <String, dynamic>{
       'price': instance.price,
-      'currencyId': instance.currencyId,
+      'currency': instance.currency,
       'rentPeriod': instance.rentPeriod,
       'expiresAt': instance.expiresAt?.toIso8601String(),
     };

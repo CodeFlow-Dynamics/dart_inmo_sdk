@@ -12,8 +12,7 @@ part 'create_listing_dto.g.dart';
 class CreateListingDto {
   const CreateListingDto({
     required this.publisherId,
-    required this.inmoCategoryId,
-    required this.inmoTypeId,
+    required this.propertyId,
     required this.title,
     required this.description,
   });
@@ -21,8 +20,7 @@ class CreateListingDto {
   factory CreateListingDto.fromJson(Map<String, Object?> json) => _$CreateListingDtoFromJson(json);
   
   final String publisherId;
-  final String inmoCategoryId;
-  final String inmoTypeId;
+  final String propertyId;
   final String title;
   final String? description;
 

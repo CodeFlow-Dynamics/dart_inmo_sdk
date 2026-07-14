@@ -7,6 +7,7 @@ import 'package:flutter/foundation.dart' show compute;
 import 'package:retrofit/retrofit.dart';
 
 import '../models/change_password_dto.dart';
+import '../models/email_request_dto.dart';
 import '../models/reset_password_dto.dart';
 import '../models/token_dto.dart';
 
@@ -16,18 +17,18 @@ part 'password_client.g.dart';
 abstract class PasswordClient {
   factory PasswordClient(Dio dio, {String? baseUrl}) = _PasswordClient;
 
-  @POST('/api/v1/Password/forgot/{email}')
-  Future<HttpResponse<TokenDto>> postApiV1PasswordForgotEmail({
-    @Path('email') required String email,
+  @POST('/api/v1/auth/passwords/forgot')
+  Future<HttpResponse<TokenDto>> postApiV1AuthPasswordsForgot({
+    @Body() EmailRequestDto? body,
   });
 
-  @POST('/api/v1/Password/reset')
-  Future<HttpResponse<String>> postApiV1PasswordReset({
+  @POST('/api/v1/auth/passwords/reset')
+  Future<HttpResponse<String>> postApiV1AuthPasswordsReset({
     @Body() ResetPasswordDto? body,
   });
 
-  @POST('/api/v1/Password/change')
-  Future<HttpResponse<String>> postApiV1PasswordChange({
+  @POST('/api/v1/auth/passwords/change')
+  Future<HttpResponse<String>> postApiV1AuthPasswordsChange({
     @Body() ChangePasswordDto? body,
   });
 }

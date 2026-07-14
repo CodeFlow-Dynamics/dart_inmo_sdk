@@ -16,7 +16,7 @@ class ListingOfferDto {
     required this.id,
     required this.offerType,
     required this.price,
-    required this.currencyId,
+    required this.currency,
     required this.rentPeriod,
     required this.status,
     required this.publishedAt,
@@ -32,7 +32,7 @@ class ListingOfferDto {
   final String id;
   final String offerType;
   final double price;
-  final String currencyId;
+  final String currency;
   final String? rentPeriod;
   final String status;
   final String? publishedAt;

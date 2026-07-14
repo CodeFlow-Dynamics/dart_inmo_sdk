@@ -7,8 +7,9 @@ import 'package:flutter/foundation.dart' show compute;
 import 'package:retrofit/retrofit.dart';
 
 import '../models/list_devices_response_dto.dart';
+import '../models/login_client_with_google_dto.dart';
 import '../models/login_response_dto.dart';
-import '../models/login_user_with_email_and_password_dto.dart';
+import '../models/login_user_with_email_dto.dart';
 import '../models/refresh_token_dto.dart';
 import '../models/refresh_token_response_dto.dart';
 
@@ -18,33 +19,34 @@ part 'auth_client.g.dart';
 abstract class AuthClient {
   factory AuthClient(Dio dio, {String? baseUrl}) = _AuthClient;
 
-  @POST('/api/v1/Auth/login/email')
-  Future<HttpResponse<LoginResponseDto>> postApiV1AuthLoginEmail({
-    @Body() LoginUserWithEmailAndPasswordDto? body,
+  @POST('/api/v1/auth/sessions/clients/email')
+  Future<HttpResponse<LoginResponseDto>> postApiV1AuthSessionsClientsEmail({
+    @Body() LoginUserWithEmailDto? body,
   });
 
-  @POST('/api/v1/Auth/login/google/{idToken}')
-  Future<HttpResponse<LoginResponseDto>> postApiV1AuthLoginGoogleIdToken({
-    @Path('idToken') required String idToken,
-    @Query('deviceName') String? deviceName,
+  @POST('/api/v1/auth/sessions/clients/google')
+  Future<HttpResponse<LoginResponseDto>> postApiV1AuthSessionsClientsGoogle({
+    @Body() LoginClientWithGoogleDto? body,
   });
 
-  @POST('/api/v1/Auth/refresh')
-  Future<HttpResponse<RefreshTokenResponseDto>> postApiV1AuthRefresh({
+  @POST('/api/v1/auth/sessions/admins/email')
+  Future<HttpResponse<LoginResponseDto>> postApiV1AuthSessionsAdminsEmail({
+    @Body() LoginUserWithEmailDto? body,
+  });
+
+  @POST('/api/v1/auth/sessions/refresh')
+  Future<HttpResponse<RefreshTokenResponseDto>> postApiV1AuthSessionsRefresh({
     @Body() RefreshTokenDto? body,
   });
 
-  @POST('/api/v1/Auth/logout')
-  Future<HttpResponse<void>> postApiV1AuthLogout();
+  @DELETE('/api/v1/auth/sessions/devices')
+  Future<HttpResponse<void>> deleteApiV1AuthSessionsDevices();
 
-  @POST('/api/v1/Auth/logout/{deviceId}')
-  Future<HttpResponse<void>> postApiV1AuthLogoutDeviceId({
+  @GET('/api/v1/auth/sessions/devices')
+  Future<HttpResponse<ListDevicesResponseDto>> getApiV1AuthSessionsDevices();
+
+  @DELETE('/api/v1/auth/sessions/devices/{deviceId}')
+  Future<HttpResponse<void>> deleteApiV1AuthSessionsDevicesDeviceId({
     @Path('deviceId') required String deviceId,
   });
-
-  @POST('/api/v1/Auth/logout/all')
-  Future<HttpResponse<void>> postApiV1AuthLogoutAll();
-
-  @GET('/api/v1/Auth/devices')
-  Future<HttpResponse<ListDevicesResponseDto>> getApiV1AuthDevices();
 }

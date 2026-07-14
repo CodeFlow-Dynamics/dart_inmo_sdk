@@ -8,8 +8,8 @@ import 'package:inmo_api_sdk/src/core/result.dart';
 
 abstract class PublisherRepo {
   Future<ResultApi<PublisherUserDtoPaginatedResult>> getPublishers({
-    String? publisherTypeId,
-    String? userId,
+    String? type,
+    String? clientUserId,
     String? sortBy,
     String? sortDirection,
     int? pageNumber,
@@ -26,9 +26,9 @@ abstract class PublisherRepo {
   Future<ResultApi<ListPublisherMembersResponseDto>> getPublishersIdMembers({
     required String id,
   });
-  Future<ResultApi<Unit>> deletePublishersIdMembersUserId({
+  Future<ResultApi<Unit>> deletePublishersIdMembersClientUserId({
     required String id,
-    required String userId,
+    required String clientUserId,
   });
   Future<ResultApi<PublisherUserDto>> putPublishersId({
     required String id,
@@ -43,14 +43,14 @@ abstract class PublisherRepo {
   });
   Future<ResultApi<ListingSummaryDtoPaginatedResult>> getPublishersIdListings({
     required String id,
-    String? inmoCategoryId,
-    String? inmoTypeId,
+    String? propertyCategory,
+    String? propertyType,
     String? administrativeDivisionId,
     String? offerType,
     String? offerStatus,
     double? minPrice,
     double? maxPrice,
-    String? currencyId,
+    String? currency,
     String? sortBy,
     String? sortDirection,
     int? pageNumber,
@@ -66,8 +66,8 @@ class PublisherRepoImpl extends BaseRepo implements PublisherRepo {
 
   @override
   Future<ResultApi<PublisherUserDtoPaginatedResult>> getPublishers({
-    String? publisherTypeId,
-    String? userId,
+    String? type,
+    String? clientUserId,
     String? sortBy,
     String? sortDirection,
     int? pageNumber,
@@ -76,8 +76,8 @@ class PublisherRepoImpl extends BaseRepo implements PublisherRepo {
   }) {
     return executeApiCall<PublisherUserDtoPaginatedResult>(
       apiCall: () => _api.publisher.getApiV1Publishers(
-        publisherTypeId: publisherTypeId,
-        userId: userId,
+        type: type,
+        clientUserId: clientUserId,
         sortBy: sortBy,
         sortDirection: sortDirection,
         pageNumber: pageNumber,
@@ -123,14 +123,14 @@ class PublisherRepoImpl extends BaseRepo implements PublisherRepo {
   }
 
   @override
-  Future<ResultApi<Unit>> deletePublishersIdMembersUserId({
+  Future<ResultApi<Unit>> deletePublishersIdMembersClientUserId({
     required String id,
-    required String userId,
+    required String clientUserId,
   }) {
     return executeApiCall<Unit>(
-      apiCall: () => _api.publisher.deleteApiV1PublishersIdMembersUserId(
+      apiCall: () => _api.publisher.deleteApiV1PublishersIdMembersClientUserId(
         id: id,
-        userId: userId,
+        clientUserId: clientUserId,
       ),
     );
   }
@@ -175,14 +175,14 @@ class PublisherRepoImpl extends BaseRepo implements PublisherRepo {
   @override
   Future<ResultApi<ListingSummaryDtoPaginatedResult>> getPublishersIdListings({
     required String id,
-    String? inmoCategoryId,
-    String? inmoTypeId,
+    String? propertyCategory,
+    String? propertyType,
     String? administrativeDivisionId,
     String? offerType,
     String? offerStatus,
     double? minPrice,
     double? maxPrice,
-    String? currencyId,
+    String? currency,
     String? sortBy,
     String? sortDirection,
     int? pageNumber,
@@ -192,14 +192,14 @@ class PublisherRepoImpl extends BaseRepo implements PublisherRepo {
     return executeApiCall<ListingSummaryDtoPaginatedResult>(
       apiCall: () => _api.publisher.getApiV1PublishersIdListings(
         id: id,
-        inmoCategoryId: inmoCategoryId,
-        inmoTypeId: inmoTypeId,
+        propertyCategory: propertyCategory,
+        propertyType: propertyType,
         administrativeDivisionId: administrativeDivisionId,
         offerType: offerType,
         offerStatus: offerStatus,
         minPrice: minPrice,
         maxPrice: maxPrice,
-        currencyId: currencyId,
+        currency: currency,
         sortBy: sortBy,
         sortDirection: sortDirection,
         pageNumber: pageNumber,

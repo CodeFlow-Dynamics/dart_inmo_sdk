@@ -21,8 +21,9 @@ class ListingDto {
     required this.createdAt,
     required this.updatedAt,
     required this.publisherId,
-    required this.inmoCategoryId,
-    required this.inmoTypeId,
+    required this.propertyId,
+    required this.propertyCategory,
+    required this.propertyType,
     required this.administrativeDivisionId,
     required this.title,
     required this.slug,
@@ -50,8 +51,9 @@ class ListingDto {
   final String createdAt;
   final String updatedAt;
   final String publisherId;
-  final String inmoCategoryId;
-  final String inmoTypeId;
+  final String propertyId;
+  final String propertyCategory;
+  final String propertyType;
   final String? administrativeDivisionId;
   final String title;
   final String slug;

@@ -21,9 +21,9 @@ class _AdministrativeLevelClient implements AdministrativeLevelClient {
 
   @override
   Future<HttpResponse<ListAdministrativeLevelsResponseDto>>
-  getApiV1AdministrativeLevels({String? countryId}) async {
+  getApiV1AdministrativeLevels({String? country}) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'countryId': countryId};
+    final queryParameters = <String, dynamic>{r'country': country};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;

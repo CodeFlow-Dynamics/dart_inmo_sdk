@@ -11,18 +11,12 @@ part 'country_dto.g.dart';
 @JsonSerializable()
 class CountryDto {
   const CountryDto({
-    required this.id,
-    required this.createdAt,
-    required this.updatedAt,
     required this.isoCode,
     required this.i18nCode,
   });
   
   factory CountryDto.fromJson(Map<String, Object?> json) => _$CountryDtoFromJson(json);
   
-  final String id;
-  final String createdAt;
-  final String updatedAt;
   final String isoCode;
   final String i18nCode;
 

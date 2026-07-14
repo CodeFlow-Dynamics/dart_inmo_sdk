@@ -14,13 +14,17 @@ class IdentificationDto {
     required this.id,
     required this.createdAt,
     required this.updatedAt,
-    required this.userId,
+    required this.clientUserId,
     required this.documentId,
+    required this.firstName,
+    required this.lastName,
     required this.idNumber,
+    required this.validationPattern,
     required this.dateOfBirth,
     required this.expiryDate,
-    required this.photoObverseLink,
-    required this.photoReverseLink,
+    required this.obverseMediaFileId,
+    required this.reverseMediaFileId,
+    required this.status,
   });
   
   factory IdentificationDto.fromJson(Map<String, Object?> json) => _$IdentificationDtoFromJson(json);
@@ -28,13 +32,17 @@ class IdentificationDto {
   final String id;
   final String createdAt;
   final String updatedAt;
-  final String userId;
+  final String clientUserId;
   final String documentId;
+  final String firstName;
+  final String lastName;
   final String idNumber;
+  final String validationPattern;
   final String dateOfBirth;
   final String expiryDate;
-  final String? photoObverseLink;
-  final String? photoReverseLink;
+  final String? obverseMediaFileId;
+  final String? reverseMediaFileId;
+  final String status;
 
   Map<String, Object?> toJson() => _$IdentificationDtoToJson(this);
 }

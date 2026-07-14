@@ -20,8 +20,8 @@ class _AuthClient implements AuthClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<LoginResponseDto>> postApiV1AuthLoginEmail({
-    LoginUserWithEmailAndPasswordDto? body,
+  Future<HttpResponse<LoginResponseDto>> postApiV1AuthSessionsClientsEmail({
+    LoginUserWithEmailDto? body,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -31,13 +31,13 @@ class _AuthClient implements AuthClient {
     _data.addAll(
       body == null
           ? <String, dynamic>{}
-          : await compute(serializeLoginUserWithEmailAndPasswordDto, body),
+          : await compute(serializeLoginUserWithEmailDto, body),
     );
     final _options = _setStreamType<HttpResponse<LoginResponseDto>>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/api/v1/Auth/login/email',
+            '/api/v1/auth/sessions/clients/email',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -56,20 +56,24 @@ class _AuthClient implements AuthClient {
   }
 
   @override
-  Future<HttpResponse<LoginResponseDto>> postApiV1AuthLoginGoogleIdToken({
-    required String idToken,
-    String? deviceName,
+  Future<HttpResponse<LoginResponseDto>> postApiV1AuthSessionsClientsGoogle({
+    LoginClientWithGoogleDto? body,
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'deviceName': deviceName};
+    final queryParameters = <String, dynamic>{};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
+    final _data = <String, dynamic>{};
+    _data.addAll(
+      body == null
+          ? <String, dynamic>{}
+          : await compute(serializeLoginClientWithGoogleDto, body),
+    );
     final _options = _setStreamType<HttpResponse<LoginResponseDto>>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/api/v1/Auth/login/google/${idToken}',
+            '/api/v1/auth/sessions/clients/google',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -88,7 +92,43 @@ class _AuthClient implements AuthClient {
   }
 
   @override
-  Future<HttpResponse<RefreshTokenResponseDto>> postApiV1AuthRefresh({
+  Future<HttpResponse<LoginResponseDto>> postApiV1AuthSessionsAdminsEmail({
+    LoginUserWithEmailDto? body,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(
+      body == null
+          ? <String, dynamic>{}
+          : await compute(serializeLoginUserWithEmailDto, body),
+    );
+    final _options = _setStreamType<HttpResponse<LoginResponseDto>>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/api/v1/auth/sessions/admins/email',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, Object?>>(_options);
+    late LoginResponseDto _value;
+    try {
+      _value = await compute(deserializeLoginResponseDto, _result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    final httpResponse = HttpResponse(_value, _result);
+    return httpResponse;
+  }
+
+  @override
+  Future<HttpResponse<RefreshTokenResponseDto>> postApiV1AuthSessionsRefresh({
     RefreshTokenDto? body,
   }) async {
     final _extra = <String, dynamic>{};
@@ -105,7 +145,7 @@ class _AuthClient implements AuthClient {
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/api/v1/Auth/refresh',
+            '/api/v1/auth/sessions/refresh',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -124,16 +164,16 @@ class _AuthClient implements AuthClient {
   }
 
   @override
-  Future<HttpResponse<void>> postApiV1AuthLogout() async {
+  Future<HttpResponse<void>> deleteApiV1AuthSessionsDevices() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<void>>(
-      Options(method: 'POST', headers: _headers, extra: _extra)
+      Options(method: 'DELETE', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/api/v1/Auth/logout',
+            '/api/v1/auth/sessions/devices',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -145,51 +185,8 @@ class _AuthClient implements AuthClient {
   }
 
   @override
-  Future<HttpResponse<void>> postApiV1AuthLogoutDeviceId({
-    required String deviceId,
-  }) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<HttpResponse<void>>(
-      Options(method: 'POST', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            '/api/v1/Auth/logout/${deviceId}',
-            queryParameters: queryParameters,
-            data: _data,
-          )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
-    );
-    final _result = await _dio.fetch<void>(_options);
-    final httpResponse = HttpResponse(null, _result);
-    return httpResponse;
-  }
-
-  @override
-  Future<HttpResponse<void>> postApiV1AuthLogoutAll() async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<HttpResponse<void>>(
-      Options(method: 'POST', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            '/api/v1/Auth/logout/all',
-            queryParameters: queryParameters,
-            data: _data,
-          )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
-    );
-    final _result = await _dio.fetch<void>(_options);
-    final httpResponse = HttpResponse(null, _result);
-    return httpResponse;
-  }
-
-  @override
-  Future<HttpResponse<ListDevicesResponseDto>> getApiV1AuthDevices() async {
+  Future<HttpResponse<ListDevicesResponseDto>>
+  getApiV1AuthSessionsDevices() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -198,7 +195,7 @@ class _AuthClient implements AuthClient {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/api/v1/Auth/devices',
+            '/api/v1/auth/sessions/devices',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -213,6 +210,29 @@ class _AuthClient implements AuthClient {
       rethrow;
     }
     final httpResponse = HttpResponse(_value, _result);
+    return httpResponse;
+  }
+
+  @override
+  Future<HttpResponse<void>> deleteApiV1AuthSessionsDevicesDeviceId({
+    required String deviceId,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<HttpResponse<void>>(
+      Options(method: 'DELETE', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/api/v1/auth/sessions/devices/${deviceId}',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<void>(_options);
+    final httpResponse = HttpResponse(null, _result);
     return httpResponse;
   }
 

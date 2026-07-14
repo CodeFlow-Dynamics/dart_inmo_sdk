@@ -13,7 +13,7 @@ class DeviceDto {
   const DeviceDto({
     required this.deviceId,
     required this.deviceName,
-    required this.deviceFingerprint,
+    required this.deviceFingerprintHash,
     required this.lastUsedAt,
     required this.createdAt,
   });
@@ -22,7 +22,7 @@ class DeviceDto {
   
   final String deviceId;
   final String deviceName;
-  final String deviceFingerprint;
+  final String deviceFingerprintHash;
   final DateTime lastUsedAt;
   final DateTime createdAt;
 

@@ -8,14 +8,14 @@ part of 'add_document_dto.dart';
 
 AddDocumentDto _$AddDocumentDtoFromJson(Map<String, dynamic> json) =>
     AddDocumentDto(
-      documentTypeId: json['documentTypeId'] as String,
-      countryId: json['countryId'] as String,
+      documentType: json['documentType'] as String,
+      country: json['country'] as String,
       validationPattern: json['validationPattern'] as String,
     );
 
 Map<String, dynamic> _$AddDocumentDtoToJson(AddDocumentDto instance) =>
     <String, dynamic>{
-      'documentTypeId': instance.documentTypeId,
-      'countryId': instance.countryId,
+      'documentType': instance.documentType,
+      'country': instance.country,
       'validationPattern': instance.validationPattern,
     };

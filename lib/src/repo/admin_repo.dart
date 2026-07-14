@@ -7,18 +7,23 @@ import 'package:inmo_api_sdk/src/core/base_repo.dart';
 import 'package:inmo_api_sdk/src/core/result.dart';
 
 abstract class AdminRepo {
-  Future<ResultApi<UserDto>> postAdmin({
+  Future<ResultApi<AdminDto>> postAdmins({
     AddAdminDto? body,
   });
-  Future<ResultApi<UserDto>> putAdminId({
+  Future<ResultApi<AdminDto>> putAdminsId({
     required String id,
     UpdateAdminDto? body,
   });
-  Future<ResultApi<UserDto>> getAdminId({
+  Future<ResultApi<AdminDto>> getAdminsId({
     required String id,
   });
-  Future<ResultApi<Unit>> deleteAdminId({
+  Future<ResultApi<Unit>> deleteAdminsId({
     required String id,
+  });
+  Future<ResultApi<EmployeeProfileDto>> getAdminsProfile();
+  Future<ResultApi<Unit>> putAdminsAuthsIdStatus({
+    required String id,
+    UpdateAuthStatusDto? body,
   });
 }
 
@@ -28,23 +33,23 @@ class AdminRepoImpl extends BaseRepo implements AdminRepo {
   final InmoApi _api;
 
   @override
-  Future<ResultApi<UserDto>> postAdmin({
+  Future<ResultApi<AdminDto>> postAdmins({
     AddAdminDto? body,
   }) {
-    return executeApiCall<UserDto>(
-      apiCall: () => _api.admin.postApiV1Admin(
+    return executeApiCall<AdminDto>(
+      apiCall: () => _api.admin.postApiV1Admins(
         body: body,
       ),
     );
   }
 
   @override
-  Future<ResultApi<UserDto>> putAdminId({
+  Future<ResultApi<AdminDto>> putAdminsId({
     required String id,
     UpdateAdminDto? body,
   }) {
-    return executeApiCall<UserDto>(
-      apiCall: () => _api.admin.putApiV1AdminId(
+    return executeApiCall<AdminDto>(
+      apiCall: () => _api.admin.putApiV1AdminsId(
         id: id,
         body: body,
       ),
@@ -52,23 +57,43 @@ class AdminRepoImpl extends BaseRepo implements AdminRepo {
   }
 
   @override
-  Future<ResultApi<UserDto>> getAdminId({
+  Future<ResultApi<AdminDto>> getAdminsId({
     required String id,
   }) {
-    return executeApiCall<UserDto>(
-      apiCall: () => _api.admin.getApiV1AdminId(
+    return executeApiCall<AdminDto>(
+      apiCall: () => _api.admin.getApiV1AdminsId(
         id: id,
       ),
     );
   }
 
   @override
-  Future<ResultApi<Unit>> deleteAdminId({
+  Future<ResultApi<Unit>> deleteAdminsId({
     required String id,
   }) {
     return executeApiCall<Unit>(
-      apiCall: () => _api.admin.deleteApiV1AdminId(
+      apiCall: () => _api.admin.deleteApiV1AdminsId(
         id: id,
+      ),
+    );
+  }
+
+  @override
+  Future<ResultApi<EmployeeProfileDto>> getAdminsProfile() {
+    return executeApiCall<EmployeeProfileDto>(
+      apiCall: () => _api.admin.getApiV1AdminsProfile(),
+    );
+  }
+
+  @override
+  Future<ResultApi<Unit>> putAdminsAuthsIdStatus({
+    required String id,
+    UpdateAuthStatusDto? body,
+  }) {
+    return executeApiCall<Unit>(
+      apiCall: () => _api.admin.putApiV1AdminsAuthsIdStatus(
+        id: id,
+        body: body,
       ),
     );
   }

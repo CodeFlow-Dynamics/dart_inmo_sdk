@@ -12,11 +12,12 @@ AdministrativeDivisionDto _$AdministrativeDivisionDtoFromJson(
   id: json['id'] as String,
   createdAt: json['createdAt'] as String,
   updatedAt: json['updatedAt'] as String,
-  countryId: json['countryId'] as String,
+  country: json['country'] as String,
   parentId: json['parentId'] as String?,
   levelId: json['levelId'] as String?,
   name: json['name'] as String,
   code: json['code'] as String?,
+  postalCode: json['postalCode'] as String?,
 );
 
 Map<String, dynamic> _$AdministrativeDivisionDtoToJson(
@@ -25,9 +26,10 @@ Map<String, dynamic> _$AdministrativeDivisionDtoToJson(
   'id': instance.id,
   'createdAt': instance.createdAt,
   'updatedAt': instance.updatedAt,
-  'countryId': instance.countryId,
+  'country': instance.country,
   'parentId': instance.parentId,
   'levelId': instance.levelId,
   'name': instance.name,
   'code': instance.code,
+  'postalCode': instance.postalCode,
 };

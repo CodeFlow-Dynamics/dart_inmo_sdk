@@ -10,7 +10,7 @@ SearchOfferDto _$SearchOfferDtoFromJson(Map<String, dynamic> json) =>
     SearchOfferDto(
       type: json['type'] as String,
       price: (json['price'] as num).toDouble(),
-      currencyId: json['currencyId'] as String,
+      currency: json['currency'] as String,
       status: json['status'] as String,
     );
 
@@ -18,6 +18,6 @@ Map<String, dynamic> _$SearchOfferDtoToJson(SearchOfferDto instance) =>
     <String, dynamic>{
       'type': instance.type,
       'price': instance.price,
-      'currencyId': instance.currencyId,
+      'currency': instance.currency,
       'status': instance.status,
     };

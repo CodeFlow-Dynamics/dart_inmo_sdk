@@ -11,7 +11,7 @@ ListingOfferSummaryDto _$ListingOfferSummaryDtoFromJson(
 ) => ListingOfferSummaryDto(
   offerType: json['offerType'] as String,
   price: (json['price'] as num).toDouble(),
-  currencyId: json['currencyId'] as String,
+  currency: json['currency'] as String,
   rentPeriod: json['rentPeriod'] as String?,
   status: json['status'] as String,
 );
@@ -21,7 +21,7 @@ Map<String, dynamic> _$ListingOfferSummaryDtoToJson(
 ) => <String, dynamic>{
   'offerType': instance.offerType,
   'price': instance.price,
-  'currencyId': instance.currencyId,
+  'currency': instance.currency,
   'rentPeriod': instance.rentPeriod,
   'status': instance.status,
 };

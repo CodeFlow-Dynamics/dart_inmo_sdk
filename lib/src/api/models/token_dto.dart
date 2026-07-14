@@ -12,14 +12,14 @@ part 'token_dto.g.dart';
 class TokenDto {
   const TokenDto({
     required this.id,
-    required this.token,
+    required this.verificationToken,
     required this.expiresAt,
   });
   
   factory TokenDto.fromJson(Map<String, Object?> json) => _$TokenDtoFromJson(json);
   
   final String id;
-  final String token;
+  final String verificationToken;
   final DateTime expiresAt;
 
   Map<String, Object?> toJson() => _$TokenDtoToJson(this);

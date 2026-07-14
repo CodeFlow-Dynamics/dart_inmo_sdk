@@ -12,8 +12,8 @@ part 'add_offer_dto.g.dart';
 class AddOfferDto {
   const AddOfferDto({
     required this.offerType,
+    required this.currency,
     this.price,
-    this.currencyId,
     this.rentPeriod,
     this.expiresAt,
   });
@@ -22,7 +22,7 @@ class AddOfferDto {
   
   final String offerType;
   final double? price;
-  final String? currencyId;
+  final String currency;
   final String? rentPeriod;
   final DateTime? expiresAt;
 

@@ -11,14 +11,14 @@ part 'create_publisher_user_dto.g.dart';
 @JsonSerializable()
 class CreatePublisherUserDto {
   const CreatePublisherUserDto({
-    required this.publisherTypeId,
+    required this.type,
     required this.name,
     required this.description,
   });
   
   factory CreatePublisherUserDto.fromJson(Map<String, Object?> json) => _$CreatePublisherUserDtoFromJson(json);
   
-  final String publisherTypeId;
+  final String type;
   final String name;
   final String? description;
 

@@ -22,13 +22,13 @@ class _ListingClient implements ListingClient {
   @override
   Future<HttpResponse<ListingSummaryDtoPaginatedResult>> getApiV1Listings({
     String? publisherId,
-    String? inmoCategoryId,
-    String? inmoTypeId,
+    String? propertyCategory,
+    String? propertyType,
     String? administrativeDivisionId,
     String? offerType,
     double? minPrice,
     double? maxPrice,
-    String? currencyId,
+    String? currency,
     String? sortBy,
     String? sortDirection,
     int? pageNumber,
@@ -38,13 +38,13 @@ class _ListingClient implements ListingClient {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'PublisherId': publisherId,
-      r'InmoCategoryId': inmoCategoryId,
-      r'InmoTypeId': inmoTypeId,
+      r'PropertyCategory': propertyCategory,
+      r'PropertyType': propertyType,
       r'AdministrativeDivisionId': administrativeDivisionId,
       r'OfferType': offerType,
       r'MinPrice': minPrice,
       r'MaxPrice': maxPrice,
-      r'CurrencyId': currencyId,
+      r'Currency': currency,
       r'SortBy': sortBy,
       r'SortDirection': sortDirection,
       r'PageNumber': pageNumber,
@@ -207,43 +207,6 @@ class _ListingClient implements ListingClient {
   }
 
   @override
-  Future<HttpResponse<ListingDto>> putApiV1ListingsIdLocation({
-    required String id,
-    SetListingLocationDto? body,
-  }) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    queryParameters.removeWhere((k, v) => v == null);
-    final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(
-      body == null
-          ? <String, dynamic>{}
-          : await compute(serializeSetListingLocationDto, body),
-    );
-    final _options = _setStreamType<HttpResponse<ListingDto>>(
-      Options(method: 'PUT', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            '/api/v1/listings/${id}/location',
-            queryParameters: queryParameters,
-            data: _data,
-          )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
-    );
-    final _result = await _dio.fetch<Map<String, Object?>>(_options);
-    late ListingDto _value;
-    try {
-      _value = await compute(deserializeListingDto, _result.data!);
-    } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options, response: _result);
-      rethrow;
-    }
-    final httpResponse = HttpResponse(_value, _result);
-    return httpResponse;
-  }
-
-  @override
   Future<HttpResponse<void>> postApiV1ListingsIdViews({
     required String id,
   }) async {
@@ -267,62 +230,49 @@ class _ListingClient implements ListingClient {
   }
 
   @override
-  Future<HttpResponse<List<ListingAmenityDto>>> putApiV1ListingsIdAmenities({
-    required String id,
-    SetListingAmenitiesDto? body,
-  }) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    queryParameters.removeWhere((k, v) => v == null);
-    final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(
-      body == null
-          ? <String, dynamic>{}
-          : await compute(serializeSetListingAmenitiesDto, body),
-    );
-    final _options = _setStreamType<HttpResponse<List<ListingAmenityDto>>>(
-      Options(method: 'PUT', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            '/api/v1/listings/${id}/amenities',
-            queryParameters: queryParameters,
-            data: _data,
-          )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
-    );
-    final _result = await _dio.fetch<List<dynamic>>(_options);
-    late List<ListingAmenityDto> _value;
-    try {
-      _value = await compute(
-        deserializeListingAmenityDtoList,
-        _result.data!.cast<Map<String, dynamic>>(),
-      );
-    } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options, response: _result);
-      rethrow;
-    }
-    final httpResponse = HttpResponse(_value, _result);
-    return httpResponse;
-  }
-
-  @override
   Future<HttpResponse<ListingMediaDto>> postApiV1ListingsIdMedia({
     required String id,
-    AddListingMediaDto? body,
+    File? file,
+    String? mediaType,
+    String? caption,
+    int? sortOrder,
+    String? displayRole,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(
-      body == null
-          ? <String, dynamic>{}
-          : await compute(serializeAddListingMediaDto, body),
-    );
+    final _data = FormData();
+    if (file != null) {
+      _data.files.add(
+        MapEntry(
+          'File',
+          MultipartFile.fromFileSync(
+            file.path,
+            filename: file.path.split(Platform.pathSeparator).last,
+          ),
+        ),
+      );
+    }
+    if (mediaType != null) {
+      _data.fields.add(MapEntry('MediaType', mediaType));
+    }
+    if (caption != null) {
+      _data.fields.add(MapEntry('Caption', caption));
+    }
+    if (sortOrder != null) {
+      _data.fields.add(MapEntry('SortOrder', sortOrder.toString()));
+    }
+    if (displayRole != null) {
+      _data.fields.add(MapEntry('DisplayRole', displayRole));
+    }
     final _options = _setStreamType<HttpResponse<ListingMediaDto>>(
-      Options(method: 'POST', headers: _headers, extra: _extra)
+      Options(
+            method: 'POST',
+            headers: _headers,
+            extra: _extra,
+            contentType: 'multipart/form-data',
+          )
           .compose(
             _dio.options,
             '/api/v1/listings/${id}/media',

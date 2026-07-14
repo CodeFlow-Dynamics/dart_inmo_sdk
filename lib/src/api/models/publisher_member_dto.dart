@@ -15,7 +15,7 @@ class PublisherMemberDto {
     required this.createdAt,
     required this.updatedAt,
     required this.publisherId,
-    required this.userId,
+    required this.clientUserId,
     required this.role,
     required this.joinedAt,
     required this.userName,
@@ -27,7 +27,7 @@ class PublisherMemberDto {
   final String createdAt;
   final String updatedAt;
   final String publisherId;
-  final String userId;
+  final String clientUserId;
   final String role;
   final String joinedAt;
   final String userName;

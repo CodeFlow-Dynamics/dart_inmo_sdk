@@ -20,42 +20,6 @@ class _CountryClient implements CountryClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<CountryDto>> postApiV1Country({
-    AddCountryDto? body,
-  }) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    queryParameters.removeWhere((k, v) => v == null);
-    final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(
-      body == null
-          ? <String, dynamic>{}
-          : await compute(serializeAddCountryDto, body),
-    );
-    final _options = _setStreamType<HttpResponse<CountryDto>>(
-      Options(method: 'POST', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            '/api/v1/Country',
-            queryParameters: queryParameters,
-            data: _data,
-          )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
-    );
-    final _result = await _dio.fetch<Map<String, Object?>>(_options);
-    late CountryDto _value;
-    try {
-      _value = await compute(deserializeCountryDto, _result.data!);
-    } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options, response: _result);
-      rethrow;
-    }
-    final httpResponse = HttpResponse(_value, _result);
-    return httpResponse;
-  }
-
-  @override
   Future<HttpResponse<ListCountriesResponseDto>> getApiV1Country() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -87,45 +51,8 @@ class _CountryClient implements CountryClient {
   }
 
   @override
-  Future<HttpResponse<CountryDto>> putApiV1CountryId({
-    required String id,
-    UpdateCountryDto? body,
-  }) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    queryParameters.removeWhere((k, v) => v == null);
-    final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(
-      body == null
-          ? <String, dynamic>{}
-          : await compute(serializeUpdateCountryDto, body),
-    );
-    final _options = _setStreamType<HttpResponse<CountryDto>>(
-      Options(method: 'PUT', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            '/api/v1/Country/${id}',
-            queryParameters: queryParameters,
-            data: _data,
-          )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
-    );
-    final _result = await _dio.fetch<Map<String, Object?>>(_options);
-    late CountryDto _value;
-    try {
-      _value = await compute(deserializeCountryDto, _result.data!);
-    } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options, response: _result);
-      rethrow;
-    }
-    final httpResponse = HttpResponse(_value, _result);
-    return httpResponse;
-  }
-
-  @override
-  Future<HttpResponse<CountryDto>> getApiV1CountryId({
-    required String id,
+  Future<HttpResponse<CountryDto>> getApiV1CountryIsoCode({
+    required String isoCode,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -135,7 +62,7 @@ class _CountryClient implements CountryClient {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/api/v1/Country/${id}',
+            '/api/v1/Country/${isoCode}',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -145,69 +72,6 @@ class _CountryClient implements CountryClient {
     late CountryDto _value;
     try {
       _value = await compute(deserializeCountryDto, _result.data!);
-    } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options, response: _result);
-      rethrow;
-    }
-    final httpResponse = HttpResponse(_value, _result);
-    return httpResponse;
-  }
-
-  @override
-  Future<HttpResponse<void>> deleteApiV1CountryId({required String id}) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<HttpResponse<void>>(
-      Options(method: 'DELETE', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            '/api/v1/Country/${id}',
-            queryParameters: queryParameters,
-            data: _data,
-          )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
-    );
-    final _result = await _dio.fetch<void>(_options);
-    final httpResponse = HttpResponse(null, _result);
-    return httpResponse;
-  }
-
-  @override
-  Future<HttpResponse<BulkCreateCountriesResponseDto>> postApiV1CountryBulk({
-    BulkAddCountryDto? body,
-  }) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    queryParameters.removeWhere((k, v) => v == null);
-    final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(
-      body == null
-          ? <String, dynamic>{}
-          : await compute(serializeBulkAddCountryDto, body),
-    );
-    final _options =
-        _setStreamType<HttpResponse<BulkCreateCountriesResponseDto>>(
-          Options(method: 'POST', headers: _headers, extra: _extra)
-              .compose(
-                _dio.options,
-                '/api/v1/Country/bulk',
-                queryParameters: queryParameters,
-                data: _data,
-              )
-              .copyWith(
-                baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl),
-              ),
-        );
-    final _result = await _dio.fetch<Map<String, Object?>>(_options);
-    late BulkCreateCountriesResponseDto _value;
-    try {
-      _value = await compute(
-        deserializeBulkCreateCountriesResponseDto,
-        _result.data!,
-      );
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;

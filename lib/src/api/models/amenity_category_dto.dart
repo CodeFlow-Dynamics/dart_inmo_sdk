@@ -13,7 +13,6 @@ part 'amenity_category_dto.g.dart';
 @JsonSerializable()
 class AmenityCategoryDto {
   const AmenityCategoryDto({
-    required this.categoryId,
     required this.category,
     required this.i18nCode,
     required this.amenities,
@@ -21,7 +20,6 @@ class AmenityCategoryDto {
   
   factory AmenityCategoryDto.fromJson(Map<String, Object?> json) => _$AmenityCategoryDtoFromJson(json);
   
-  final String categoryId;
   final String category;
   final String i18nCode;
   final List<AmenityDto> amenities;

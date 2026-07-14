@@ -7,7 +7,7 @@ import 'package:inmo_api_sdk/src/core/result.dart';
 
 abstract class AdministrativeLevelRepo {
   Future<ResultApi<ListAdministrativeLevelsResponseDto>> getAdministrativeLevels({
-    String? countryId,
+    String? country,
   });
 }
 
@@ -18,11 +18,11 @@ class AdministrativeLevelRepoImpl extends BaseRepo implements AdministrativeLeve
 
   @override
   Future<ResultApi<ListAdministrativeLevelsResponseDto>> getAdministrativeLevels({
-    String? countryId,
+    String? country,
   }) {
     return executeApiCall<ListAdministrativeLevelsResponseDto>(
       apiCall: () => _api.administrativeLevel.getApiV1AdministrativeLevels(
-        countryId: countryId,
+        country: country,
       ),
     );
   }

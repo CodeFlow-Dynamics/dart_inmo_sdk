@@ -11,15 +11,11 @@ part 'update_admin_dto.g.dart';
 @JsonSerializable()
 class UpdateAdminDto {
   const UpdateAdminDto({
-    required this.firstName,
-    required this.lastName,
     required this.preferredLanguage,
   });
   
   factory UpdateAdminDto.fromJson(Map<String, Object?> json) => _$UpdateAdminDtoFromJson(json);
   
-  final String firstName;
-  final String lastName;
   final String? preferredLanguage;
 
   Map<String, Object?> toJson() => _$UpdateAdminDtoToJson(this);

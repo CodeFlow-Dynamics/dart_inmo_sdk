@@ -21,8 +21,8 @@ class _PublisherClient implements PublisherClient {
 
   @override
   Future<HttpResponse<PublisherUserDtoPaginatedResult>> getApiV1Publishers({
-    String? publisherTypeId,
-    String? userId,
+    String? type,
+    String? clientUserId,
     String? sortBy,
     String? sortDirection,
     int? pageNumber,
@@ -31,8 +31,8 @@ class _PublisherClient implements PublisherClient {
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
-      r'PublisherTypeId': publisherTypeId,
-      r'UserId': userId,
+      r'Type': type,
+      r'ClientUserId': clientUserId,
       r'SortBy': sortBy,
       r'SortDirection': sortDirection,
       r'PageNumber': pageNumber,
@@ -179,9 +179,9 @@ class _PublisherClient implements PublisherClient {
   }
 
   @override
-  Future<HttpResponse<void>> deleteApiV1PublishersIdMembersUserId({
+  Future<HttpResponse<void>> deleteApiV1PublishersIdMembersClientUserId({
     required String id,
-    required String userId,
+    required String clientUserId,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -191,7 +191,7 @@ class _PublisherClient implements PublisherClient {
       Options(method: 'DELETE', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/api/v1/publishers/${id}/members/${userId}',
+            '/api/v1/publishers/${id}/members/${clientUserId}',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -304,14 +304,14 @@ class _PublisherClient implements PublisherClient {
   Future<HttpResponse<ListingSummaryDtoPaginatedResult>>
   getApiV1PublishersIdListings({
     required String id,
-    String? inmoCategoryId,
-    String? inmoTypeId,
+    String? propertyCategory,
+    String? propertyType,
     String? administrativeDivisionId,
     String? offerType,
     String? offerStatus,
     double? minPrice,
     double? maxPrice,
-    String? currencyId,
+    String? currency,
     String? sortBy,
     String? sortDirection,
     int? pageNumber,
@@ -320,14 +320,14 @@ class _PublisherClient implements PublisherClient {
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
-      r'InmoCategoryId': inmoCategoryId,
-      r'InmoTypeId': inmoTypeId,
+      r'PropertyCategory': propertyCategory,
+      r'PropertyType': propertyType,
       r'AdministrativeDivisionId': administrativeDivisionId,
       r'OfferType': offerType,
       r'OfferStatus': offerStatus,
       r'MinPrice': minPrice,
       r'MaxPrice': maxPrice,
-      r'CurrencyId': currencyId,
+      r'Currency': currency,
       r'SortBy': sortBy,
       r'SortDirection': sortDirection,
       r'PageNumber': pageNumber,

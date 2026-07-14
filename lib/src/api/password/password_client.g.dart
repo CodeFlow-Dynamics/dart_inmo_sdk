@@ -20,18 +20,24 @@ class _PasswordClient implements PasswordClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<TokenDto>> postApiV1PasswordForgotEmail({
-    required String email,
+  Future<HttpResponse<TokenDto>> postApiV1AuthPasswordsForgot({
+    EmailRequestDto? body,
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
+    final _data = <String, dynamic>{};
+    _data.addAll(
+      body == null
+          ? <String, dynamic>{}
+          : await compute(serializeEmailRequestDto, body),
+    );
     final _options = _setStreamType<HttpResponse<TokenDto>>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/api/v1/Password/forgot/${email}',
+            '/api/v1/auth/passwords/forgot',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -50,7 +56,7 @@ class _PasswordClient implements PasswordClient {
   }
 
   @override
-  Future<HttpResponse<String>> postApiV1PasswordReset({
+  Future<HttpResponse<String>> postApiV1AuthPasswordsReset({
     ResetPasswordDto? body,
   }) async {
     final _extra = <String, dynamic>{};
@@ -67,7 +73,7 @@ class _PasswordClient implements PasswordClient {
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/api/v1/Password/reset',
+            '/api/v1/auth/passwords/reset',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -86,7 +92,7 @@ class _PasswordClient implements PasswordClient {
   }
 
   @override
-  Future<HttpResponse<String>> postApiV1PasswordChange({
+  Future<HttpResponse<String>> postApiV1AuthPasswordsChange({
     ChangePasswordDto? body,
   }) async {
     final _extra = <String, dynamic>{};
@@ -103,7 +109,7 @@ class _PasswordClient implements PasswordClient {
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/api/v1/Password/change',
+            '/api/v1/auth/passwords/change',
             queryParameters: queryParameters,
             data: _data,
           )

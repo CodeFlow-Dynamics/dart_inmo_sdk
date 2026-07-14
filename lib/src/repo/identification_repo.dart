@@ -1,25 +1,17 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // Run: dart run scripts/generate_api_repos.dart
 
-import 'dart:io' show File;
-
 import 'package:inmo_api_sdk/src/api/export.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:inmo_api_sdk/src/core/base_repo.dart';
 import 'package:inmo_api_sdk/src/core/result.dart';
 
 abstract class IdentificationRepo {
-  Future<ResultApi<IdentificationDto>> postIdentification({
-    String? userId,
-    String? documentId,
-    String? idNumber,
-    String? dateOfBirth,
-    String? expiryDate,
-    File? photoObverse,
-    File? photoReverse,
+  Future<ResultApi<IdentificationDto>> postIdentityIdentifications({
+    AddIdentificationDto? body,
   });
-  Future<ResultApi<IdentificationDtoPaginatedResult>> getIdentification({
-    String? userId,
+  Future<ResultApi<IdentificationDtoPaginatedResult>> getIdentityIdentifications({
+    String? clientUserId,
     String? documentId,
     String? sortBy,
     String? sortDirection,
@@ -27,18 +19,14 @@ abstract class IdentificationRepo {
     int? pageSize,
     String? cursor,
   });
-  Future<ResultApi<IdentificationDto>> getIdentificationId({
+  Future<ResultApi<IdentificationDto>> getIdentityIdentificationsId({
     required String id,
   });
-  Future<ResultApi<IdentificationDto>> putIdentificationId({
+  Future<ResultApi<IdentificationDto>> putIdentityIdentificationsId({
     required String id,
-    String? idNumber,
-    String? dateOfBirth,
-    String? expiryDate,
-    File? photoObverse,
-    File? photoReverse,
+    UpdateIdentificationDto? body,
   });
-  Future<ResultApi<Unit>> deleteIdentificationId({
+  Future<ResultApi<Unit>> deleteIdentityIdentificationsId({
     required String id,
   });
 }
@@ -49,31 +37,19 @@ class IdentificationRepoImpl extends BaseRepo implements IdentificationRepo {
   final InmoApi _api;
 
   @override
-  Future<ResultApi<IdentificationDto>> postIdentification({
-    String? userId,
-    String? documentId,
-    String? idNumber,
-    String? dateOfBirth,
-    String? expiryDate,
-    File? photoObverse,
-    File? photoReverse,
+  Future<ResultApi<IdentificationDto>> postIdentityIdentifications({
+    AddIdentificationDto? body,
   }) {
     return executeApiCall<IdentificationDto>(
-      apiCall: () => _api.identification.postApiV1Identification(
-        userId: userId,
-        documentId: documentId,
-        idNumber: idNumber,
-        dateOfBirth: dateOfBirth,
-        expiryDate: expiryDate,
-        photoObverse: photoObverse,
-        photoReverse: photoReverse,
+      apiCall: () => _api.identification.postApiV1IdentityIdentifications(
+        body: body,
       ),
     );
   }
 
   @override
-  Future<ResultApi<IdentificationDtoPaginatedResult>> getIdentification({
-    String? userId,
+  Future<ResultApi<IdentificationDtoPaginatedResult>> getIdentityIdentifications({
+    String? clientUserId,
     String? documentId,
     String? sortBy,
     String? sortDirection,
@@ -82,8 +58,8 @@ class IdentificationRepoImpl extends BaseRepo implements IdentificationRepo {
     String? cursor,
   }) {
     return executeApiCall<IdentificationDtoPaginatedResult>(
-      apiCall: () => _api.identification.getApiV1Identification(
-        userId: userId,
+      apiCall: () => _api.identification.getApiV1IdentityIdentifications(
+        clientUserId: clientUserId,
         documentId: documentId,
         sortBy: sortBy,
         sortDirection: sortDirection,
@@ -95,43 +71,35 @@ class IdentificationRepoImpl extends BaseRepo implements IdentificationRepo {
   }
 
   @override
-  Future<ResultApi<IdentificationDto>> getIdentificationId({
+  Future<ResultApi<IdentificationDto>> getIdentityIdentificationsId({
     required String id,
   }) {
     return executeApiCall<IdentificationDto>(
-      apiCall: () => _api.identification.getApiV1IdentificationId(
+      apiCall: () => _api.identification.getApiV1IdentityIdentificationsId(
         id: id,
       ),
     );
   }
 
   @override
-  Future<ResultApi<IdentificationDto>> putIdentificationId({
+  Future<ResultApi<IdentificationDto>> putIdentityIdentificationsId({
     required String id,
-    String? idNumber,
-    String? dateOfBirth,
-    String? expiryDate,
-    File? photoObverse,
-    File? photoReverse,
+    UpdateIdentificationDto? body,
   }) {
     return executeApiCall<IdentificationDto>(
-      apiCall: () => _api.identification.putApiV1IdentificationId(
+      apiCall: () => _api.identification.putApiV1IdentityIdentificationsId(
         id: id,
-        idNumber: idNumber,
-        dateOfBirth: dateOfBirth,
-        expiryDate: expiryDate,
-        photoObverse: photoObverse,
-        photoReverse: photoReverse,
+        body: body,
       ),
     );
   }
 
   @override
-  Future<ResultApi<Unit>> deleteIdentificationId({
+  Future<ResultApi<Unit>> deleteIdentityIdentificationsId({
     required String id,
   }) {
     return executeApiCall<Unit>(
-      apiCall: () => _api.identification.deleteApiV1IdentificationId(
+      apiCall: () => _api.identification.deleteApiV1IdentityIdentificationsId(
         id: id,
       ),
     );

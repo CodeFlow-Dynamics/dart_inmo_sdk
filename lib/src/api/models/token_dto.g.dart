@@ -8,12 +8,12 @@ part of 'token_dto.dart';
 
 TokenDto _$TokenDtoFromJson(Map<String, dynamic> json) => TokenDto(
   id: json['id'] as String,
-  token: json['token'] as String,
+  verificationToken: json['verificationToken'] as String,
   expiresAt: DateTime.parse(json['expiresAt'] as String),
 );
 
 Map<String, dynamic> _$TokenDtoToJson(TokenDto instance) => <String, dynamic>{
   'id': instance.id,
-  'token': instance.token,
+  'verificationToken': instance.verificationToken,
   'expiresAt': instance.expiresAt.toIso8601String(),
 };

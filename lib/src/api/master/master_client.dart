@@ -6,8 +6,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart' show compute;
 import 'package:retrofit/retrofit.dart';
 
-import '../models/add_master_user_dto.dart';
-import '../models/sign_up_user_with_email_and_password_dto.dart';
+import '../models/sign_up_admin_dto.dart';
+import '../models/sign_up_user_with_email_dto.dart';
 
 part 'master_client.g.dart';
 
@@ -15,8 +15,8 @@ part 'master_client.g.dart';
 abstract class MasterClient {
   factory MasterClient(Dio dio, {String? baseUrl}) = _MasterClient;
 
-  @POST('/api/v1/Master')
-  Future<HttpResponse<SignUpUserWithEmailAndPasswordDto>> postApiV1Master({
-    @Body() AddMasterUserDto? body,
+  @POST('/api/v1/auth/bootstrap/master')
+  Future<HttpResponse<SignUpUserWithEmailDto>> postApiV1AuthBootstrapMaster({
+    @Body() SignUpAdminDto? body,
   });
 }

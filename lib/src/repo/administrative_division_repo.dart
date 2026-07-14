@@ -7,7 +7,7 @@ import 'package:inmo_api_sdk/src/core/result.dart';
 
 abstract class AdministrativeDivisionRepo {
   Future<ResultApi<AdministrativeDivisionDtoPaginatedResult>> getAdministrativeDivisions({
-    String? countryId,
+    String? country,
     String? parentId,
     String? levelId,
     String? sortBy,
@@ -17,7 +17,7 @@ abstract class AdministrativeDivisionRepo {
     String? cursor,
   });
   Future<ResultApi<SearchAdministrativeDivisionsByNameResultDto>> getAdministrativeDivisionsSearch({
-    String? countryId,
+    String? country,
     String? name,
   });
   Future<ResultApi<AdministrativeDivisionDto>> getAdministrativeDivisionsId({
@@ -32,7 +32,7 @@ class AdministrativeDivisionRepoImpl extends BaseRepo implements AdministrativeD
 
   @override
   Future<ResultApi<AdministrativeDivisionDtoPaginatedResult>> getAdministrativeDivisions({
-    String? countryId,
+    String? country,
     String? parentId,
     String? levelId,
     String? sortBy,
@@ -43,7 +43,7 @@ class AdministrativeDivisionRepoImpl extends BaseRepo implements AdministrativeD
   }) {
     return executeApiCall<AdministrativeDivisionDtoPaginatedResult>(
       apiCall: () => _api.administrativeDivision.getApiV1AdministrativeDivisions(
-        countryId: countryId,
+        country: country,
         parentId: parentId,
         levelId: levelId,
         sortBy: sortBy,
@@ -57,12 +57,12 @@ class AdministrativeDivisionRepoImpl extends BaseRepo implements AdministrativeD
 
   @override
   Future<ResultApi<SearchAdministrativeDivisionsByNameResultDto>> getAdministrativeDivisionsSearch({
-    String? countryId,
+    String? country,
     String? name,
   }) {
     return executeApiCall<SearchAdministrativeDivisionsByNameResultDto>(
       apiCall: () => _api.administrativeDivision.getApiV1AdministrativeDivisionsSearch(
-        countryId: countryId,
+        country: country,
         name: name,
       ),
     );
